@@ -10,8 +10,10 @@
       content="Kontraktor profesional Papua: konstruksi jalan, camp, gudang, mining support & pengadaan. Sejak 2010."
     />
 
-    <!-- Preload Logo -->
+    <!-- Preload Critical Assets -->
     <link rel="preload" as="image" href="Logo_LRU.png" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link rel="preconnect" href="https://unpkg.com" />
 
     <!-- Open Graph -->
     <meta
@@ -22,8 +24,14 @@
       property="og:description"
       content="Kontraktor profesional: jalan hauling, camp, gudang, mining support & pengadaan. Sejak 2010."
     />
-    <meta property="og:image" content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png" />
-    <meta property="og:url" content="https://pt-lambu-raya-utama-h34m.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pt-lambu-raya-utama-h34m.vercel.app/"
+    />
     <meta property="og:type" content="website" />
 
     <!-- Tailwind CSS -->
@@ -38,7 +46,8 @@
               float: "float 6s ease-in-out infinite",
               glow: "glow 3s ease-in-out infinite alternate",
               gradient: "gradientShift 18s ease infinite",
-              marquee: "marquee 30s linear infinite",
+              fadeIn: "fadeIn 0.5s ease-in-out",
+              scaleIn: "scaleIn 0.3s ease-out",
             },
             keyframes: {
               float: {
@@ -54,21 +63,19 @@
                 "50%": { backgroundPosition: "100% 50%" },
                 "100%": { backgroundPosition: "0% 50%" },
               },
-              marquee: {
-                "0%": { transform: "translateX(0%)" },
-                "100%": { transform: "translateX(-50%)" },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              scaleIn: {
+                "0%": { transform: "scale(0.9)", opacity: "0" },
+                "100%": { transform: "scale(1)", opacity: "1" },
               },
             },
           },
         },
       };
     </script>
-
-    <!-- Feather Icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <style>
       section {
@@ -147,6 +154,130 @@
           opacity: 0;
         }
       }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+      }
+      .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .modal-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        animation: scaleIn 0.3s ease-out;
+      }
+      .modal-image {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+      }
+      .modal-close {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg) scale(1.1);
+      }
+      .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 24px;
+      }
+      .modal-nav:hover {
+        background: rgba(0, 212, 255, 0.3);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .modal-nav.prev {
+        left: 20px;
+      }
+      .modal-nav.next {
+        right: 20px;
+      }
+      .project-card {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-card::before {
+        content: "🔍";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        font-size: 48px;
+        z-index: 10;
+        transition: all 0.3s ease;
+        opacity: 0;
+      }
+      .project-card:hover::before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      .project-card:hover img {
+        filter: brightness(0.7);
+      }
+
+      /* Lazy Load Placeholder */
+      img[loading="lazy"] {
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
     </style>
   </head>
 
@@ -198,15 +329,17 @@
           <li><a href="#contact" class="nav-link">Kontak</a></li>
         </ul>
         <div class="flex items-center gap-4">
-         <button
+          <button
             id="darkToggle"
-            class="p-3 rounded-full bg-white/0 hover:bg-white/5 hover:scale-110"
+            class="p-3 rounded-full bg-white/0 hover:bg-white/5 hover:scale-110 transition"
+            aria-label="Toggle dark mode"
           >
             <i data-feather="moon" class="w-6 h-6"></i>
           </button>
           <button
             id="burger"
             class="md:hidden p-3 rounded-full bg-white/0 hover:bg-white/5 transition z-50"
+            aria-label="Toggle menu"
           >
             <i
               data-feather="menu"
@@ -269,370 +402,399 @@
       </div>
     </div>
 
-    <!-- HERO -->
-    <header
-      id="home"
-      class="hero-bg relative h-screen flex items-center justify-center text-center text-white"
-    >
-      <div class="absolute inset-0 bg-black/50"></div>
-      <div class="relative z-10 px-6 max-w-5xl mx-auto">
-        <h1
-          class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight animate-float"
-          data-aos="zoom-in"
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+          ×
+        </button>
+        <button
+          class="modal-nav prev"
+          id="modalPrev"
+          aria-label="Previous image"
         >
-          <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
-        </h1>
-        <p
-          class="mt-8 text-xl md:text-3xl font-light opacity-90"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          General Contractor • Leveransir • Support Service
-        </p>
-        <div
-          class="mt-12 flex flex-col sm:flex-row gap-8 justify-center"
-          data-aos="fade-up"
-          data-aos-delay="600"
-        >
-          <a
-            href="#contact"
-            class="px-12 py-6 bg-gradient-to-r from-accent to-blue-700 rounded-full text-xl font-bold shadow-2xl hover:shadow-accent/60 transform hover:scale-110 transition duration-500"
-          >
-            Konsultasi
-          </a>
-          <a
-            href="#projects"
-            class="px-12 py-6 bg-white/20 backdrop-blur-lg border-2 border-white/40 rounded-full text-xl font-bold hover:bg-white/30 transform hover:scale-110 transition duration-500"
-          >
-            Lihat Proyek
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <!-- KEUNGGULAN -->
-    <section
-      id="why"
-      class="py-24 bg-gradient-to-br from-gray-100 to-blue-50 dark:from-gray-900 dark:to-black"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <h2
-          class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
-          data-aos="fade-up"
-        >
-          Mengapa Memilih Kami?
-        </h2>
-        <div class="grid md:grid-cols-3 gap-12">
-          <div
-            class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
-            data-aos="flip-left"
-          >
-            <div
-              class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center animate-glow"
-            >
-              <i data-feather="award" class="w-14 h-14 text-white"></i>
-            </div>
-            <h3 class="text-3xl font-bold mb-4">15+ Tahun Pengalaman</h3>
-            <p class="text-lg opacity-80">
-              Infrastruktur strategis sektor tambang & pemerintahan
-            </p>
-          </div>
-          <div
-            class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
-            data-aos="flip-left"
-            data-aos-delay="200"
-          >
-            <div
-              class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center animate-glow"
-            >
-              <i data-feather="clock" class="w-14 h-14 text-white"></i>
-            </div>
-            <h3 class="text-3xl font-bold mb-4">Tepat Waktu</h3>
-            <p class="text-lg opacity-80">SOP ketat & perencanaan matang</p>
-          </div>
-          <div
-            class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
-            data-aos="flip-left"
-            data-aos-delay="400"
-          >
-            <div
-              class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center animate-glow"
-            >
-              <i data-feather="shield" class="w-14 h-14 text-white"></i>
-            </div>
-            <h3 class="text-3xl font-bold mb-4">Kualitas Premium</h3>
-            <p class="text-lg opacity-80">Material terbaik & pengawasan 24/7</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TENTANG KAMI -->
-    <section id="about" class="py-24 bg-gray-50 dark:bg-gray-900">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2
-          class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
-          data-aos="fade-up"
-        >
-          Tentang Kami
-        </h2>
-        <div class="grid md:grid-cols-3 gap-12">
-          <div
-            class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
-            data-aos="fade-right"
-          >
-            <i data-feather="book-open" class="w-16 h-16 text-accent mb-6"></i>
-            <h3 class="text-2xl font-bold mb-4">Sejarah</h3>
-            <p>
-              Didirikan tahun 2010 di Timika, fokus pada infrastruktur tambang &
-              pemerintahan.
-            </p>
-          </div>
-          <div
-            class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
-            data-aos="fade-right"
-            data-aos-delay="150"
-          >
-            <i data-feather="target" class="w-16 h-16 text-accent mb-6"></i>
-            <h3 class="text-2xl font-bold mb-4">Visi</h3>
-            <p>
-              Menjadi kontraktor paling terpercaya di Papua dengan standar
-              internasional.
-            </p>
-          </div>
-          <div
-            class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
-            data-aos="fade-right"
-            data-aos-delay="300"
-          >
-            <i
-              data-feather="check-circle"
-              class="w-16 h-16 text-accent mb-6"
-            ></i>
-            <h3 class="text-2xl font-bold mb-4">Misi</h3>
-            <ul class="list-disc list-inside space-y-2">
-              <li>Layanan konstruksi berkualitas tinggi</li>
-              <li>Dukungan logistik & alat berat tambang</li>
-              <li>Keselamatan, lingkungan & tanggung jawab sosial</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LAYANAN -->
-    <section
-      id="services"
-      class="py-24 bg-gradient-to-t from-blue-50 to-white dark:from-gray-900 dark:to-black"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <h2
-          class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
-          data-aos="fade-up"
-        >
-          Layanan Kami
-        </h2>
-        <div class="grid md:grid-cols-3 gap-12">
-          <div
-            class="card-premium p-12 bg-white dark:bg-gray-800 rounded-3xl text-center"
-            data-aos="zoom-in"
-          >
-            <i
-              data-feather="tool"
-              class="w-20 h-20 text-accent mx-auto mb-8"
-            ></i>
-            <h3 class="text-3xl font-bold mb-4">General Contractor</h3>
-            <p class="text-lg">Jalan hauling, camp, gudang, jembatan & sipil</p>
-          </div>
-          <div
-            class="card-premium p-12 bg-white dark:bg-gray-800 rounded-3xl text-center"
-            data-aos="zoom-in"
-            data-aos-delay="150"
-          >
-            <i
-              data-feather="settings"
-              class="w-20 h-20 text-accent mx-auto mb-8"
-            ></i>
-            <h3 class="text-3xl font-bold mb-4">Leveransir</h3>
-            <p class="text-lg">Material, alat berat, BBM, sparepart</p>
-          </div>
-          <div
-            class="card-premium p-12 bg-white dark:bg-gray-800 rounded-3xl text-center"
-            data-aos="zoom-in"
-            data-aos-delay="300"
-          >
-            <i
-              data-feather="truck"
-              class="w-20 h-20 text-accent mx-auto mb-8"
-            ></i>
-            <h3 class="text-3xl font-bold mb-4">Support Service</h3>
-            <p class="text-lg">Logistik, penyewaan alat berat 24/7</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROYEK -->
-    <section id="projects" class="py-24 bg-gray-100 dark:bg-gray-900">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2
-          class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
-          data-aos="fade-up"
-        >
-          Proyek Kami
-       </h2>
-      <div class="grid md:grid-cols-3 gap-12">
-        <div
-          class="rounded-3xl overflow-hidden shadow-2xl card-premium"
-          data-aos="fade-up"
-        >
-          <img
-            src="dok. sm.jpg"
-            alt="Proyek Camp Mile 74 - Pembangunan 200 unit camp untuk mining site"
-            width="800"
-            height="600"
-            loading="lazy"
-            class="w-full h-80 object-cover transition-transform duration-700 hover:scale-110"
-          />
-          <div class="p-8 bg-white dark:bg-gray-800 rounded-b-3xl">
-            <h3 class="text-2xl font-bold mb-2">Camp Mile 74</h3>
-            <p class="text-gray-500 mb-4">200 Unit — 2024</p>
-            <div class="text-sm space-y-1 opacity-80">
-              <p><strong>Durasi:</strong> 8 bulan</p>
-              <p><strong>Tipe:</strong> Konstruksi Camp Mining</p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="rounded-3xl overflow-hidden shadow-2xl card-premium"
-          data-aos="fade-up"
-          data-aos-delay="150"
-        >
-          <img
-            src="exca.jpg"
-            alt="Proyek Jalan Hauling 12 KM untuk transportasi mining"
-            width="800"
-            height="600"
-            loading="lazy"
-            class="w-full h-80 object-cover transition-transform duration-700 hover:scale-110"
-          />
-          <div class="p-8 bg-white dark:bg-gray-800 rounded-b-3xl">
-            <h3 class="text-2xl font-bold mb-2">Jalan Hauling 12 KM</h3>
-            <p class="text-gray-500 mb-4">2023</p>
-            <div class="text-sm space-y-1 opacity-80">
-              <p><strong>Durasi:</strong> 10 bulan</p>
-              <p><strong>Tipe:</strong> Infrastruktur Jalan Tambang</p>
-            </div>
-          </div>
-        </div>
-        <div
-          class="rounded-3xl overflow-hidden shadow-2xl card-premium"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          <img
-            src="inspkesi with msd.jpg"
-            alt="Proyek Inspeksi dan Pembangunan bersama tim MSD"
-            width="800"
-            height="600"
-            loading="lazy"
-            class="w-full h-80 object-cover transition-transform duration-700 hover:scale-110"
-          />
-          <div class="p-8 bg-white dark:bg-gray-800 rounded-b-3xl">
-            <h3 class="text-2xl font-bold mb-2">Inspeksi & Pembangunan</h3>
-            <p class="text-gray-500 mb-4">Timika — 2024</p>
-            <div class="text-sm space-y-1 opacity-80">
-              <p><strong>Durasi:</strong> 07 bulan</p>
-              <p><strong>Tipe:</strong> Proyek Monitoring & Konstruksi</p>
-            </div>
-          </div>
+          ‹
+        </button>
+        <button class="modal-nav next" id="modalNext" aria-label="Next image">
+          ›
+        </button>
+        <img id="modalImage" class="modal-image" src="" alt="Project preview" />
+        <div class="text-center mt-6 text-white">
+          <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3>
+          <p id="modalDesc" class="text-lg opacity-80"></p>
         </div>
       </div>
     </div>
-  </section>
 
-    <!-- KONTAK -->
-    <section
-      id="contact"
-      class="py-24 bg-gradient-to-br from-blue-900 to-black text-white"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <h2
-          class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
-          data-aos="fade-up"
-        >
-          Hubungi Kami
-       </h2>
-        <div class="grid md:grid-cols-2 gap-16">
-          <div class="space-y-8 text-xl" data-aos="fade-right">
-            <h3 class="text-2xl font-bold mb-8">Informasi Kontak</h3>
-            <p class="flex items-center gap-5">
-              <i
-                data-feather="mail"
-                class="w-8 h-8 text-accent flex-shrink-0"
-                aria-hidden="true"
-              ></i>
-              <a
-                href="mailto:lambu.utama@yahoo.co.id"
-                class="hover:text-accent transition"
-                >lambu.utama@yahoo.co.id</a
-              >
-            </p>
-            <p class="flex items-center gap-5">
-              <i
-                data-feather="phone"
-                class="w-8 h-8 text-accent flex-shrink-0"
-                aria-hidden="true"
-              ></i>
-              <a href="tel:0901-3267914" class="hover:text-accent transition"
-                >0901-3267914</a
-              >
-            </p>
-            <p class="flex items-center gap-5">
-              <i
-                data-feather="smartphone"
-                class="w-8 h-8 text-accent flex-shrink-0"
-                aria-hidden="true"
-              ></i>
-              <a
-                href="tel:082199168755"
-                class="hover:text-accent transition"
-                >0821-9916-8755</a
-              >
-            </p>
-            <p class="flex items-center gap-5">
-              <i
-                data-feather="instagram"
-                class="w-8 h-8 text-accent flex-shrink-0"
-                aria-hidden="true"
-              ></i>
-              <a
-                href="https://www.instagram.com/_lamburayautama/"
-                class="hover:text-accent transition"
-                target="_blank"
-                rel="noopener noreferrer"
-                >@_lamburayautama</a
-              >
-            </p>
-            <p class="flex items-start gap-5">
-              <i data-feather="map-pin" class="w-8 h-8 text-accent mt-1"></i>
-              <span
-                >Jl. Nenas SP. II Timika Jaya,<br />Mimika - Papua Tengah
-              </span>
-            </p>
-          </div>
-          <div
-            data-aos="fade-left"
-            class="rounded-3xl overflow-hidden shadow-2xl"
+    <main>
+      <!-- HERO -->
+      <header
+        id="home"
+        class="hero-bg relative h-screen flex items-center justify-center text-center text-white"
+      >
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 px-6 max-w-5xl mx-auto">
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight animate-float"
+            data-aos="zoom-in"
           >
-           <!-- Map -->
-          <div class="mt-16" data-aos="fade-up">
-            <h3 class="text-3xl font-bold mb-8 text-center">Lokasi Kami</h3>
-            <div class="rounded-3xl overflow-hidden shadow-2xl">
+            <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
+          </h1>
+          <p
+            class="mt-8 text-xl md:text-3xl font-light opacity-90"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            General Contractor • Leveransir • Support Service
+          </p>
+          <div
+            class="mt-12 flex flex-col sm:flex-row gap-8 justify-center"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            <a
+              href="#contact"
+              class="px-12 py-6 bg-gradient-to-r from-accent to-blue-700 rounded-full text-xl font-bold shadow-2xl hover:shadow-accent/60 transform hover:scale-110 transition duration-500"
+            >
+              Konsultasi
+            </a>
+            <a
+              href="#projects"
+              class="px-12 py-6 bg-white/20 backdrop-blur-lg border-2 border-white/40 rounded-full text-xl font-bold hover:bg-white/30 transform hover:scale-110 transition duration-500"
+            >
+              Lihat Proyek
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- KEUNGGULAN -->
+      <section
+        id="why"
+        class="py-24 bg-gradient-to-br from-gray-100 to-blue-50 dark:from-gray-900 dark:to-black"
+      >
+        <div class="max-w-7xl mx-auto px-6">
+          <h2
+            class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
+            data-aos="fade-up"
+          >
+            Mengapa Memilih Kami?
+          </h2>
+          <div class="grid md:grid-cols-3 gap-12">
+            <div
+              class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
+              data-aos="flip-left"
+            >
+              <div
+                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center animate-glow"
+              >
+                <i data-feather="award" class="w-14 h-14 text-white"></i>
+              </div>
+              <h3 class="text-3xl font-bold mb-4">15+ Tahun Pengalaman</h3>
+              <p class="text-lg opacity-80">
+                Infrastruktur strategis sektor tambang & pemerintahan
+              </p>
+            </div>
+            <div
+              class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
+              data-aos="flip-left"
+              data-aos-delay="200"
+            >
+              <div
+                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center animate-glow"
+              >
+                <i data-feather="clock" class="w-14 h-14 text-white"></i>
+              </div>
+              <h3 class="text-3xl font-bold mb-4">Tepat Waktu</h3>
+              <p class="text-lg opacity-80">SOP ketat & perencanaan matang</p>
+            </div>
+            <div
+              class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
+              data-aos="flip-left"
+              data-aos-delay="400"
+            >
+              <div
+                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center animate-glow"
+              >
+                <i data-feather="shield" class="w-14 h-14 text-white"></i>
+              </div>
+              <h3 class="text-3xl font-bold mb-4">Kualitas Premium</h3>
+              <p class="text-lg opacity-80">
+                Material terbaik & pengawasan 24/7
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TENTANG KAMI -->
+      <section id="about" class="py-24 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2
+            class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
+            data-aos="fade-up"
+          >
+            Tentang Kami
+          </h2>
+          <div class="grid md:grid-cols-3 gap-12">
+            <div
+              class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
+              data-aos="fade-right"
+            >
+              <i
+                data-feather="book-open"
+                class="w-16 h-16 text-accent mb-6"
+              ></i>
+              <h3 class="text-2xl font-bold mb-4">Sejarah</h3>
+              <p>
+                Didirikan tahun 2010 di Timika, fokus pada infrastruktur tambang
+                & pemerintahan.
+              </p>
+            </div>
+            <div
+              class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
+              data-aos="fade-right"
+              data-aos-delay="150"
+            >
+              <i data-feather="target" class="w-16 h-16 text-accent mb-6"></i>
+              <h3 class="text-2xl font-bold mb-4">Visi</h3>
+              <p>
+                Menjadi kontraktor paling terpercaya di Papua dengan standar
+                internasional.
+              </p>
+            </div>
+            <div
+              class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
+              data-aos="fade-right"
+              data-aos-delay="300"
+            >
+              <i
+                data-feather="check-circle"
+                class="w-16 h-16 text-accent mb-6"
+              ></i>
+              <h3 class="text-2xl font-bold mb-4">Misi</h3>
+              <ul class="list-disc list-inside space-y-2">
+                <li>Layanan konstruksi berkualitas tinggi</li>
+                <li>Dukungan logistik & alat berat tambang</li>
+                <li>Keselamatan, lingkungan & tanggung jawab sosial</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAYANAN -->
+      <section
+        id="services"
+        class="py-24 bg-gradient-to-t from-blue-50 to-white dark:from-gray-900 dark:to-black"
+      >
+        <div class="max-w-7xl mx-auto px-6">
+          <h2
+            class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
+            data-aos="fade-up"
+          >
+            Layanan Kami
+          </h2>
+          <div class="grid md:grid-cols-3 gap-12">
+            <div
+              class="card-premium p-12 bg-white dark:bg-gray-800 rounded-3xl text-center"
+              data-aos="zoom-in"
+            >
+              <i
+                data-feather="tool"
+                class="w-20 h-20 text-accent mx-auto mb-8"
+              ></i>
+              <h3 class="text-3xl font-bold mb-4">General Contractor</h3>
+              <p class="text-lg">
+                Jalan hauling, camp, gudang, jembatan & sipil
+              </p>
+            </div>
+            <div
+              class="card-premium p-12 bg-white dark:bg-gray-800 rounded-3xl text-center"
+              data-aos="zoom-in"
+              data-aos-delay="150"
+            >
+              <i
+                data-feather="settings"
+                class="w-20 h-20 text-accent mx-auto mb-8"
+              ></i>
+              <h3 class="text-3xl font-bold mb-4">Leveransir</h3>
+              <p class="text-lg">Material, alat berat, BBM, sparepart</p>
+            </div>
+            <div
+              class="card-premium p-12 bg-white dark:bg-gray-800 rounded-3xl text-center"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            >
+              <i
+                data-feather="truck"
+                class="w-20 h-20 text-accent mx-auto mb-8"
+              ></i>
+              <h3 class="text-3xl font-bold mb-4">Support Service</h3>
+              <p class="text-lg">Logistik, penyewaan alat berat 24/7</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROYEK - Interactive Gallery -->
+      <section id="projects" class="py-24 bg-gray-100 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2
+            class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
+            data-aos="fade-up"
+          >
+            Proyek Kami
+          </h2>
+          <div class="grid md:grid-cols-3 gap-12">
+            <div
+              class="project-card rounded-3xl overflow-hidden shadow-2xl card-premium"
+              data-aos="fade-up"
+              data-index="0"
+            >
+              <img
+                src="dok. sm.jpg"
+                alt="Proyek Camp Mile 74 - Pembangunan 200 unit camp untuk mining site"
+                width="800"
+                height="600"
+                loading="lazy"
+                class="w-full h-80 object-cover transition-all duration-700"
+              />
+              <div class="p-8 bg-white dark:bg-gray-800 rounded-b-3xl">
+                <h3 class="text-2xl font-bold mb-2">Camp Mile 74</h3>
+                <p class="text-gray-500 mb-4">200 Unit — 2024</p>
+                <div class="text-sm space-y-1 opacity-80">
+                  <p><strong>Durasi:</strong> 8 bulan</p>
+                  <p><strong>Tipe:</strong> Konstruksi Camp Mining</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="project-card rounded-3xl overflow-hidden shadow-2xl card-premium"
+              data-aos="fade-up"
+              data-aos-delay="150"
+              data-index="1"
+            >
+              <img
+                src="exca.jpg"
+                alt="Proyek Jalan Hauling 12 KM untuk transportasi mining"
+                width="800"
+                height="600"
+                loading="lazy"
+                class="w-full h-80 object-cover transition-all duration-700"
+              />
+              <div class="p-8 bg-white dark:bg-gray-800 rounded-b-3xl">
+                <h3 class="text-2xl font-bold mb-2">Jalan Hauling 12 KM</h3>
+                <p class="text-gray-500 mb-4">2023</p>
+                <div class="text-sm space-y-1 opacity-80">
+                  <p><strong>Durasi:</strong> 10 bulan</p>
+                  <p><strong>Tipe:</strong> Infrastruktur Jalan Tambang</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="project-card rounded-3xl overflow-hidden shadow-2xl card-premium"
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-index="2"
+            >
+              <img
+                src="inspkesi with msd.jpg"
+                alt="Proyek Inspeksi dan Pembangunan bersama tim MSD"
+                width="800"
+                height="600"
+                loading="lazy"
+                class="w-full h-80 object-cover transition-all duration-700"
+              />
+              <div class="p-8 bg-white dark:bg-gray-800 rounded-b-3xl">
+                <h3 class="text-2xl font-bold mb-2">Inspeksi & Pembangunan</h3>
+                <p class="text-gray-500 mb-4">Timika — 2024</p>
+                <div class="text-sm space-y-1 opacity-80">
+                  <p><strong>Durasi:</strong> 7 bulan</p>
+                  <p><strong>Tipe:</strong> Proyek Monitoring & Konstruksi</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KONTAK -->
+      <section
+        id="contact"
+        class="py-24 bg-gradient-to-br from-blue-900 to-black text-white"
+      >
+        <div class="max-w-7xl mx-auto px-6">
+          <h2
+            class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
+            data-aos="fade-up"
+          >
+            Hubungi Kami
+          </h2>
+          <div class="grid md:grid-cols-2 gap-16">
+            <div class="space-y-8 text-xl" data-aos="fade-right">
+              <h3 class="text-2xl font-bold mb-8">Informasi Kontak</h3>
+              <p class="flex items-center gap-5">
+                <i
+                  data-feather="mail"
+                  class="w-8 h-8 text-accent flex-shrink-0"
+                  aria-hidden="true"
+                ></i>
+                <a
+                  href="mailto:lambu.utama@yahoo.co.id"
+                  class="hover:text-accent transition"
+                  >lambu.utama@yahoo.co.id</a
+                >
+              </p>
+              <p class="flex items-center gap-5">
+                <i
+                  data-feather="phone"
+                  class="w-8 h-8 text-accent flex-shrink-0"
+                  aria-hidden="true"
+                ></i>
+                <a href="tel:0901-3267914" class="hover:text-accent transition"
+                  >0901-3267914</a
+                >
+              </p>
+              <p class="flex items-center gap-5">
+                <i
+                  data-feather="smartphone"
+                  class="w-8 h-8 text-accent flex-shrink-0"
+                  aria-hidden="true"
+                ></i>
+                <a href="tel:082199168755" class="hover:text-accent transition"
+                  >0821-9916-8755</a
+                >
+              </p>
+              <p class="flex items-center gap-5">
+                <i
+                  data-feather="instagram"
+                  class="w-8 h-8 text-accent flex-shrink-0"
+                  aria-hidden="true"
+                ></i>
+                <a
+                  href="https://www.instagram.com/_lamburayautama/"
+                  class="hover:text-accent transition"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >@_lamburayautama</a
+                >
+              </p>
+              <p class="flex items-start gap-5">
+                <i data-feather="map-pin" class="w-8 h-8 text-accent mt-1"></i>
+                <span
+                  >Jl. Nenas SP. II Timika Jaya,<br />Mimika - Papua Tengah
+                </span>
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              class="rounded-3xl overflow-hidden shadow-2xl"
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000!5m2!1sid!2sid"
                 width="100%"
-                height="300"
+                height="450"
                 style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
@@ -687,8 +849,12 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <script>
+      // Initialize
       feather.replace();
       AOS.init({ duration: 1200, easing: "ease-out-cubic", once: true });
 
@@ -723,7 +889,7 @@
         setTimeout(() => overlay.classList.toggle("opacity-0"), 10);
         menuIcon.setAttribute(
           "data-feather",
-          sidebar.classList.contains("-translate-x-full") ? "menu" : "menu"
+          sidebar.classList.contains("-translate-x-full") ? "menu" : "x"
         );
         feather.replace();
       }
@@ -739,24 +905,121 @@
       document
         .querySelectorAll("#mobileSidebar a")
         .forEach((link) => link.addEventListener("click", closeMenu));
+
+      // Interactive Image Gallery
+      const projectCards = document.querySelectorAll(".project-card");
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDesc = document.getElementById("modalDesc");
+      const modalClose = document.getElementById("modalClose");
+      const modalPrev = document.getElementById("modalPrev");
+      const modalNext = document.getElementById("modalNext");
+
+      const projects = [
+        {
+          img: "dok. sm.jpg",
+          title: "Camp Mile 74",
+          desc: "200 Unit — 2024 | Konstruksi Camp Mining",
+        },
+        {
+          img: "exca.jpg",
+          title: "Jalan Hauling 12 KM",
+          desc: "2023 | Infrastruktur Jalan Tambang",
+        },
+        {
+          img: "inspkesi with msd.jpg",
+          title: "Inspeksi & Pembangunan",
+          desc: "Timika — 2024 | Proyek Monitoring & Konstruksi",
+        },
+      ];
+
+      let currentIndex = 0;
+
+      projectCards.forEach((card, index) => {
+        card.addEventListener("click", () => {
+          currentIndex = index;
+          showImage(currentIndex);
+        });
+      });
+
+      function showImage(index) {
+        modalImage.src = projects[index].img;
+        modalTitle.textContent = projects[index].title;
+        modalDesc.textContent = projects[index].desc;
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      modalPrev.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+        showImage(currentIndex);
+      });
+
+      modalNext.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % projects.length;
+        showImage(currentIndex);
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (modal.classList.contains("active")) {
+          if (e.key === "Escape") closeModal();
+          if (e.key === "ArrowLeft") {
+            currentIndex =
+              (currentIndex - 1 + projects.length) % projects.length;
+            showImage(currentIndex);
+          }
+          if (e.key === "ArrowRight") {
+            currentIndex = (currentIndex + 1) % projects.length;
+            showImage(currentIndex);
+          }
+        }
+      });
+
+      // Lazy Loading Optimization
+      if ("IntersectionObserver" in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src || img.src;
+              img.classList.add("loaded");
+              observer.unobserve(img);
+            }
+          });
+        });
+
+        document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+          imageObserver.observe(img);
+        });
+      }
+
+      // Smooth Scroll Performance
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
