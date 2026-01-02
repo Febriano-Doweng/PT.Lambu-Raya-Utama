@@ -24,8 +24,14 @@
       property="og:description"
       content="Kontraktor profesional: jalan hauling, camp, gudang, mining support & pengadaan. Sejak 2010."
     />
-    <meta property="og:image" content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png" />
-    <meta property="og:url" content="https://pt-lambu-raya-utama-h34m.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pt-lambu-raya-utama-h34m.vercel.app/"
+    />
     <meta property="og:type" content="website" />
 
     <!-- Tailwind CSS -->
@@ -148,7 +154,7 @@
           opacity: 0;
         }
       }
-      
+
       /* Modal Styles */
       .modal {
         display: none;
@@ -254,7 +260,7 @@
         overflow: hidden;
       }
       .project-card::before {
-        content: '🔍';
+        content: "🔍";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -271,16 +277,67 @@
       .project-card:hover img {
         filter: brightness(0.7);
       }
-      
+
       /* Lazy Load Placeholder */
       img[loading="lazy"] {
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
         background-size: 200% 100%;
         animation: shimmer 1.5s infinite;
       }
       @keyframes shimmer {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      /* Premium Burger Animation */
+      #burger {
+        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+      }
+      #burger:hover {
+        box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+        transform: scale(1.05);
+      }
+      #burger:active {
+        transform: scale(0.95);
+      }
+
+      /* Burger to X Animation */
+      #burger.active .burger-line-1 {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #burger.active .burger-line-2 {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      #burger.active .burger-line-3 {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* Glow effect on hover */
+      #burger::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 212, 255, 0.3),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      #burger:hover::before {
+        opacity: 1;
       }
     </style>
   </head>
@@ -333,7 +390,7 @@
           <li><a href="#contact" class="nav-link">Kontak</a></li>
         </ul>
         <div class="flex items-center gap-4">
-         <button
+          <button
             id="darkToggle"
             class="hidden md:block p-3 rounded-full bg-white/0 hover:bg-white/5 hover:scale-110 transition"
             aria-label="Toggle dark mode"
@@ -342,14 +399,23 @@
           </button>
           <button
             id="burger"
-            class="md:hidden p-3 rounded-full bg-white/0 hover:bg-white/5 transition z-50"
+            class="md:hidden p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all z-50 relative overflow-hidden group"
             aria-label="Toggle menu"
           >
-            <i
-              data-feather="menu"
-              class="w-8 h-8 transition-all"
-              id="menuIcon"
-            ></i>
+            <div
+              class="w-8 h-8 flex flex-col justify-center items-center gap-1.5 transition-all duration-300"
+              id="burgerIcon"
+            >
+              <span
+                class="w-7 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-1"
+              ></span>
+              <span
+                class="w-7 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-2"
+              ></span>
+              <span
+                class="w-7 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-3"
+              ></span>
+            </div>
           </button>
         </div>
       </div>
@@ -432,7 +498,7 @@
 
         <!-- Footer Credit -->
         <div class="text-center pt-6 mt-6 border-t border-white/10">
-          <p class="text-xs opacity-40">© 2025 Bryant Tuakora</p>
+          <p class="text-xs opacity-40">© Bryant Tuakora</p>
         </div>
       </div>
     </div>
@@ -440,9 +506,19 @@
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
       <div class="modal-content">
-        <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
-        <button class="modal-nav prev" id="modalPrev" aria-label="Previous image">‹</button>
-        <button class="modal-nav next" id="modalNext" aria-label="Next image">›</button>
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+          ×
+        </button>
+        <button
+          class="modal-nav prev"
+          id="modalPrev"
+          aria-label="Previous image"
+        >
+          ‹
+        </button>
+        <button class="modal-nav next" id="modalNext" aria-label="Next image">
+          ›
+        </button>
         <img id="modalImage" class="modal-image" src="" alt="Project preview" />
         <div class="text-center mt-6 text-white">
           <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3>
@@ -544,7 +620,9 @@
                 <i data-feather="shield" class="w-14 h-14 text-white"></i>
               </div>
               <h3 class="text-3xl font-bold mb-4">Kualitas Premium</h3>
-              <p class="text-lg opacity-80">Material terbaik & pengawasan 24/7</p>
+              <p class="text-lg opacity-80">
+                Material terbaik & pengawasan 24/7
+              </p>
             </div>
           </div>
         </div>
@@ -564,11 +642,14 @@
               class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
               data-aos="fade-right"
             >
-              <i data-feather="book-open" class="w-16 h-16 text-accent mb-6"></i>
+              <i
+                data-feather="book-open"
+                class="w-16 h-16 text-accent mb-6"
+              ></i>
               <h3 class="text-2xl font-bold mb-4">Sejarah</h3>
               <p>
-                Didirikan tahun 2010 di Timika, fokus pada infrastruktur tambang &
-                pemerintahan.
+                Didirikan tahun 2010 di Timika, fokus pada infrastruktur tambang
+                & pemerintahan.
               </p>
             </div>
             <div
@@ -625,7 +706,9 @@
                 class="w-20 h-20 text-accent mx-auto mb-8"
               ></i>
               <h3 class="text-3xl font-bold mb-4">General Contractor</h3>
-              <p class="text-lg">Jalan hauling, camp, gudang, jembatan & sipil</p>
+              <p class="text-lg">
+                Jalan hauling, camp, gudang, jembatan & sipil
+              </p>
             </div>
             <div
               class="card-premium p-12 bg-white dark:bg-gray-800 rounded-3xl text-center"
@@ -780,9 +863,7 @@
                   class="w-8 h-8 text-accent flex-shrink-0"
                   aria-hidden="true"
                 ></i>
-                <a
-                  href="tel:082199168755"
-                  class="hover:text-accent transition"
+                <a href="tel:082199168755" class="hover:text-accent transition"
                   >0821-9916-8755</a
                 >
               </p>
@@ -814,7 +895,7 @@
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000!5m2!1sid!2sid"
                 width="100%"
-                height="450"
+                height="350"
                 style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
@@ -864,7 +945,7 @@
         </a>
       </div>
       <p class="text-sm opacity-60">
-        © 2025 PT. Lambu Raya Utama — Semua Hak Cipta Dilindungi
+        © 2026 Lambu Raya Utama — Semua Hak Cipta Dilindungi
       </p>
     </footer>
 
@@ -872,7 +953,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    
+
     <script>
       // Initialize
       feather.replace();
@@ -884,7 +965,7 @@
       const darkModeToggle = document.getElementById("darkModeToggle");
       const darkModeText = document.getElementById("darkModeText");
       const html = document.documentElement;
-      
+
       // Check initial dark mode state
       function updateDarkMode() {
         const isDark = html.classList.contains("dark");
@@ -897,7 +978,7 @@
         }
         feather.replace();
       }
-      
+
       if (
         localStorage.theme === "dark" ||
         (!("theme" in localStorage) &&
@@ -906,16 +987,18 @@
         html.classList.add("dark");
       }
       updateDarkMode();
-      
+
       // Desktop dark mode toggle
       if (darkToggle) {
         darkToggle.addEventListener("click", () => {
           html.classList.toggle("dark");
-          localStorage.theme = html.classList.contains("dark") ? "dark" : "light";
+          localStorage.theme = html.classList.contains("dark")
+            ? "dark"
+            : "light";
           updateDarkMode();
         });
       }
-      
+
       // Mobile dark mode toggle
       darkToggleMobile.addEventListener("click", () => {
         html.classList.toggle("dark");
@@ -927,28 +1010,29 @@
       const burger = document.getElementById("burger");
       const sidebar = document.getElementById("mobileSidebar");
       const overlay = document.getElementById("overlay");
-      const menuIcon = document.getElementById("menuIcon");
 
       burger.addEventListener("click", toggleMenu);
       overlay.addEventListener("click", closeMenu);
 
       function toggleMenu() {
-        sidebar.classList.toggle("-translate-x-full");
-        overlay.classList.toggle("hidden");
-        setTimeout(() => overlay.classList.toggle("opacity-0"), 10);
-        menuIcon.setAttribute(
-          "data-feather",
-          sidebar.classList.contains("-translate-x-full") ? "menu" : "x"
-        );
-        feather.replace();
+        const isOpen = !sidebar.classList.contains("-translate-x-full");
+
+        if (isOpen) {
+          closeMenu();
+        } else {
+          // Open menu
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          setTimeout(() => overlay.classList.remove("opacity-0"), 10);
+          burger.classList.add("active");
+        }
       }
 
       function closeMenu() {
         sidebar.classList.add("-translate-x-full");
         overlay.classList.add("opacity-0");
         setTimeout(() => overlay.classList.add("hidden"), 300);
-        menuIcon.setAttribute("data-feather", "menu");
-        feather.replace();
+        burger.classList.remove("active");
       }
 
       document
@@ -956,37 +1040,37 @@
         .forEach((link) => link.addEventListener("click", closeMenu));
 
       // Interactive Image Gallery
-      const projectCards = document.querySelectorAll('.project-card');
-      const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalClose = document.getElementById('modalClose');
-      const modalPrev = document.getElementById('modalPrev');
-      const modalNext = document.getElementById('modalNext');
+      const projectCards = document.querySelectorAll(".project-card");
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDesc = document.getElementById("modalDesc");
+      const modalClose = document.getElementById("modalClose");
+      const modalPrev = document.getElementById("modalPrev");
+      const modalNext = document.getElementById("modalNext");
 
       const projects = [
         {
-          img: 'dok. sm.jpg',
-          title: 'Camp Mile 74',
-          desc: '200 Unit — 2024 | Konstruksi Camp Mining'
+          img: "dok. sm.jpg",
+          title: "Camp Mile 74",
+          desc: "200 Unit — 2024 | Konstruksi Camp Mining",
         },
         {
-          img: 'exca.jpg',
-          title: 'Jalan Hauling 12 KM',
-          desc: '2023 | Infrastruktur Jalan Tambang'
+          img: "exca.jpg",
+          title: "Jalan Hauling 12 KM",
+          desc: "2023 | Infrastruktur Jalan Tambang",
         },
         {
-          img: 'inspkesi with msd.jpg',
-          title: 'Inspeksi & Pembangunan',
-          desc: 'Timika — 2024 | Proyek Monitoring & Konstruksi'
-        }
+          img: "inspkesi with msd.jpg",
+          title: "Inspeksi & Pembangunan",
+          desc: "Timika — 2024 | Proyek Monitoring & Konstruksi",
+        },
       ];
 
       let currentIndex = 0;
 
       projectCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
+        card.addEventListener("click", () => {
           currentIndex = index;
           showImage(currentIndex);
         });
@@ -996,41 +1080,42 @@
         modalImage.src = projects[index].img;
         modalTitle.textContent = projects[index].title;
         modalDesc.textContent = projects[index].desc;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
       }
 
       function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
       }
 
-      modalClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
         if (e.target === modal) closeModal();
       });
 
-      modalPrev.addEventListener('click', (e) => {
+      modalPrev.addEventListener("click", (e) => {
         e.stopPropagation();
         currentIndex = (currentIndex - 1 + projects.length) % projects.length;
         showImage(currentIndex);
       });
 
-      modalNext.addEventListener('click', (e) => {
+      modalNext.addEventListener("click", (e) => {
         e.stopPropagation();
         currentIndex = (currentIndex + 1) % projects.length;
         showImage(currentIndex);
       });
 
       // Keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (modal.classList.contains('active')) {
-          if (e.key === 'Escape') closeModal();
-          if (e.key === 'ArrowLeft') {
-            currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+      document.addEventListener("keydown", (e) => {
+        if (modal.classList.contains("active")) {
+          if (e.key === "Escape") closeModal();
+          if (e.key === "ArrowLeft") {
+            currentIndex =
+              (currentIndex - 1 + projects.length) % projects.length;
             showImage(currentIndex);
           }
-          if (e.key === 'ArrowRight') {
+          if (e.key === "ArrowRight") {
             currentIndex = (currentIndex + 1) % projects.length;
             showImage(currentIndex);
           }
@@ -1038,32 +1123,32 @@
       });
 
       // Lazy Loading Optimization
-      if ('IntersectionObserver' in window) {
+      if ("IntersectionObserver" in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const img = entry.target;
               img.src = img.dataset.src || img.src;
-              img.classList.add('loaded');
+              img.classList.add("loaded");
               observer.unobserve(img);
             }
           });
         });
 
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
           imageObserver.observe(img);
         });
       }
 
       // Smooth Scroll Performance
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
+          const target = document.querySelector(this.getAttribute("href"));
           if (target) {
             target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
+              behavior: "smooth",
+              block: "start",
             });
           }
         });
