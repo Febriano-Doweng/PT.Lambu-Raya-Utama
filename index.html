@@ -321,24 +321,6 @@
       #burger.active .burger-line-3 {
         transform: translateY(-8px) rotate(-45deg);
       }
-
-      /* Glow effect on hover */
-      #burger::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(0, 212, 255, 0.3),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      #burger:hover::before {
-        opacity: 1;
-      }
     </style>
   </head>
 
@@ -403,7 +385,7 @@
             aria-label="Toggle menu"
           >
             <div
-              class="w-8 h-8 flex flex-col justify-center items-center gap-1.5 transition-all duration-300"
+              class="w-4 h-4 flex flex-col justify-center items-center gap-1.5 transition-all duration-300"
               id="burgerIcon"
             >
               <span
@@ -1261,7 +1243,7 @@
         // Show success message
         setTimeout(() => {
           alert(
-            "Terima kasih telah menghubungi kami PT Lambu Raya Utama. Pesan anda telah kami terima dan sedang kami tinjau, kami menargetkan untuk menanggapi semua pertanyaan dalam waktu 1x24 jam kerja."
+            "Terima kasih telah menghubungi kami PT. Lambu Raya Utama. Pesan anda telah kami terima dan sedang kami tinjau Hormat Kami PT. Lambu Raya Utama"
           );
           contactForm.reset();
         }, 500);
@@ -1283,4 +1265,3 @@
     </script>
   </body>
 </html>
-
