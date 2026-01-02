@@ -428,7 +428,7 @@
     ></div>
     <div
       id="mobileSidebar"
-      class="fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-gradient-to-b from-blue-950/98 to-black/98 backdrop-blur-2xl z-50 transform -translate-x-full transition-transform duration-500 ease-in-out shadow-2xl overflow-y-auto"
+      class="fixed top-0 left-0 h-full w-[75%] max-w-[320px] bg-gradient-to-b from-blue-950/98 to-black/98 backdrop-blur-2xl z-50 transform -translate-x-full transition-transform duration-500 ease-in-out shadow-2xl overflow-y-auto"
     >
       <div class="p-6 pt-24 space-y-6 text-white">
         <!-- Logo Section -->
@@ -446,27 +446,32 @@
           <a
             href="#home"
             class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
-            >🏠 Home</a
+          >
+            Home</a
           >
           <a
             href="#why"
             class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
-            >⭐ Keunggulan</a
+          >
+            Keunggulan</a
           >
           <a
             href="#about"
             class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
-            >ℹ️ Tentang Kami</a
+          >
+            Tentang Kami</a
           >
           <a
             href="#services"
             class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
-            >🔧 Layanan</a
+          >
+            Layanan</a
           >
           <a
             href="#projects"
             class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
-            >📁 Proyek</a
+          >
+            Proyek</a
           >
         </nav>
 
@@ -493,7 +498,8 @@
         <a
           href="#contact"
           class="block text-lg font-bold py-4 bg-gradient-to-r from-accent to-blue-700 rounded-xl text-center hover:shadow-lg hover:shadow-accent/50 transform hover:scale-[1.02] transition mt-6"
-          >📞 Hubungi Kami</a
+        >
+          Hubungi Kami</a
         >
 
         <!-- Footer Credit -->
@@ -834,7 +840,7 @@
           </h2>
           <div class="grid md:grid-cols-2 gap-16">
             <div class="space-y-8 text-xl" data-aos="fade-right">
-              <h3 class="text-2xl font-bold mb-8">Informasi Kontak</h3>
+              <h3 class="text-3xl font-bold mb-8">Informasi Kontak</h3>
               <p class="flex items-center gap-5">
                 <i
                   data-feather="mail"
@@ -863,7 +869,9 @@
                   class="w-8 h-8 text-accent flex-shrink-0"
                   aria-hidden="true"
                 ></i>
-                <a href="tel:082199168755" class="hover:text-accent transition"
+                <a
+                  href="tel:+6282199168755"
+                  class="hover:text-accent transition"
                   >0821-9916-8755</a
                 >
               </p>
@@ -882,16 +890,93 @@
                 >
               </p>
               <p class="flex items-start gap-5">
-                <i data-feather="map-pin" class="w-8 h-8 text-accent mt-1"></i>
+                <i
+                  data-feather="map-pin"
+                  class="w-8 h-8 text-accent mt-1 flex-shrink-0"
+                  aria-hidden="true"
+                ></i>
                 <span
-                  >Jl. Nenas SP. II Timika Jaya,<br />Mimika - Papua Tengah
-                </span>
+                  >Jl. Nenas SP. II Timika Jaya,<br />Mimika - Papua
+                  Tengah</span
+                >
               </p>
             </div>
-            <div
+
+            <!-- Contact Form -->
+            <form
+              id="contactForm"
+              class="space-y-6 bg-white/10 backdrop-blur-lg p-10 rounded-3xl"
               data-aos="fade-left"
-              class="rounded-3xl overflow-hidden shadow-2xl"
             >
+              <h3 class="text-3xl font-bold mb-6">Kirim Pesan</h3>
+              <div>
+                <label for="name" class="block text-sm font-medium mb-2"
+                  >Nama Lengkap *</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition"
+                  placeholder="Masukkan nama Anda"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium mb-2"
+                  >Email *</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition"
+                  placeholder="nama@email.com"
+                />
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium mb-2"
+                  >No. Telepon *</label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition"
+                  placeholder="08XX-XXXX-XXXX"
+                />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium mb-2"
+                  >Pesan Anda *</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition resize-none"
+                  placeholder="Ceritakan kebutuhan proyek Anda..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full px-8 py-4 bg-gradient-to-r from-accent to-blue-700 rounded-xl text-xl font-bold hover:shadow-lg hover:shadow-accent/50 transform hover:scale-105 transition-all duration-300"
+              >
+                Kirim Pesan
+              </button>
+              <p class="text-sm opacity-70 text-center">
+                Kami akan merespon dalam 1x24 jam
+              </p>
+            </form>
+          </div>
+
+          <!-- Map -->
+          <div class="mt-16" data-aos="fade-up">
+            <h3 class="text-3xl font-bold mb-8 text-center">Lokasi Kami</h3>
+            <div class="rounded-3xl overflow-hidden shadow-2xl">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000!5m2!1sid!2sid"
                 width="100%"
@@ -1139,6 +1224,48 @@
           imageObserver.observe(img);
         });
       }
+
+      // Contact Form Handler - Email
+      const contactForm = document.getElementById("contactForm");
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          message: document.getElementById("message").value,
+        };
+
+        // Create email subject and body
+        const subject = encodeURIComponent(
+          "Permintaan Konsultasi - " + formData.name
+        );
+        const body = encodeURIComponent(
+          "Nama: " +
+            formData.name +
+            "\n" +
+            "Email: " +
+            formData.email +
+            "\n" +
+            "Telepon: " +
+            formData.phone +
+            "\n\n" +
+            "Pesan:\n" +
+            formData.message
+        );
+
+        // Open default email client
+        window.location.href = `mailto:lambu.utama@yahoo.co.id?subject=${subject}&body=${body}`;
+
+        // Show success message
+        setTimeout(() => {
+          alert(
+            "Email client Anda akan terbuka. Silakan kirim email dari aplikasi email Anda."
+          );
+          contactForm.reset();
+        }, 500);
+      });
 
       // Smooth Scroll Performance
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
