@@ -391,93 +391,139 @@
       </div>
     </nav>
 
-    <!-- Overlay & Mobile Sidebar -->
+   <!-- Overlay & Mobile Sidebar -->
     <div
       id="overlay"
-      class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden opacity-0 transition-all duration-300"
+      class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300 ease-in-out"
+      role="button"
+      aria-label="Close menu"
+      tabindex="-1"
     ></div>
-    <div
+    <nav
       id="mobileSidebar"
-      class="fixed top-0 left-0 h-full w-[75%] max-w-[320px] bg-gradient-to-b from-blue-950/98 to-black/98 backdrop-blur-2xl z-50 transform -translate-x-full transition-transform duration-500 ease-in-out shadow-2xl overflow-y-auto"
+      class="fixed top-0 left-0 h-full w-[85%] max-w-[380px] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 z-50 transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl overflow-y-auto"
+      role="navigation"
+      aria-label="Mobile navigation"
     >
-      <div class="p-6 pt-24 space-y-6 text-white">
+      <div class="p-6 pt-24 pb-8 space-y-6">
         <!-- Logo Section -->
-        <div class="text-center mb-8 pb-6 border-b border-white/10">
+        <div class="text-center mb-6 pb-6 border-b border-white/20">
           <img
-            src="Logo_LRU.png"
-            alt="Logo LRU"
-            class="h-16 mx-auto mb-3 opacity-90"
+            src="img/Logo_LRU.png"
+            alt="Logo PT. Lambu Raya Utama"
+            class="h-20 mx-auto mb-4 drop-shadow-lg"
           />
-          <p class="text-xs opacity-60">PT. Lambu Raya Utama</p>
+          <p class="text-sm font-medium text-white tracking-wide">
+            PT. Lambu Raya Utama
+          </p>
+          <p class="text-xs text-white/70 mt-1">General Contractor Papua</p>
         </div>
 
-        <!-- Navigation Links -->
-        <nav class="space-y-1">
+        <!-- Navigation Links - Thumb-Friendly Design -->
+        <div class="space-y-2">
           <a
             href="#home"
-            class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            Home</a
-          >
+            <i
+              data-feather="home"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            ></i>
+            <span>Home</span>
+          </a>
           <a
             href="#why"
-            class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            Keunggulan</a
-          >
+            <i
+              data-feather="star"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            ></i>
+            <span>Keunggulan</span>
+          </a>
           <a
             href="#about"
-            class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            Tentang Kami</a
-          >
+            <i
+              data-feather="info"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            ></i>
+            <span>Tentang Kami</span>
+          </a>
           <a
             href="#services"
-            class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            Layanan</a
-          >
+            <i
+              data-feather="briefcase"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            ></i>
+            <span>Layanan</span>
+          </a>
           <a
             href="#projects"
-            class="block text-lg font-semibold hover:text-accent transition px-4 py-3 rounded-lg hover:bg-white/5"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            Proyek</a
-          >
-        </nav>
+            <i
+              data-feather="folder"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
+              aria-hidden="true"
+            ></i>
+            <span>Proyek</span>
+          </a>
+        </div>
 
-        <!-- Dark Mode Toggle in Mobile -->
-        <div class="pt-4 border-t border-white/10">
+        <!-- Dark Mode Toggle - Enhanced -->
+        <div class="pt-6 border-t border-white/20">
           <button
             id="darkToggleMobile"
-            class="w-full flex items-center justify-between px-4 py-3 rounded-lg bg-white/5 hover:bg-white/10 transition"
+            class="w-full flex items-center justify-between px-5 py-4 rounded-xl bg-white/10 hover:bg-white/15 active:bg-white/20 transition-all duration-200"
+            aria-label="Toggle dark mode"
           >
-            <span class="flex items-center gap-3 text-lg font-semibold">
-              <i data-feather="moon" class="w-5 h-5"></i>
+            <span
+              class="flex items-center gap-3 text-white font-semibold text-base"
+            >
+              <i
+                data-feather="moon"
+                class="w-5 h-5 text-accent"
+                aria-hidden="true"
+              ></i>
               <span id="darkModeText">Mode Gelap</span>
             </span>
-            <div class="relative w-12 h-6 bg-white/20 rounded-full transition">
+            <div
+              class="relative w-14 h-7 bg-white/25 rounded-full transition-colors"
+              role="switch"
+              aria-checked="false"
+            >
               <div
                 id="darkModeToggle"
-                class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform duration-300"
+                class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-lg transition-transform duration-300 ease-out"
               ></div>
             </div>
           </button>
         </div>
 
-        <!-- Contact Button -->
+        <!-- Contact Button - Prominent CTA -->
         <a
           href="#contact"
-          class="block text-lg font-bold py-4 bg-gradient-to-r from-accent to-blue-700 rounded-xl text-center hover:shadow-lg hover:shadow-accent/50 transform hover:scale-[1.02] transition mt-6"
+          class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl text-center shadow-lg hover:shadow-accent/40 active:scale-95 transition-all duration-200 mt-6"
         >
-          Hubungi Kami</a
-        >
+          <i data-feather="mail" class="w-5 h-5" aria-hidden="true"></i>
+          <span>Hubungi Kami</span>
+        </a>
 
         <!-- Footer Credit -->
-        <div class="text-center pt-6 mt-6 border-t border-white/10">
-          <p class="text-xs opacity-40">© Bryant Tuakora</p>
+        <div class="text-center pt-6 mt-4 border-t border-white/20">
+          <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p>
+          <p class="text-xs text-white/40 mt-1">All Rights Reserved</p>
         </div>
       </div>
-    </div>
+    </nav>
 
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
@@ -504,57 +550,76 @@
     </div>
 
     <main>
-     <!-- HERO -->
+    <!-- HERO -->
       <header
         id="home"
-        class="relative hero-bg h-screen flex items-center justify-center text-center text-white overflow-hidden"
+        class="relative hero-bg min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
       >
-        <!-- Background Image -->
-        <img
-          src="vladimir-patkachakov.jpg"
-          alt="Hero Image Construction"
-          class="absolute inset-0 w-full h-full object-cover opacity-60 animate-fadeIn"
-        />
+        <!-- Background Image - Optimized for all devices -->
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcset="vladimir-patkachakov.jpg"
+          />
+          <img
+            src="vladimir-patkachakov.jpg"
+            alt="Hero Image Construction"
+            class="absolute inset-0 w-full h-full object-cover object-center opacity-50 animate-fadeIn"
+            style="object-position: center 40%"
+          />
+        </picture>
 
-        <!-- Dark overlay -->
-        <div class="absolute inset-0 bg-black/60"></div>
+        <!-- Enhanced Dark overlay for better contrast -->
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
+        ></div>
 
         <!-- Content -->
-        <div class="relative z-10 px-6 max-w-5xl mx-auto">
+        <div class="relative z-10 px-6 py-20 max-w-5xl mx-auto">
+          <!-- Main Title - Pure White for Maximum Contrast -->
           <h1
-            class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight animate-float"
+            class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-float"
             data-aos="zoom-in"
           >
-            <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
+            <span class="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
+              >PT. LAMBU RAYA UTAMA</span
+            >
           </h1>
+
+          <!-- Subtitle - Cyan Accent on White Base -->
           <p
-            class="mt-8 text-xl md:text-3xl font-light opacity-90"
+            class="mt-6 text-lg md:text-2xl lg:text-3xl font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
             data-aos="fade-up"
-            data-aos-delay="300"
+            data-aos-delay="200"
           >
-            General Contractor • Leveransir • Support Service
+            <span class="text-accent font-bold">General Contractor</span> •
+            <span class="text-accent font-bold">Leveransir</span> •
+            <span class="text-accent font-bold">Support Service</span>
           </p>
+
+
+          <!-- CTA Buttons - Optimized for Thumb Zone -->
           <div
-            class="mt-12 flex flex-col sm:flex-row gap-8 justify-center"
+            class="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
             data-aos="fade-up"
-            data-aos-delay="600"
+            data-aos-delay="400"
           >
             <a
               href="#contact"
-              class="px-12 py-6 bg-gradient-to-r from-accent to-blue-700 rounded-full text-xl font-bold shadow-2xl hover:shadow-accent/60 transform hover:scale-110 transition duration-500"
+              class="w-full sm:w-auto min-w-[280px] sm:min-w-0 px-10 py-5 bg-gradient-to-r from-accent to-blue-600 rounded-2xl text-lg md:text-xl font-bold shadow-2xl hover:shadow-accent/60 transform hover:scale-105 active:scale-95 transition duration-300 text-white"
             >
-              Konsultasi
+              Konsultasi Sekarang
             </a>
             <a
               href="#projects"
-              class="px-12 py-6 bg-white/20 backdrop-blur-lg border-2 border-white/40 rounded-full text-xl font-bold hover:bg-white/30 transform hover:scale-110 transition duration-500"
+              class="w-full sm:w-auto min-w-[280px] sm:min-w-0 px-10 py-5 bg-white/15 backdrop-blur-lg border-2 border-white/50 rounded-2xl text-lg md:text-xl font-bold hover:bg-white/25 transform hover:scale-105 active:scale-95 transition duration-300 text-white"
             >
               Lihat Proyek
             </a>
           </div>
+          </div>
         </div>
       </header>
-
       <!-- KEUNGGULAN -->
       <section
         id="why"
@@ -1010,7 +1075,10 @@
         </a>
       </div>
       <p class="text-sm opacity-60">
-        © 2026 Lambu Raya Utama — Semua Hak Cipta Dilindungi
+        © 2026 Lambu Raya Utama
+      </p>
+      <p class="text-xs text-white/40 mt-1"> 
+        All Rights Reserved
       </p>
     </footer>
 
@@ -1263,5 +1331,6 @@
     </script>
   </body>
 </html>
+
 
 
