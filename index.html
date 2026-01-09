@@ -314,7 +314,30 @@
 
   <body
     class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 overflow-x-hidden"
-  ></div>
+  >
+    <!-- Floating Particles -->
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+      <div
+        class="particle w-2 h-2"
+        style="left: 12%; animation-duration: 20s"
+      ></div>
+      <div
+        class="particle w-4 h-4"
+        style="left: 28%; animation-duration: 24s; animation-delay: 2s"
+      ></div>
+      <div
+        class="particle w-3 h-3"
+        style="left: 45%; animation-duration: 18s; animation-delay: 4s"
+      ></div>
+      <div
+        class="particle w-5 h-5"
+        style="left: 65%; animation-duration: 22s; animation-delay: 1s"
+      ></div>
+      <div
+        class="particle w-2 h-2"
+        style="left: 82%; animation-duration: 19s; animation-delay: 6s"
+      ></div>
+    </div>
 
     <!-- NAVBAR -->
     <nav id="navbar" class="fixed top-0 w-full z-50 text-white">
@@ -367,19 +390,7 @@
         </div>
       </div>
     </nav>
-    
-    <!-- Hamburger Button (Mobile) -->
-    <button
-    id="hamburgerBtn"
-    class="md:hidden z-50 relative w-8 h-8 flex flex-col justify-center items-center gap-1.5"
-  >
-    <span class="hamburger-line origin-center"></span>
-    <span class="hamburger-line"></span>
-    <span class="hamburger-line origin-center"></span>
-  </button>
-</div>
-</nav>
-    
+
    <!-- Overlay & Mobile Sidebar -->
     <div
       id="overlay"
@@ -571,13 +582,18 @@
           >
             <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
           </h1>
+
+          <!-- Subtitle - White Base -->
           <p
-            class="mt-8 text-xl md:text-3xl font-light opacity-90"
+            class="mt-6 text-lg md:text-2xl lg:text-3xl font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
             data-aos="fade-up"
-            data-aos-delay="300"
+            data-aos-delay="200"
           >
-            General Contractor • Leveransir • Support Service
+            <span class="text-white font-bold">General Contractor</span> •
+            <span class="text-white font-bold">Leveransir</span> •
+            <span class="text-white font-bold">Support Service</span>
           </p>
+
           <!-- CTA Buttons - Optimized for Thumb Zone -->
           <div
             class="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
@@ -1119,45 +1135,6 @@
         updateDarkMode();
       });
 
-       // Hamburger menu
-      const hamburgerBtn = document.getElementById("hamburgerBtn");
-      const mobileMenu = document.getElementById("mobileMenu");
-      const lines = hamburgerBtn.querySelectorAll(".hamburger-line");
-
-      hamburgerBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        mobileMenu.classList.toggle("flex");
-
-        lines[0].classList.toggle("rotate-45");
-        lines[0].classList.toggle("translate-y-2");
-        lines[1].classList.toggle("opacity-0");
-        lines[2].classList.toggle("-rotate-45");
-        lines[2].classList.toggle("-translate-y-2");
-      });
-
-      // Close mobile menu when clicking on link
-      document.querySelectorAll(".menu-link").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
-          mobileMenu.classList.remove("flex");
-          lines[0].classList.remove("rotate-45", "translate-y-2");
-          lines[1].classList.remove("opacity-0");
-          lines[2].classList.remove("-rotate-45", "-translate-y-2");
-        });
-      });
-
-      // Close mobile menu when clicking outside
-      mobileMenu.addEventListener("click", (e) => {
-        if (e.target === mobileMenu) {
-          mobileMenu.classList.add("hidden");
-          mobileMenu.classList.remove("flex");
-          lines[0].classList.remove("rotate-45", "translate-y-2");
-          lines[1].classList.remove("opacity-0");
-          lines[2].classList.remove("-rotate-45", "-translate-y-2");
-        }
-      });
-
-
       // Mobile Menu
       const burger = document.getElementById("burger");
       const sidebar = document.getElementById("mobileSidebar");
@@ -1350,8 +1327,6 @@
     </script>
   </body>
 </html>
-
-
 
 
 
