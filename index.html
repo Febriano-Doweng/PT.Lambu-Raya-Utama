@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="img/Logo_LRU.png" type="image/png" />
+    <link rel="icon" href="Logo_LRU.png" type="image/png" />
     <title>PT. Lambu Raya Utama — General Contractor Timika Papua</title>
     <meta
       name="description"
@@ -11,7 +11,7 @@
     />
 
     <!-- Preload Critical Assets -->
-    <link rel="preload" as="image" href="img/Logo_LRU.png" />
+    <link rel="preload" as="image" href="Logo_LRU.png" />
     <link rel="preconnect" href="https://cdn.tailwindcss.com" />
     <link rel="preconnect" href="https://unpkg.com" />
 
@@ -26,7 +26,7 @@
     />
     <meta
       property="og:image"
-      content="https://pt-lambu-raya-utama-h34m.vercel.app/img/Logo_LRU.png"
+      content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png"
     />
     <meta
       property="og:url"
@@ -44,26 +44,32 @@
             colors: { brand: "#003c8f", accent: "#00d4ff" },
             animation: {
               float: "float 6s ease-in-out infinite",
+              glow: "glow 3s ease-in-out infinite alternate",
+              gradient: "gradientShift 18s ease infinite",
               fadeIn: "fadeIn 0.5s ease-in-out",
               scaleIn: "scaleIn 0.3s ease-out",
-              slideIn: "slideIn 0.3s ease-out",
             },
             keyframes: {
               float: {
                 "0%, 100%": { transform: "translateY(0)" },
-                "50%": { transform: "translateY(-15px)" },
+                "50%": { transform: "translateY(-25px)" },
+              },
+              glow: {
+                "0%": { boxShadow: "0 0 20px rgba(0,212,255,0.5)" },
+                "100%": { boxShadow: "0 0 50px rgba(0,212,255,0.9)" },
+              },
+              gradientShift: {
+                "0%": { backgroundPosition: "0% 50%" },
+                "50%": { backgroundPosition: "100% 50%" },
+                "100%": { backgroundPosition: "0% 50%" },
               },
               fadeIn: {
                 "0%": { opacity: "0" },
                 "100%": { opacity: "1" },
               },
               scaleIn: {
-                "0%": { transform: "scale(0.95)", opacity: "0" },
+                "0%": { transform: "scale(0.9)", opacity: "0" },
                 "100%": { transform: "scale(1)", opacity: "1" },
-              },
-              slideIn: {
-                "0%": { transform: "translateY(20px)", opacity: "0" },
-                "100%": { transform: "translateY(0)", opacity: "1" },
               },
             },
           },
@@ -72,55 +78,35 @@
     </script>
 
     <style>
-      /* Base Styles */
-      * {
-        -webkit-tap-highlight-color: transparent;
-      }
-
       section {
         scroll-margin-top: 100px;
       }
-
-      /* Skip to content link for accessibility */
-      .skip-link {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: #00d4ff;
-        color: #000;
-        padding: 8px 16px;
-        text-decoration: none;
-        z-index: 100;
-        border-radius: 0 0 4px 0;
-        font-weight: bold;
+      .text-gradient {
+        background: linear-gradient(90deg, #00d4ff, #0099ff, #003c8f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
-      .skip-link:focus {
-        top: 0;
-      }
-
-      /* Navbar Styles */
       #navbar {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        background: rgba(0, 20, 50, 0.85);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background: rgba(0, 20, 50, 0.78);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       }
-
       .nav-link {
         position: relative;
-        padding: 8px 0;
-        transition: color 0.3s ease;
+        padding: 10px 0;
+        transition: all 0.4s ease;
       }
       .nav-link::after {
         content: "";
         position: absolute;
         width: 0;
-        height: 2px;
+        height: 3px;
         bottom: 0;
         left: 50%;
-        background: #00d4ff;
-        transition: all 0.3s ease;
+        background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+        transition: all 0.5s ease;
         transform: translateX(-50%);
       }
       .nav-link:hover::after {
@@ -128,22 +114,45 @@
       }
       .nav-link:hover {
         color: #00d4ff !important;
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        transform: translateY(-3px);
       }
-
-      /* Card Styles - Reduced animation */
       .card-premium {
-        transition: all 0.4s ease;
+        transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         border: 1px solid rgba(0, 212, 255, 0.15);
       }
       .card-premium:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 60, 150, 0.3);
+        transform: translateY(-25px) scale(1.05);
+        box-shadow: 0 40px 80px rgba(0, 60, 150, 0.5);
         border-color: #00d4ff;
       }
-
-      /* Hero Background - Simplified */
       .hero-bg {
-        background: linear-gradient(135deg, #001122 0%, #003c8f 100%);
+        background: linear-gradient(-45deg, #001122, #002b55, #003c8f, #0050cc);
+        background-size: 400% 400%;
+        animation: gradientShift 18s ease infinite;
+      }
+      .particle {
+        position: absolute;
+        background: rgba(0, 212, 255, 0.25);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: floatParticle linear infinite;
+      }
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-100px) scale(1);
+          opacity: 0;
+        }
       }
 
       /* Modal Styles */
@@ -156,7 +165,7 @@
         height: 100%;
         background: rgba(0, 0, 0, 0.95);
         z-index: 9999;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(10px);
       }
       .modal.active {
         display: flex;
@@ -174,7 +183,7 @@
         max-width: 100%;
         max-height: 90vh;
         object-fit: contain;
-        border-radius: 8px;
+        border-radius: 12px;
         box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
       }
       .modal-close {
@@ -197,7 +206,7 @@
       }
       .modal-close:hover {
         background: rgba(255, 255, 255, 0.2);
-        transform: rotate(90deg);
+        transform: rotate(90deg) scale(1.1);
       }
       .modal-nav {
         position: absolute;
@@ -226,7 +235,6 @@
       .modal-nav.next {
         right: 20px;
       }
-
       @media (max-width: 768px) {
         .modal-nav {
           width: 40px;
@@ -246,7 +254,6 @@
           font-size: 20px;
         }
       }
-
       .project-card {
         cursor: pointer;
         position: relative;
@@ -271,7 +278,27 @@
         filter: brightness(0.7);
       }
 
-      /* Burger Animation */
+      /* Lazy Load Placeholder */
+      img[loading="lazy"] {
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      /* Burger to X Animation */
       #burger.active .burger-line-1 {
         transform: translateY(8px) rotate(45deg);
       }
@@ -282,110 +309,46 @@
       #burger.active .burger-line-3 {
         transform: translateY(-8px) rotate(-45deg);
       }
-
-      /* Form States */
-      .form-input {
-        transition: all 0.3s ease;
-      }
-      .form-input:focus {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
-      }
-      .form-error {
-        border-color: #ef4444 !important;
-      }
-      .error-message {
-        color: #ef4444;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-        display: none;
-      }
-      .error-message.active {
-        display: block;
-        animation: slideIn 0.3s ease-out;
-      }
-
-      /* Loading State */
-      .btn-loading {
-        position: relative;
-        pointer-events: none;
-        opacity: 0.7;
-      }
-      .btn-loading::after {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        top: 50%;
-        left: 50%;
-        margin-left: -10px;
-        margin-top: -10px;
-        border: 3px solid #ffffff;
-        border-radius: 50%;
-        border-top-color: transparent;
-        animation: spin 0.8s linear infinite;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Reduced motion for accessibility */
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-
-      /* Focus visible styles */
-      *:focus-visible {
-        outline: 3px solid #00d4ff;
-        outline-offset: 2px;
-      }
-
-      /* Text gradient - performance optimized */
-      .text-gradient {
-        background: linear-gradient(90deg, #00d4ff, #0099ff, #003c8f);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        will-change: transform;
-      }
     </style>
   </head>
 
   <body
     class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 overflow-x-hidden"
   >
-    <!-- Skip to content link -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Floating Particles -->
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+      <div
+        class="particle w-2 h-2"
+        style="left: 12%; animation-duration: 20s"
+      ></div>
+      <div
+        class="particle w-4 h-4"
+        style="left: 28%; animation-duration: 24s; animation-delay: 2s"
+      ></div>
+      <div
+        class="particle w-3 h-3"
+        style="left: 45%; animation-duration: 18s; animation-delay: 4s"
+      ></div>
+      <div
+        class="particle w-5 h-5"
+        style="left: 65%; animation-duration: 22s; animation-delay: 1s"
+      ></div>
+      <div
+        class="particle w-2 h-2"
+        style="left: 82%; animation-duration: 19s; animation-delay: 6s"
+      ></div>
+    </div>
 
     <!-- NAVBAR -->
-    <nav
-      id="navbar"
-      class="fixed top-0 w-full z-50 text-white"
-      role="navigation"
-      aria-label="Main navigation"
-    >
+    <nav id="navbar" class="fixed top-0 w-full z-50 text-white">
       <div
         class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center"
       >
-        <a
-          href="#home"
-          class="flex items-center gap-4 group"
-          aria-label="PT. Lambu Raya Utama - Homepage"
-        >
+        <a href="#home" class="flex items-center gap-4 group">
           <img
-            src="img/Logo_LRU.png"
-            alt="Logo PT. Lambu Raya Utama"
-            class="h-14 w-14 object-contain transition-all duration-500 group-hover:scale-110"
-            width="56"
-            height="56"
+            src="Logo_LRU.png"
+            alt="Logo LRU"
+            class="h-14 w-14 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-12"
           />
         </a>
         <ul class="hidden md:flex gap-10 font-bold text-lg">
@@ -399,30 +362,28 @@
         <div class="flex items-center gap-4">
           <button
             id="darkToggle"
-            class="hidden md:block p-3 rounded-full hover:bg-white/10 transition"
+            class="hidden md:block p-3 rounded-full bg-white/0 hover:bg-white/5 hover:scale-110 transition"
             aria-label="Toggle dark mode"
-            aria-pressed="false"
           >
-            <i data-feather="moon" class="w-6 h-6" aria-hidden="true"></i>
+            <i data-feather="moon" class="w-6 h-6"></i>
           </button>
           <button
             id="burger"
-            class="md:hidden p-3 rounded-full hover:bg-white/10 transition-all z-50"
-            aria-label="Toggle mobile menu"
-            aria-expanded="false"
-            aria-controls="mobileSidebar"
+            class="md:hidden p-3 rounded-full bg-white/1 hover:bg-white/1 transition-all z-50 relative overflow-hidden group"
+            aria-label="Toggle menu"
           >
             <div
-              class="w-6 h-5 flex flex-col justify-center items-center gap-1.5"
+              class="w-6 h-5 flex flex-col justify-center items-center gap-1.5 transition-all duration-300"
+              id="burgerIcon"
             >
               <span
-                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 burger-line-1"
+                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-1"
               ></span>
               <span
-                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 burger-line-2"
+                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-2"
               ></span>
               <span
-                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 burger-line-3"
+                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-3"
               ></span>
             </div>
           </button>
@@ -430,28 +391,27 @@
       </div>
     </nav>
 
-    <!-- Overlay & Mobile Sidebar -->
+   <!-- Overlay & Mobile Sidebar -->
     <div
       id="overlay"
-      class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300"
+      class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300 ease-in-out"
       role="button"
       aria-label="Close menu"
-      tabindex="0"
+      tabindex="-1"
     ></div>
     <nav
       id="mobileSidebar"
-      class="fixed top-0 left-0 h-full w-[75%] max-w-[380px] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 z-50 transform -translate-x-full transition-transform duration-300 shadow-2xl overflow-y-auto"
+      class="fixed top-0 left-0 h-full w-[75%] max-w-[380px] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 z-50 transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl overflow-y-auto"
       role="navigation"
       aria-label="Mobile navigation"
     >
       <div class="p-6 pt-24 pb-8 space-y-6">
+        <!-- Logo Section -->
         <div class="text-center mb-6 pb-6 border-b border-white/20">
           <img
-            src="img/Logo_LRU.png"
+            src="Logo_LRU.png"
             alt="Logo PT. Lambu Raya Utama"
             class="h-20 mx-auto mb-4 drop-shadow-lg"
-            width="80"
-            height="80"
           />
           <p class="text-sm font-medium text-white tracking-wide">
             PT. Lambu Raya Utama
@@ -459,68 +419,70 @@
           <p class="text-xs text-white/70 mt-1">General Contractor Papua</p>
         </div>
 
+        <!-- Navigation Links - Thumb-Friendly Design -->
         <div class="space-y-2">
           <a
             href="#home"
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 transition-all duration-200"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
             <i
               data-feather="home"
-              class="w-5 h-5 text-accent"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
               aria-hidden="true"
             ></i>
             <span>Home</span>
           </a>
           <a
             href="#why"
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 transition-all duration-200"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
             <i
               data-feather="star"
-              class="w-5 h-5 text-accent"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
               aria-hidden="true"
             ></i>
             <span>Keunggulan</span>
           </a>
           <a
             href="#about"
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 transition-all duration-200"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
             <i
               data-feather="info"
-              class="w-5 h-5 text-accent"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
               aria-hidden="true"
             ></i>
             <span>Tentang Kami</span>
           </a>
           <a
             href="#services"
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 transition-all duration-200"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
             <i
               data-feather="briefcase"
-              class="w-5 h-5 text-accent"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
               aria-hidden="true"
             ></i>
             <span>Layanan</span>
           </a>
           <a
             href="#projects"
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 transition-all duration-200"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
             <i
               data-feather="folder"
-              class="w-5 h-5 text-accent"
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform"
               aria-hidden="true"
             ></i>
             <span>Proyek</span>
           </a>
         </div>
 
+        <!-- Dark Mode Toggle - Enhanced -->
         <div class="pt-6 border-t border-white/20">
           <button
             id="darkToggleMobile"
-            class="w-full flex items-center justify-between px-5 py-4 rounded-xl bg-white/10 hover:bg-white/15 transition-all duration-200"
+            class="w-full flex items-center justify-between px-5 py-4 rounded-xl bg-white/10 hover:bg-white/15 active:bg-white/20 transition-all duration-200"
             aria-label="Toggle dark mode"
           >
             <span
@@ -533,23 +495,29 @@
               ></i>
               <span id="darkModeText">Mode Gelap</span>
             </span>
-            <div class="relative w-14 h-7 bg-white/25 rounded-full">
+            <div
+              class="relative w-14 h-7 bg-white/25 rounded-full transition-colors"
+              role="switch"
+              aria-checked="false"
+            >
               <div
                 id="darkModeToggle"
-                class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-lg transition-transform duration-300"
+                class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-lg transition-transform duration-300 ease-out"
               ></div>
             </div>
           </button>
         </div>
 
+        <!-- Contact Button - Prominent CTA -->
         <a
           href="#contact"
-          class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl shadow-lg hover:shadow-accent/40 transition-all duration-200 mt-6"
+          class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl text-center shadow-lg hover:shadow-accent/40 active:scale-95 transition-all duration-200 mt-6"
         >
           <i data-feather="mail" class="w-5 h-5" aria-hidden="true"></i>
           <span>Hubungi Kami</span>
         </a>
 
+        <!-- Footer Credit -->
         <div class="text-center pt-6 mt-4 border-t border-white/20">
           <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p>
           <p class="text-xs text-white/40 mt-1">All Rights Reserved</p>
@@ -558,13 +526,7 @@
     </nav>
 
     <!-- Image Modal -->
-    <div
-      id="imageModal"
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalTitle"
-    >
+    <div id="imageModal" class="modal">
       <div class="modal-content">
         <button class="modal-close" id="modalClose" aria-label="Close modal">
           ×
@@ -579,7 +541,7 @@
         <button class="modal-nav next" id="modalNext" aria-label="Next image">
           ›
         </button>
-        <img id="modalImage" class="modal-image" src="" alt="" />
+        <img id="modalImage" class="modal-image" src="" alt="Project preview" />
         <div class="text-center mt-6 text-white">
           <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3>
           <p id="modalDesc" class="text-lg opacity-80"></p>
@@ -587,66 +549,73 @@
       </div>
     </div>
 
-    <main id="main-content">
-      <!-- HERO -->
+    <main>
+    <!-- HERO -->
       <header
         id="home"
         class="relative hero-bg min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
       >
+        <!-- Background Image - Optimized for all devices -->
         <picture>
           <source
             media="(max-width: 768px)"
-            srcset="img/vladimir-patkachakov.jpg"
+            srcset="vladimir-patkachakov.jpg"
           />
           <img
-            src="img/vladimir-patkachakov.jpg"
-            alt="Konstruksi jalan dan infrastruktur tambang di Papua"
-            class="absolute inset-0 w-full h-full object-cover opacity-50"
+            src="vladimir-patkachakov.jpg"
+            alt="Hero Image Construction"
+            class="absolute inset-0 w-full h-full object-cover object-center opacity-50 animate-fadeIn"
             style="object-position: center 40%"
-            width="1920"
-            height="1080"
-            loading="eager"
           />
         </picture>
 
+        <!-- Enhanced Dark overlay for better contrast -->
         <div
           class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
         ></div>
 
+        <!-- Content -->
         <div class="relative z-10 px-6 py-20 max-w-5xl mx-auto">
           <h1
-            class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
+            class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-float"
+            data-aos="zoom-in"
           >
             <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
           </h1>
 
+          <!-- Subtitle - White Base -->
           <p
-            class="mt-6 text-lg md:text-2xl lg:text-3xl font-medium text-white drop-shadow-lg"
+            class="mt-6 text-lg md:text-2xl lg:text-3xl font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
-            <span class="font-bold">General Contractor</span> •
-            <span class="font-bold">Leveransir</span> •
-            <span class="font-bold">Support Service</span>
+            <span class="text-white font-bold">General Contractor</span> •
+            <span class="text-white font-bold">Leveransir</span> •
+            <span class="text-white font-bold">Support Service</span>
           </p>
 
+          <!-- CTA Buttons - Optimized for Thumb Zone -->
           <div
             class="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             <a
               href="#contact"
-              class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-accent to-blue-600 rounded-2xl text-lg md:text-xl font-bold shadow-2xl hover:shadow-accent/60 transform hover:scale-105 transition duration-300 text-white"
+              class="w-full sm:w-auto min-w-[280px] sm:min-w-0 px-10 py-5 bg-gradient-to-r from-accent to-blue-600 rounded-2xl text-lg md:text-xl font-bold shadow-2xl hover:shadow-accent/60 transform hover:scale-105 active:scale-95 transition duration-300 text-white"
             >
-              Konsultasi Sekarang
+              Konsultasi sekarang
             </a>
             <a
               href="#projects"
-              class="w-full sm:w-auto px-10 py-4 bg-white/15 backdrop-blur-lg border-2 border-white/50 rounded-2xl text-lg md:text-xl font-bold hover:bg-white/25 transform hover:scale-105 transition duration-300 text-white"
+              class="w-full sm:w-auto min-w-[280px] sm:min-w-0 px-10 py-5 bg-white/15 backdrop-blur-lg border-2 border-white/50 rounded-2xl text-lg md:text-xl font-bold hover:bg-white/25 transform hover:scale-105 active:scale-95 transition duration-300 text-white"
             >
-              Lihat Proyek Kami
+              Lihat proyek kami
             </a>
+          </div>
           </div>
         </div>
       </header>
-
       <!-- KEUNGGULAN -->
       <section
         id="why"
@@ -655,59 +624,53 @@
         <div class="max-w-7xl mx-auto px-6">
           <h2
             class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
+            data-aos="fade-up"
           >
             Mengapa Memilih Kami?
           </h2>
           <div class="grid md:grid-cols-3 gap-12">
-            <article
+            <div
               class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
+              data-aos="flip-left"
             >
               <div
-                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center"
+                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center animate-glow"
               >
-                <i
-                  data-feather="award"
-                  class="w-14 h-14 text-white"
-                  aria-hidden="true"
-                ></i>
+                <i data-feather="award" class="w-14 h-14 text-white"></i>
               </div>
               <h3 class="text-3xl font-bold mb-4">15+ Tahun Pengalaman</h3>
               <p class="text-lg opacity-80">
                 Infrastruktur strategis sektor tambang & pemerintahan
               </p>
-            </article>
-            <article
+            </div>
+            <div
               class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
+              data-aos="flip-left"
+              data-aos-delay="200"
             >
               <div
-                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center"
+                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center animate-glow"
               >
-                <i
-                  data-feather="clock"
-                  class="w-14 h-14 text-white"
-                  aria-hidden="true"
-                ></i>
+                <i data-feather="clock" class="w-14 h-14 text-white"></i>
               </div>
               <h3 class="text-3xl font-bold mb-4">Tepat Waktu</h3>
               <p class="text-lg opacity-80">SOP ketat & perencanaan matang</p>
-            </article>
-            <article
+            </div>
+            <div
               class="card-premium p-10 bg-white/90 dark:bg-gray-900/90 rounded-3xl text-center backdrop-blur"
+              data-aos="flip-left"
+              data-aos-delay="400"
             >
               <div
-                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center"
+                class="w-28 h-28 mx-auto mb-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center animate-glow"
               >
-                <i
-                  data-feather="shield"
-                  class="w-14 h-14 text-white"
-                  aria-hidden="true"
-                ></i>
+                <i data-feather="shield" class="w-14 h-14 text-white"></i>
               </div>
               <h3 class="text-3xl font-bold mb-4">Kualitas Premium</h3>
               <p class="text-lg opacity-80">
                 Material terbaik & pengawasan 24/7
               </p>
-            </article>
+            </div>
           </div>
         </div>
       </section>
@@ -717,45 +680,45 @@
         <div class="max-w-7xl mx-auto px-6">
           <h2
             class="text-5xl md:text-6xl font-bold text-center mb-20 text-gradient"
+            data-aos="fade-up"
           >
             Tentang Kami
           </h2>
           <div class="grid md:grid-cols-3 gap-12">
-            <article
+            <div
               class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
+              data-aos="fade-right"
             >
               <i
                 data-feather="book-open"
                 class="w-16 h-16 text-accent mb-6"
-                aria-hidden="true"
               ></i>
               <h3 class="text-2xl font-bold mb-4">Sejarah</h3>
               <p>
                 Didirikan tahun 2010 di Timika, fokus pada infrastruktur tambang
                 & pemerintahan.
               </p>
-            </article>
-            <article
+            </div>
+            <div
               class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
+              data-aos="fade-right"
+              data-aos-delay="150"
             >
-              <i
-                data-feather="target"
-                class="w-16 h-16 text-accent mb-6"
-                aria-hidden="true"
-              ></i>
+              <i data-feather="target" class="w-16 h-16 text-accent mb-6"></i>
               <h3 class="text-2xl font-bold mb-4">Visi</h3>
               <p>
                 Menjadi kontraktor paling terpercaya di Papua dengan standar
                 internasional.
               </p>
-            </article>
-            <article
+            </div>
+            <div
               class="card-premium p-10 bg-white dark:bg-gray-800 rounded-3xl"
+              data-aos="fade-right"
+              data-aos-delay="300"
             >
               <i
                 data-feather="check-circle"
                 class="w-16 h-16 text-accent mb-6"
-                aria-hidden="true"
               ></i>
               <h3 class="text-2xl font-bold mb-4">Misi</h3>
               <ul class="list-disc list-inside space-y-2">
@@ -763,7 +726,7 @@
                 <li>Dukungan logistik & alat berat tambang</li>
                 <li>Keselamatan, lingkungan & tanggung jawab sosial</li>
               </ul>
-            </article>
+            </div>
           </div>
         </div>
       </section>
@@ -838,7 +801,7 @@
               data-index="0"
             >
               <img
-                src="img/dok. sm.jpg"
+                src="dok. sm.jpg"
                 alt="Proyek Camp Mile 74 - Pembangunan 200 unit camp untuk mining site"
                 width="800"
                 height="600"
@@ -861,7 +824,7 @@
               data-index="1"
             >
               <img
-                src="img/exca.jpg"
+                src="exca.jpg"
                 alt="Proyek Jalan Hauling 12 KM untuk transportasi mining"
                 width="800"
                 height="600"
@@ -884,7 +847,7 @@
               data-index="2"
             >
               <img
-                src="img/inspkesi with msd.jpg"
+                src="inspkesi with msd.jpg"
                 alt="Proyek Inspeksi dan Pembangunan bersama tim MSD"
                 width="800"
                 height="600"
@@ -1046,7 +1009,7 @@
                 Kirim Pesan
               </button>
               <p class="text-sm opacity-70 text-center">
-                Kami akan merespon dalam 1x24 Jam, terima kasih.
+                Kami akan merespon dalam 1x24 jam, terima kasih.
               </p>
             </form>
           </div>
@@ -1074,7 +1037,7 @@
     <!-- FOOTER -->
     <footer class="bg-black text-white py-16 text-center">
       <img
-        src="img/Logo_LRU.png"
+        src="Logo_LRU.png"
         alt="Logo PT. Lambu Raya Utama"
         class="h-24 mx-auto mb-6 animate-float"
       />
@@ -1108,7 +1071,10 @@
         </a>
       </div>
       <p class="text-sm opacity-60">
-        © 2026 Lambu Raya Utama — Semua Hak Cipta Dilindungi
+        © 2026 Lambu Raya Utama
+      </p>
+      <p class="text-xs text-white/40 mt-1"> 
+        All Rights Reserved
       </p>
     </footer>
 
@@ -1214,17 +1180,17 @@
 
       const projects = [
         {
-          img: "img/dok. sm.jpg",
+          img: "dok. sm.jpg",
           title: "Camp Mile 74",
           desc: "200 Unit — 2024 | Konstruksi Camp Mining",
         },
         {
-          img: "img/exca.jpg",
+          img: "exca.jpg",
           title: "Jalan Hauling 12 KM",
           desc: "2023 | Infrastruktur Jalan Tambang",
         },
         {
-          img: "img/inspkesi with msd.jpg",
+          img: "inspkesi with msd.jpg",
           title: "Inspeksi & Pembangunan",
           desc: "Timika — 2024 | Proyek Monitoring & Konstruksi",
         },
@@ -1361,3 +1327,11 @@
     </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
