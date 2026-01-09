@@ -1135,6 +1135,29 @@
         lines[2].classList.toggle("-translate-y-2");
       });
 
+      // Close mobile menu when clicking on link
+      document.querySelectorAll(".menu-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+          lines[0].classList.remove("rotate-45", "translate-y-2");
+          lines[1].classList.remove("opacity-0");
+          lines[2].classList.remove("-rotate-45", "-translate-y-2");
+        });
+      });
+
+      // Close mobile menu when clicking outside
+      mobileMenu.addEventListener("click", (e) => {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("flex");
+          lines[0].classList.remove("rotate-45", "translate-y-2");
+          lines[1].classList.remove("opacity-0");
+          lines[2].classList.remove("-rotate-45", "-translate-y-2");
+        }
+      });
+
+
       // Mobile Menu
       const burger = document.getElementById("burger");
       const sidebar = document.getElementById("mobileSidebar");
@@ -1327,6 +1350,7 @@
     </script>
   </body>
 </html>
+
 
 
 
