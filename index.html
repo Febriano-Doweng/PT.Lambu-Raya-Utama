@@ -367,7 +367,19 @@
         </div>
       </div>
     </nav>
-
+    
+    <!-- Hamburger Button (Mobile) -->
+    <button
+    id="hamburgerBtn"
+    class="md:hidden z-50 relative w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+  >
+    <span class="hamburger-line origin-center"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line origin-center"></span>
+  </button>
+</div>
+</nav>
+    
    <!-- Overlay & Mobile Sidebar -->
     <div
       id="overlay"
@@ -1107,6 +1119,22 @@
         updateDarkMode();
       });
 
+       // Hamburger menu
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const lines = hamburgerBtn.querySelectorAll(".hamburger-line");
+
+      hamburgerBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("flex");
+
+        lines[0].classList.toggle("rotate-45");
+        lines[0].classList.toggle("translate-y-2");
+        lines[1].classList.toggle("opacity-0");
+        lines[2].classList.toggle("-rotate-45");
+        lines[2].classList.toggle("-translate-y-2");
+      });
+
       // Mobile Menu
       const burger = document.getElementById("burger");
       const sidebar = document.getElementById("mobileSidebar");
@@ -1299,6 +1327,7 @@
     </script>
   </body>
 </html>
+
 
 
 
