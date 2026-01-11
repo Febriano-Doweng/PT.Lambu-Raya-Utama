@@ -365,7 +365,7 @@
             class="hidden md:block p-3 rounded-full bg-white/0 hover:bg-white/5 hover:scale-110 transition" 
             aria-label="Toggle dark mode" 
           > 
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <i data-feather="moon" class="w-6 h-6"></i> 
           </button> 
           <button 
             id="burger" 
@@ -425,35 +425,55 @@
             href="#home" 
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
           > 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:scale-110 transition-transform"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <i 
+              data-feather="home" 
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
+              aria-hidden="true" 
+            ></i> 
             <span>Home</span> 
           </a> 
           <a 
             href="#why" 
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
           > 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:scale-110 transition-transform"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <i 
+              data-feather="star" 
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
+              aria-hidden="true" 
+            ></i> 
             <span>Keunggulan</span> 
           </a> 
           <a 
             href="#about" 
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
           > 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:scale-110 transition-transform"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <i 
+              data-feather="info" 
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
+              aria-hidden="true" 
+            ></i> 
             <span>Tentang Kami</span> 
           </a> 
           <a 
             href="#services" 
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
           > 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:scale-110 transition-transform"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <i 
+              data-feather="briefcase" 
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
+              aria-hidden="true" 
+            ></i> 
             <span>Layanan</span> 
           </a> 
           <a 
             href="#projects" 
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
           > 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:scale-110 transition-transform"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <i 
+              data-feather="folder" 
+              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
+              aria-hidden="true" 
+            ></i> 
             <span>Proyek</span> 
           </a> 
         </div> 
@@ -468,7 +488,11 @@
             <span 
               class="flex items-center gap-3 text-white font-semibold text-base" 
             > 
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              <i 
+                data-feather="moon" 
+                class="w-5 h-5 text-accent" 
+                aria-hidden="true" 
+              ></i> 
               <span id="darkModeText">Mode Gelap</span> 
             </span> 
             <div 
@@ -489,7 +513,7 @@
           href="#contact" 
           class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl text-center shadow-lg hover:shadow-accent/40 active:scale-95 transition-all duration-200 mt-6" 
         > 
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <i data-feather="mail" class="w-5 h-5" aria-hidden="true"></i> 
           <span>Hubungi Kami</span> 
         </a> 
  
@@ -520,4 +544,49 @@
         <img id="modalImage" class="modal-image" src="" alt="Project preview" /> 
         <div class="text-center mt-6 text-white"> 
           <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3> 
-          <p id="modalDesc" class="text-lg opacity-8
+          <p id="modalDesc" class="text-lg opacity-80"></p> 
+        </div> 
+      </div> 
+    </div> 
+ 
+    <main> 
+    <!-- HERO --> 
+      <header 
+        id="home" 
+        class="relative hero-bg min-h-screen flex items-center justify-center text-center text-white overflow-hidden" 
+      > 
+        <!-- Background Image - Optimized for all devices --> 
+        <picture> 
+          <source 
+            media="(max-width: 768px)" 
+            srcset="vladimir-patkachakov.jpg" 
+          /> 
+          <img 
+            src="vladimir-patkachakov.jpg" 
+            alt="Hero Image Construction" 
+            class="absolute inset-0 w-full h-full object-cover object-center opacity-50 animate-fadeIn" 
+            style="object-position: center 40%" 
+          /> 
+        </picture> 
+ 
+        <!-- Enhanced Dark overlay for better contrast --> 
+        <div 
+          class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" 
+        ></div> 
+ 
+        <!-- Content --> 
+        <div class="relative z-10 px-6 py-20 max-w-5xl mx-auto"> 
+          <h1 
+            class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-float" 
+            data-aos="zoom-in" 
+          > 
+            <span class="text-gradient">PT. LAMBU RAYA UTAMA</span> 
+          </h1> 
+ 
+          <!-- Subtitle - White Base --> 
+          <p 
+            class="mt-6 text-lg md:text-2xl lg:text-3xl font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" 
+            data-aos="fade-up" 
+            data-aos-delay="200" 
+          > 
+            <span class=
