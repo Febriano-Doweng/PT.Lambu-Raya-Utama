@@ -1,592 +1,1793 @@
-<!DOCTYPE html> 
-<html lang="id" class="scroll-smooth"> 
-  <head> 
-    <meta charset="UTF-8" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-    <link rel="icon" href="Logo_LRU.png" type="image/png" /> 
-    <title>PT. Lambu Raya Utama — General Contractor Timika Papua</title> 
-    <meta 
-      name="description" 
-      content="Kontraktor profesional Papua: konstruksi jalan, camp, gudang, mining support & pengadaan. Sejak 2010." 
-    /> 
- 
-    <!-- Preload Critical Assets --> 
-    <link rel="preload" as="image" href="Logo_LRU.png" /> 
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" /> 
-    <link rel="preconnect" href="https://unpkg.com" /> 
- 
-    <!-- Open Graph --> 
-    <meta 
-      property="og:title" 
-      content="PT. Lambu Raya Utama - General Contractor Timika Papua" 
-    /> 
-    <meta 
-      property="og:description" 
-      content="Kontraktor profesional: jalan hauling, camp, gudang, mining support & pengadaan. Sejak 2010." 
-    /> 
-    <meta 
-      property="og:image" 
-      content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png" 
-    /> 
-    <meta 
-      property="og:url" 
-      content="https://pt-lambu-raya-utama-h34m.vercel.app/" 
-    /> 
-    <meta property="og:type" content="website" /> 
- 
-    <!-- Tailwind CSS --> 
-    <script src="https://cdn.tailwindcss.com"></script> 
-    <script> 
-      tailwind.config = { 
-        darkMode: "class", 
-        theme: { 
-          extend: { 
-            colors: { brand: "#003c8f", accent: "#00d4ff" }, 
-            animation: { 
-              float: "float 6s ease-in-out infinite", 
-              glow: "glow 3s ease-in-out infinite alternate", 
-              gradient: "gradientShift 18s ease infinite", 
-              fadeIn: "fadeIn 0.5s ease-in-out", 
-              scaleIn: "scaleIn 0.3s ease-out", 
-            }, 
-            keyframes: { 
-              float: { 
-                "0%, 100%": { transform: "translateY(0)" }, 
-                "50%": { transform: "translateY(-25px)" }, 
-              }, 
-              glow: { 
-                "0%": { boxShadow: "0 0 20px rgba(0,212,255,0.5)" }, 
-                "100%": { boxShadow: "0 0 50px rgba(0,212,255,0.9)" }, 
-              }, 
-              gradientShift: { 
-                "0%": { backgroundPosition: "0% 50%" }, 
-                "50%": { backgroundPosition: "100% 50%" }, 
-                "100%": { backgroundPosition: "0% 50%" }, 
-              }, 
-              fadeIn: { 
-                "0%": { opacity: "0" }, 
-                "100%": { opacity: "1" }, 
-              }, 
-              scaleIn: { 
-                "0%": { transform: "scale(0.9)", opacity: "0" }, 
-                "100%": { transform: "scale(1)", opacity: "1" }, 
-              }, 
-            }, 
-          }, 
-        }, 
-      }; 
-    </script> 
- 
-    <style> 
-      section { 
-        scroll-margin-top: 100px; 
-      } 
-      .text-gradient { 
-        background: linear-gradient(90deg, #00d4ff, #0099ff, #003c8f); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent; 
-        background-clip: text; 
-      } 
-      #navbar { 
-        backdrop-filter: blur(16px); 
-        -webkit-backdrop-filter: blur(16px); 
-        background: rgba(0, 20, 50, 0.78); 
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
-      } 
-      .nav-link { 
-        position: relative; 
-        padding: 10px 0; 
-        transition: all 0.4s ease; 
-      } 
-      .nav-link::after { 
-        content: ""; 
-        position: absolute; 
-        width: 0; 
-        height: 3px; 
-        bottom: 0; 
-        left: 50%; 
-        background: linear-gradient(90deg, transparent, #00d4ff, transparent); 
-        transition: all 0.5s ease; 
-        transform: translateX(-50%); 
-      } 
-      .nav-link:hover::after { 
-        width: 100%; 
-      } 
-      .nav-link:hover { 
-        color: #00d4ff !important; 
-        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8); 
-        transform: translateY(-3px); 
-      } 
-      .card-premium { 
-        transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-        border: 1px solid rgba(0, 212, 255, 0.15); 
-      } 
-      .card-premium:hover { 
-        transform: translateY(-25px) scale(1.05); 
-        box-shadow: 0 40px 80px rgba(0, 60, 150, 0.5); 
-        border-color: #00d4ff; 
-      } 
-      .hero-bg { 
-        background: linear-gradient(-45deg, #001122, #002b55, #003c8f, #0050cc); 
-        background-size: 400% 400%; 
-        animation: gradientShift 18s ease infinite; 
-      } 
-      .particle { 
-        position: absolute; 
-        background: rgba(0, 212, 255, 0.25); 
-        border-radius: 50%; 
-        pointer-events: none; 
-        animation: floatParticle linear infinite; 
-      } 
-      @keyframes floatParticle { 
-        0% { 
-          transform: translateY(100vh) scale(0); 
-          opacity: 0; 
-        } 
-        10% { 
-          opacity: 1; 
-        } 
-        90% { 
-          opacity: 0.6; 
-        } 
-        100% { 
-          transform: translateY(-100px) scale(1); 
-          opacity: 0; 
-        } 
-      } 
- 
-      /* Modal Styles */ 
-      .modal { 
-        display: none; 
-        position: fixed; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        height: 100%; 
-        background: rgba(0, 0, 0, 0.95); 
-        z-index: 9999; 
-        backdrop-filter: blur(10px); 
-      } 
-      .modal.active { 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        animation: fadeIn 0.3s ease-in-out; 
-      } 
-      .modal-content { 
-        position: relative; 
-        max-width: 90vw; 
-        max-height: 90vh; 
-        animation: scaleIn 0.3s ease-out; 
-      } 
-      .modal-image { 
-        max-width: 100%; 
-        max-height: 90vh; 
-        object-fit: contain; 
-        border-radius: 12px; 
-        box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3); 
-      } 
-      .modal-close { 
-        position: absolute; 
-        top: -50px; 
-        right: 0; 
-        background: rgba(255, 255, 255, 0.1); 
-        border: 2px solid rgba(255, 255, 255, 0.3); 
-        color: white; 
-        width: 40px; 
-        height: 40px; 
-        border-radius: 50%; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        cursor: pointer; 
-        transition: all 0.3s ease; 
-        font-size: 24px; 
-        font-weight: bold; 
-      } 
-      .modal-close:hover { 
-        background: rgba(255, 255, 255, 0.2); 
-        transform: rotate(90deg) scale(1.1); 
-      } 
-      .modal-nav { 
-        position: absolute; 
-        top: 50%; 
-        transform: translateY(-50%); 
-        background: rgba(255, 255, 255, 0.1); 
-        border: 2px solid rgba(255, 255, 255, 0.3); 
-        color: white; 
-        width: 50px; 
-        height: 50px; 
-        border-radius: 50%; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        cursor: pointer; 
-        transition: all 0.3s ease; 
-        font-size: 24px; 
-      } 
-      .modal-nav:hover { 
-        background: rgba(0, 212, 255, 0.3); 
-        transform: translateY(-50%) scale(1.1); 
-      } 
-      .modal-nav.prev { 
-        left: 20px; 
-      } 
-      .modal-nav.next { 
-        right: 20px; 
-      } 
-      @media (max-width: 768px) { 
-        .modal-nav { 
-          width: 40px; 
-          height: 40px; 
-          font-size: 20px; 
-        } 
-        .modal-nav.prev { 
-          left: 10px; 
-        } 
-        .modal-nav.next { 
-          right: 10px; 
-        } 
-        .modal-close { 
-          top: -40px; 
-          width: 36px; 
-          height: 36px; 
-          font-size: 20px; 
-        } 
-      } 
-      .project-card { 
-        cursor: pointer; 
-        position: relative; 
-        overflow: hidden; 
-      } 
-      .project-card::before { 
-        content: "🔍"; 
-        position: absolute; 
-        top: 50%; 
-        left: 50%; 
-        transform: translate(-50%, -50%) scale(0); 
-        font-size: 48px; 
-        z-index: 10; 
-        transition: all 0.3s ease; 
-        opacity: 0; 
-      } 
-      .project-card:hover::before { 
-        transform: translate(-50%, -50%) scale(1); 
-        opacity: 1; 
-      } 
-      .project-card:hover img { 
-        filter: brightness(0.7); 
-      } 
- 
-      /* Lazy Load Placeholder */ 
-      img[loading="lazy"] { 
-        background: linear-gradient( 
-          90deg, 
-          #f0f0f0 25%, 
-          #e0e0e0 50%, 
-          #f0f0f0 75% 
-        ); 
-        background-size: 200% 100%; 
-        animation: shimmer 1.5s infinite; 
-      } 
-      @keyframes shimmer { 
-        0% { 
-          background-position: 200% 0; 
-        } 
-        100% { 
-          background-position: -200% 0; 
-        } 
-      } 
- 
-      /* Burger to X Animation */ 
-      #burger.active .burger-line-1 { 
-        transform: translateY(8px) rotate(45deg); 
-      } 
-      #burger.active .burger-line-2 { 
-        opacity: 0; 
-        transform: scaleX(0); 
-      } 
-      #burger.active .burger-line-3 { 
-        transform: translateY(-8px) rotate(-45deg); 
-      } 
-    </style> 
-  </head> 
- 
-  <body 
-    class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 overflow-x-hidden" 
-  > 
-    <!-- Floating Particles --> 
-    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden"> 
-      <div 
-        class="particle w-2 h-2" 
-        style="left: 12%; animation-duration: 20s" 
-      ></div> 
-      <div 
-        class="particle w-4 h-4" 
-        style="left: 28%; animation-duration: 24s; animation-delay: 2s" 
-      ></div> 
-      <div 
-        class="particle w-3 h-3" 
-        style="left: 45%; animation-duration: 18s; animation-delay: 4s" 
-      ></div> 
-      <div 
-        class="particle w-5 h-5" 
-        style="left: 65%; animation-duration: 22s; animation-delay: 1s" 
-      ></div> 
-      <div 
-        class="particle w-2 h-2" 
-        style="left: 82%; animation-duration: 19s; animation-delay: 6s" 
-      ></div> 
-    </div> 
- 
-    <!-- NAVBAR --> 
-    <nav id="navbar" class="fixed top-0 w-full z-50 text-white"> 
-      <div 
-        class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center" 
-      > 
-        <a href="#home" class="flex items-center gap-4 group"> 
-          <img 
-            src="Logo_LRU.png" 
-            alt="Logo LRU" 
-            class="h-14 w-14 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-12" 
-          /> 
-        </a> 
-        <ul class="hidden md:flex gap-10 font-bold text-lg"> 
-          <li><a href="#home" class="nav-link">Home</a></li> 
-          <li><a href="#why" class="nav-link">Keunggulan</a></li> 
-          <li><a href="#about" class="nav-link">Tentang</a></li> 
-          <li><a href="#services" class="nav-link">Layanan</a></li> 
-          <li><a href="#projects" class="nav-link">Proyek</a></li> 
-          <li><a href="#contact" class="nav-link">Kontak</a></li> 
-        </ul> 
-        <div class="flex items-center gap-4"> 
-          <button 
-            id="darkToggle" 
-            class="hidden md:block p-3 rounded-full bg-white/0 hover:bg-white/5 hover:scale-110 transition" 
-            aria-label="Toggle dark mode" 
-          > 
-            <i data-feather="moon" class="w-6 h-6"></i> 
-          </button> 
-          <button 
-            id="burger" 
-            class="md:hidden p-3 rounded-full bg-white/1 hover:bg-white/1 transition-all z-50 relative overflow-hidden group" 
-            aria-label="Toggle menu" 
-          > 
-            <div 
-              class="w-6 h-5 flex flex-col justify-center items-center gap-1.5 transition-all duration-300" 
-              id="burgerIcon" 
-            > 
-              <span 
-                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-1" 
-              ></span> 
-              <span 
-                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-2" 
-              ></span> 
-              <span 
-                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-3" 
-              ></span> 
-            </div> 
-          </button> 
-        </div> 
-      </div> 
-    </nav> 
- 
-   <!-- Overlay & Mobile Sidebar --> 
-    <div 
-      id="overlay" 
-      class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300 ease-in-out" 
-      role="button" 
-      aria-label="Close menu" 
-      tabindex="-1" 
-    ></div> 
-    <nav 
-      id="mobileSidebar" 
-      class="fixed top-0 left-0 h-full w-[75%] max-w-[380px] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 z-50 transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl overflow-y-auto" 
-      role="navigation" 
-      aria-label="Mobile navigation" 
-    > 
-      <div class="p-6 pt-24 pb-8 space-y-6"> 
-        <!-- Logo Section --> 
-        <div class="text-center mb-6 pb-6 border-b border-white/20"> 
-          <img 
-            src="Logo_LRU.png" 
-            alt="Logo PT. Lambu Raya Utama" 
-            class="h-20 mx-auto mb-4 drop-shadow-lg" 
-          /> 
-          <p class="text-sm font-medium text-white tracking-wide"> 
-            PT. Lambu Raya Utama 
-          </p> 
-          <p class="text-xs text-white/70 mt-1">General Contractor Papua</p> 
-        </div> 
- 
-        <!-- Navigation Links - Thumb-Friendly Design --> 
-        <div class="space-y-2"> 
-          <a 
-            href="#home" 
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
-          > 
-            <i 
-              data-feather="home" 
-              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
-              aria-hidden="true" 
-            ></i> 
-            <span>Home</span> 
-          </a> 
-          <a 
-            href="#why" 
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
-          > 
-            <i 
-              data-feather="star" 
-              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
-              aria-hidden="true" 
-            ></i> 
-            <span>Keunggulan</span> 
-          </a> 
-          <a 
-            href="#about" 
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
-          > 
-            <i 
-              data-feather="info" 
-              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
-              aria-hidden="true" 
-            ></i> 
-            <span>Tentang Kami</span> 
-          </a> 
-          <a 
-            href="#services" 
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
-          > 
-            <i 
-              data-feather="briefcase" 
-              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
-              aria-hidden="true" 
-            ></i> 
-            <span>Layanan</span> 
-          </a> 
-          <a 
-            href="#projects" 
-            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group" 
-          > 
-            <i 
-              data-feather="folder" 
-              class="w-5 h-5 text-accent group-hover:scale-110 transition-transform" 
-              aria-hidden="true" 
-            ></i> 
-            <span>Proyek</span> 
-          </a> 
-        </div> 
- 
-        <!-- Dark Mode Toggle - Enhanced --> 
-        <div class="pt-6 border-t border-white/20"> 
-          <button 
-            id="darkToggleMobile" 
-            class="w-full flex items-center justify-between px-5 py-4 rounded-xl bg-white/10 hover:bg-white/15 active:bg-white/20 transition-all duration-200" 
-            aria-label="Toggle dark mode" 
-          > 
-            <span 
-              class="flex items-center gap-3 text-white font-semibold text-base" 
-            > 
-              <i 
-                data-feather="moon" 
-                class="w-5 h-5 text-accent" 
-                aria-hidden="true" 
-              ></i> 
-              <span id="darkModeText">Mode Gelap</span> 
-            </span> 
-            <div 
-              class="relative w-14 h-7 bg-white/25 rounded-full transition-colors" 
-              role="switch" 
-              aria-checked="false" 
-            > 
-              <div 
-                id="darkModeToggle" 
-                class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-lg transition-transform duration-300 ease-out" 
-              ></div> 
-            </div> 
-          </button> 
-        </div> 
- 
-        <!-- Contact Button - Prominent CTA --> 
-        <a 
-          href="#contact" 
-          class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl text-center shadow-lg hover:shadow-accent/40 active:scale-95 transition-all duration-200 mt-6" 
-        > 
-          <i data-feather="mail" class="w-5 h-5" aria-hidden="true"></i> 
-          <span>Hubungi Kami</span> 
-        </a> 
- 
-        <!-- Footer Credit --> 
-        <div class="text-center pt-6 mt-4 border-t border-white/20"> 
-          <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p> 
-          <p class="text-xs text-white/40 mt-1">All Rights Reserved</p> 
-        </div> 
-      </div> 
-    </nav> 
- 
-    <!-- Image Modal --> 
-    <div id="imageModal" class="modal"> 
-      <div class="modal-content"> 
-        <button class="modal-close" id="modalClose" aria-label="Close modal"> 
-          × 
-        </button> 
-        <button 
-          class="modal-nav prev" 
-          id="modalPrev" 
-          aria-label="Previous image" 
-        > 
-          ‹ 
-        </button> 
-        <button class="modal-nav next" id="modalNext" aria-label="Next image"> 
-          › 
-        </button> 
-        <img id="modalImage" class="modal-image" src="" alt="Project preview" /> 
-        <div class="text-center mt-6 text-white"> 
-          <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3> 
-          <p id="modalDesc" class="text-lg opacity-80"></p> 
-        </div> 
-      </div> 
-    </div> 
- 
-    <main> 
-    <!-- HERO --> 
-      <header 
-        id="home" 
-        class="relative hero-bg min-h-screen flex items-center justify-center text-center text-white overflow-hidden" 
-      > 
-        <!-- Background Image - Optimized for all devices --> 
-        <picture> 
-          <source 
-            media="(max-width: 768px)" 
-            srcset="vladimir-patkachakov.jpg" 
-          /> 
-          <img 
-            src="vladimir-patkachakov.jpg" 
-            alt="Hero Image Construction" 
-            class="absolute inset-0 w-full h-full object-cover object-center opacity-50 animate-fadeIn" 
-            style="object-position: center 40%" 
-          /> 
-        </picture> 
- 
-        <!-- Enhanced Dark overlay for better contrast --> 
-        <div 
-          class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" 
-        ></div> 
- 
-        <!-- Content --> 
-        <div class="relative z-10 px-6 py-20 max-w-5xl mx-auto"> 
-          <h1 
-            class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-float" 
-            data-aos="zoom-in" 
-          > 
-            <span class="text-gradient">PT. LAMBU RAYA UTAMA</span> 
-          </h1> 
- 
-          <!-- Subtitle - White Base --> 
-          <p 
-            class="mt-6 text-lg md:text-2xl lg:text-3xl font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]" 
-            data-aos="fade-up" 
-            data-aos-delay="200" 
-          > 
-            <span class=
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="Logo_LRU.png" type="image/png" />
+    <title>PT. Lambu Raya Utama — General Contractor Timika Papua</title>
+    <meta
+      name="description"
+      content="Kontraktor profesional Papua: konstruksi jalan, camp, gudang, mining support & pengadaan. Sejak 2010."
+    />
+
+    <link rel="preload" as="image" href="Logo_LRU.png" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+
+    <meta
+      property="og:title"
+      content="PT. Lambu Raya Utama - General Contractor Timika Papua"
+    />
+    <meta
+      property="og:description"
+      content="Kontraktor profesional: jalan hauling, camp, gudang, mining support & pengadaan. Sejak 2010."
+    />
+    <meta
+      property="og:image"
+      content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png"
+    />
+    <meta
+      property="og:url"
+      content="https://pt-lambu-raya-utama-h34m.vercel.app/"
+    />
+    <meta property="og:type" content="website" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: { brand: "#003c8f", accent: "#00d4ff" },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              glow: "glow 3s ease-in-out infinite alternate",
+              gradient: "gradientShift 18s ease infinite",
+              fadeIn: "fadeIn 0.5s ease-in-out",
+              scaleIn: "scaleIn 0.3s ease-out",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-25px)" },
+              },
+              glow: {
+                "0%": { boxShadow: "0 0 20px rgba(0,212,255,0.5)" },
+                "100%": { boxShadow: "0 0 50px rgba(0,212,255,0.9)" },
+              },
+              gradientShift: {
+                "0%": { backgroundPosition: "0% 50%" },
+                "50%": { backgroundPosition: "100% 50%" },
+                "100%": { backgroundPosition: "0% 50%" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              scaleIn: {
+                "0%": { transform: "scale(0.9)", opacity: "0" },
+                "100%": { transform: "scale(1)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      section {
+        scroll-margin-top: 100px;
+      }
+      .text-gradient {
+        background: linear-gradient(90deg, #00d4ff, #0099ff, #003c8f);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      #navbar {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        background: rgba(0, 20, 50, 0.78);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+      .nav-link {
+        position: relative;
+        padding: 10px 0;
+        transition: all 0.4s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+        transition: all 0.5s ease;
+        transform: translateX(-50%);
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link:hover {
+        color: #00d4ff !important;
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        transform: translateY(-3px);
+      }
+      .card-premium {
+        transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(0, 212, 255, 0.15);
+      }
+      .card-premium:hover {
+        transform: translateY(-25px) scale(1.05);
+        box-shadow: 0 40px 80px rgba(0, 60, 150, 0.5);
+        border-color: #00d4ff;
+      }
+      .hero-bg {
+        background: linear-gradient(-45deg, #001122, #002b55, #003c8f, #0050cc);
+        background-size: 400% 400%;
+        animation: gradientShift 18s ease infinite;
+      }
+      .particle {
+        position: absolute;
+        background: rgba(0, 212, 255, 0.25);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: floatParticle linear infinite;
+      }
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-100px) scale(1);
+          opacity: 0;
+        }
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+      }
+      .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .modal-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        animation: scaleIn 0.3s ease-out;
+      }
+      .modal-image {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
+      }
+      .modal-close {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg) scale(1.1);
+      }
+      .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 24px;
+      }
+      .modal-nav:hover {
+        background: rgba(0, 212, 255, 0.3);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .modal-nav.prev {
+        left: 20px;
+      }
+      .modal-nav.next {
+        right: 20px;
+      }
+      @media (max-width: 768px) {
+        .modal-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
+        .modal-nav.prev {
+          left: 10px;
+        }
+        .modal-nav.next {
+          right: 10px;
+        }
+        .modal-close {
+          top: -40px;
+          width: 36px;
+          height: 36px;
+          font-size: 20px;
+        }
+      }
+      .project-card {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-card::before {
+        content: "🔍";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        font-size: 48px;
+        z-index: 10;
+        transition: all 0.3s ease;
+        opacity: 0;
+      }
+      .project-card:hover::before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      .project-card:hover img {
+        filter: brightness(0.7);
+      }
+      img[loading="lazy"] {
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      #burger.active .burger-line-1 {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #burger.active .burger-line-2 {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      #burger.active .burger-line-3 {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 overflow-x-hidden"
+  >
+    <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+      <div
+        class="particle w-2 h-2"
+        style="left: 12%; animation-duration: 20s"
+      ></div>
+      <div
+        class="particle w-4 h-4"
+        style="left: 28%; animation-duration: 24s; animation-delay: 2s"
+      ></div>
+      <div
+        class="particle w-3 h-3"
+        style="left: 45%; animation-duration: 18s; animation-delay: 4s"
+      ></div>
+      <div
+        class="particle w-5 h-5"
+        style="left: 65%; animation-duration: 22s; animation-delay: 1s"
+      ></div>
+      <div
+        class="particle w-2 h-2"
+        style="left: 82%; animation-duration: 19s; animation-delay: 6s"
+      ></div>
+    </div>
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 text-white">
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center"
+      >
+        <a href="#home" class="flex items-center gap-4 group">
+          <img
+            src="Logo_LRU.png"
+            alt="Logo LRU"
+            class="h-14 w-14 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-12"
+          />
+        </a>
+        <ul class="hidden md:flex gap-10 font-bold text-lg">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#why" class="nav-link">Keunggulan</a></li>
+          <li><a href="#about" class="nav-link">Tentang</a></li>
+          <li><a href="#services" class="nav-link">Layanan</a></li>
+          <li><a href="#projects" class="nav-link">Proyek</a></li>
+          <li><a href="#contact" class="nav-link">Kontak</a></li>
+        </ul>
+        <div class="flex items-center gap-4">
+          <button
+            id="darkToggle"
+            class="hidden md:block p-3 rounded-full bg-white/0 hover:bg-white/5 hover:scale-110 transition"
+            aria-label="Toggle dark mode"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button
+            id="burger"
+            class="md:hidden p-3 rounded-full bg-white/1 hover:bg-white/1 transition-all z-50 relative overflow-hidden group"
+            aria-label="Toggle menu"
+          >
+            <div
+              class="w-6 h-5 flex flex-col justify-center items-center gap-1.5 transition-all duration-300"
+              id="burgerIcon"
+            >
+              <span
+                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-1"
+              ></span>
+              <span
+                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-2"
+              ></span>
+              <span
+                class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center burger-line-3"
+              ></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300 ease-in-out"
+      role="button"
+      aria-label="Close menu"
+      tabindex="-1"
+    ></div>
+    <nav
+      id="mobileSidebar"
+      class="fixed top-0 left-0 h-full w-[75%] max-w-[380px] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 z-50 transform -translate-x-full transition-transform duration-300 ease-out shadow-2xl overflow-y-auto"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <div class="p-6 pt-24 pb-8 space-y-6">
+        <div class="text-center mb-6 pb-6 border-b border-white/20">
+          <img
+            src="Logo_LRU.png"
+            alt="Logo PT. Lambu Raya Utama"
+            class="h-20 mx-auto mb-4 drop-shadow-lg"
+          />
+          <p class="text-sm font-medium text-white tracking-wide">
+            PT. Lambu Raya Utama
+          </p>
+          <p class="text-xs text-white/70 mt-1">General Contractor Papua</p>
+        </div>
+        <div class="space-y-2">
+          <a
+            href="#home"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-accent group-hover:scale-110 transition-transform"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Home</span>
+          </a>
+          <a
+            href="#why"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-accent group-hover:scale-110 transition-transform"
+            >
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+              ></polygon>
+            </svg>
+            <span>Keunggulan</span>
+          </a>
+          <a
+            href="#about"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-accent group-hover:scale-110 transition-transform"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Tentang Kami</span>
+          </a>
+          <a
+            href="#services"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-accent group-hover:scale-110 transition-transform"
+            >
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span>Layanan</span>
+          </a>
+          <a
+            href="#projects"
+            class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-accent group-hover:scale-110 transition-transform"
+            >
+              <path
+                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+              ></path>
+            </svg>
+            <span>Proyek</span>
+          </a>
+        </div>
+        <div class="pt-6 border-t border-white/20">
+          <button
+            id="darkToggleMobile"
+            class="w-full flex items-center justify-between px-5 py-4 rounded-xl bg-white/10 hover:bg-white/15 active:bg-white/20 transition-all duration-200"
+            aria-label="Toggle dark mode"
+          >
+            <span
+              class="flex items-center gap-3 text-white font-semibold text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-accent"
+              >
+                <path
+                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                ></path>
+              </svg>
+              <span id="darkModeText">Mode Gelap</span>
+            </span>
+            <div
+              class="relative w-14 h-7 bg-white/25 rounded-full transition-colors"
+              role="switch"
+              aria-checked="false"
+            >
+              <div
+                id="darkModeToggle"
+                class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full shadow-lg transition-transform duration-300 ease-out"
+              ></div>
+            </div>
+          </button>
+        </div>
+        <a
+          href="#contact"
+          class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl text-center shadow-lg hover:shadow-accent/40 active:scale-95 transition-all duration-200 mt-6"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>Hubungi Kami</span>
+        </a>
+        <div class="text-center pt-6 mt-4 border-t border-white/20">
+          <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p>
+          <p class="text-xs text-white/40 mt-1">All Rights Reserved</p>
+        </div>
+      </div>
+    </nav>
+
+    <div id="imageModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+          ×
+        </button>
+        <button
+          class="modal-nav prev"
+          id="modalPrev"
+          aria-label="Previous image"
+        >
+          ‹
+        </button>
+        <button class="modal-nav next" id="modalNext" aria-label="Next image">
+          ›
+        </button>
+        <img id="modalImage" class="modal-image" src="" alt="Project preview" />
+        <div class="text-center mt-6 text-white">
+          <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3>
+          <p id="modalDesc" class="text-lg opacity-80"></p>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <header
+        id="home"
+        class="relative hero-bg min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
+      >
+        <picture>
+          <source
+            media="(max-width: 768px)"
+            srcset="vladimir-patkachakov.jpg"
+          />
+          <img
+            src="vladimir-patkachakov.jpg"
+            alt="Hero Image Construction"
+            class="absolute inset-0 w-full h-full object-cover object-center opacity-50 animate-fadeIn"
+            style="object-position: center 40%"
+          />
+        </picture>
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
+        ></div>
+        <div class="relative z-10 px-6 py-20 max-w-5xl mx-auto">
+          <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-float"
+            data-aos="zoom-in"
+          >
+            <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
+          </h1>
+          <p
+            class="mt-6 text-lg md:text-2xl lg:text-3xl font-medium text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <span class="block">General Contractor Papua</span>
+            <span class="block mt-2 text-accent"
+              >Solusi Konstruksi Terpercaya Sejak 2010</span
+            >
+          </p>
+          <div
+            class="mt-12 flex flex-wrap gap-6 justify-center"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <a
+              href="#services"
+              class="px-8 py-4 bg-gradient-to-r from-accent to-blue-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-accent/50 hover:scale-105 transition-all duration-300"
+            >
+              Lihat Layanan
+            </a>
+            <a
+              href="#contact"
+              class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold text-lg rounded-full border-2 border-white/30 hover:bg-white/20 hover:scale-105 transition-all duration-300"
+            >
+              Hubungi Kami
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section id="why" class="py-24 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
+            <span class="text-gradient">Mengapa Memilih Kami?</span>
+          </h2>
+          <p
+            class="text-center text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-3xl mx-auto"
+          >
+            Komitmen kami adalah memberikan solusi konstruksi terbaik dengan
+            standar kualitas internasional
+          </p>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="card-premium bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-full flex items-center justify-center mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                Peralatan Modern
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Menggunakan alat berat dan teknologi konstruksi terkini untuk
+                efisiensi dan hasil maksimal.
+              </p>
+            </div>
+            <div
+              class="card-premium bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-full flex items-center justify-center mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                Tepat Waktu
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Komitmen menyelesaikan proyek sesuai timeline yang disepakati
+                tanpa mengurangi kualitas.
+              </p>
+            </div>
+            <div
+              class="card-premium bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-full flex items-center justify-center mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                Standar K3
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Menerapkan prosedur Keselamatan dan Kesehatan Kerja yang ketat
+                di setiap proyek.
+              </p>
+            </div>
+            <div
+              class="card-premium bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl"
+            >
+              <div
+                class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-full flex items-center justify-center mb-6"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+                  ></path>
+                  <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                Harga Kompetitif
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400">
+                Menawarkan harga terbaik dengan kualitas premium dan
+                transparansi biaya.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-24 bg-gray-100 dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                <span class="text-gradient">Tentang Kami</span>
+              </h2>
+              <p
+                class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
+              >
+                PT. Lambu Raya Utama adalah perusahaan general contractor yang
+                berpengalaman dan terpercaya di Papua. Sejak didirikan pada
+                tahun 2010, kami telah menangani berbagai proyek konstruksi
+                skala besar dan kecil dengan komitmen pada kualitas,
+                keselamatan, dan kepuasan klien.
+              </p>
+              <p
+                class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
+              >
+                Dengan pengalaman lebih dari 15 tahun di industri konstruksi
+                Papua, kami memahami tantangan unik pembangunan di wilayah ini.
+                Tim profesional kami siap memberikan solusi konstruksi terbaik
+                untuk setiap kebutuhan proyek Anda.
+              </p>
+              <div class="grid grid-cols-2 gap-6 mt-8">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                  <div class="text-4xl font-bold text-accent mb-2">200+</div>
+                  <div class="text-gray-600 dark:text-gray-400">
+                    Proyek Selesai
+                  </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                  <div class="text-4xl font-bold text-accent mb-2">15+</div>
+                  <div class="text-gray-600 dark:text-gray-400">
+                    Tahun Pengalaman
+                  </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                  <div class="text-4xl font-bold text-accent mb-2">50+</div>
+                  <div class="text-gray-600 dark:text-gray-400">
+                    Tim Profesional
+                  </div>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                  <div class="text-4xl font-bold text-accent mb-2">100%</div>
+                  <div class="text-gray-600 dark:text-gray-400">
+                    Kepuasan Klien
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative">
+              <img
+                src="vladimir-patkachakov.jpg"
+                alt="About Us"
+                class="rounded-2xl shadow-2xl w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div
+                class="absolute -bottom-6 -left-6 w-48 h-48 bg-accent/20 rounded-full blur-3xl"
+              ></div>
+              <div
+                class="absolute -top-6 -right-6 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="py-24 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
+            <span class="text-gradient">Layanan Kami</span>
+          </h2>
+          <p
+            class="text-center text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-3xl mx-auto"
+          >
+            Kami menyediakan berbagai layanan konstruksi yang komprehensif untuk
+            memenuhi kebutuhan proyek Anda
+          </p>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="group relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                    ></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                  </svg>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
+                >
+                  Konstruksi Bangunan
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Pembangunan gedung perkantoran, camp karyawan, mess, gudang,
+                  dan fasilitas pendukung lainnya dengan standar kualitas
+                  tinggi.
+                </p>
+              </div>
+            </div>
+            <div
+              class="group relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"></path>
+                  </svg>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
+                >
+                  Jalan Hauling
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Pembangunan dan perawatan jalan hauling untuk operasional
+                  pertambangan, termasuk perataan dan pemadatan tanah.
+                </p>
+              </div>
+            </div>
+            <div
+              class="group relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon
+                      points="16 8 20 8 23 11 23 16 16 16 16 8"
+                    ></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
+                >
+                  Mining Support
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Layanan pendukung operasi pertambangan meliputi mobilisasi
+                  alat berat, maintenance area, dan infrastruktur pendukung.
+                </p>
+              </div>
+            </div>
+            <div
+              class="group relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                    ></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
+                >
+                  Pengadaan Material
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Penyediaan material konstruksi berkualitas seperti semen,
+                  besi, agregat, dan bahan bangunan lainnya.
+                </p>
+              </div>
+            </div>
+            <div
+              class="group relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
+                >
+                  Civil Works
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Pekerjaan sipil meliputi land clearing, cut & fill, drainage
+                  system, dan infrastruktur dasar lainnya.
+                </p>
+              </div>
+            </div>
+            <div
+              class="group relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"
+              ></div>
+              <div class="relative z-10">
+                <div
+                  class="w-16 h-16 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                      d="M12 1v6m0 6v6m5.4-13A10 10 0 0 1 19 12m-2 6a10 10 0 0 1-5 1.4M6.6 19A10 10 0 0 1 5 12m2-6a10 10 0 0 1 5-1.4"
+                    ></path>
+                  </svg>
+                </div>
+                <h3
+                  class="text-2xl font-bold mb-4 text-gray-900 dark:text-white"
+                >
+                  Maintenance & Repair
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Layanan perawatan dan perbaikan bangunan, fasilitas, dan
+                  infrastruktur untuk memastikan kondisi optimal.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="py-24 bg-gray-100 dark:bg-gray-950">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
+            <span class="text-gradient">Portofolio Proyek</span>
+          </h2>
+          <p
+            class="text-center text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-3xl mx-auto"
+          >
+            Beberapa proyek yang telah kami kerjakan dengan dedikasi dan
+            profesionalisme tinggi
+          </p>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="project-card card-premium bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl"
+            >
+              <div class="relative overflow-hidden h-64">
+                <img
+                  src="vladimir-patkachakov.jpg"
+                  alt="Project 1"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                >
+                  Pembangunan Camp Karyawan
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  Konstruksi fasilitas camp untuk 200 karyawan dengan fasilitas
+                  lengkap di area pertambangan.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-accent font-semibold">2024</span>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Timika, Papua</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="project-card card-premium bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl"
+            >
+              <div class="relative overflow-hidden h-64">
+                <img
+                  src="vladimir-patkachakov.jpg"
+                  alt="Project 2"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                >
+                  Jalan Hauling 5 KM
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  Pembangunan jalan hauling sepanjang 5 kilometer untuk akses
+                  transportasi pertambangan.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-accent font-semibold">2023</span>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Mimika, Papua</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="project-card card-premium bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl"
+            >
+              <div class="relative overflow-hidden h-64">
+                <img
+                  src="vladimir-patkachakov.jpg"
+                  alt="Project 3"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <h3
+                  class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                >
+                  Gudang Material 2000 m²
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  Pembangunan gudang penyimpanan material dengan kapasitas besar
+                  dan sistem keamanan modern.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-accent font-semibold">2023</span>
+                  <span class="text-sm text-gray-500 dark:text-gray-400"
+                    >Timika, Papua</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-24 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
+            <span class="text-gradient">Hubungi Kami</span>
+          </h2>
+          <p
+            class="text-center text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-3xl mx-auto"
+          >
+            Siap membantu mewujudkan proyek konstruksi Anda. Hubungi kami untuk
+            konsultasi dan penawaran terbaik
+          </p>
+          <div class="grid lg:grid-cols-2 gap-12">
+            <div class="space-y-8">
+              <div class="flex items-start gap-6">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    ></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                  >
+                    Alamat Kantor
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    Timika, Kabupaten Mimika<br />Papua, Indonesia
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-6">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                  >
+                    Telepon
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    +62 812-3456-7890<br />+62 811-2345-6789
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-6">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                  >
+                    Email
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    info@lamburayautama.com<br />contact@lamburayautama.com
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-6">
+                <div
+                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <h3
+                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                  >
+                    Jam Operasional
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    Senin - Jumat: 07:00 - 16:00<br />Sabtu - Libur<br />Minggu
+                    - Libur
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
+              <form class="space-y-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white"
+                    >Nama Lengkap</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-gray-900 dark:text-white"
+                    placeholder="Masukkan nama Anda"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-gray-900 dark:text-white"
+                    placeholder="email@example.com"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="phone"
+                    class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white"
+                    >Nomor Telepon</label
+                  >
+                  <input
+                    type="tel"
+                    id="phone"
+                    class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-gray-900 dark:text-white"
+                    placeholder="+62 812-3456-7890"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="subject"
+                    class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white"
+                    >Subjek</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-gray-900 dark:text-white"
+                    placeholder="Perihal konsultasi"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="message"
+                    class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white"
+                    >Pesan</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="5"
+                    class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none text-gray-900 dark:text-white"
+                    placeholder="Tulis pesan Anda di sini..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full py-4 bg-gradient-to-r from-accent to-blue-600 text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-accent/50 hover:scale-105 transition-all duration-300"
+                >
+                  Kirim Pesan
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="mt-16">
+            <h3 class="text-3xl font-bold text-center mb-8">
+              <span class="text-gradient">Lokasi Kami</span>
+            </h3>
+            <div
+              class="rounded-2xl overflow-hidden shadow-2xl border-4 border-accent/20"
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000!5m2!1sid!2sid"
+                width="100%"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full"
+              ></iframe>
+            </div>
+            <p
+              class="text-center text-gray-600 dark:text-gray-400 mt-6 text-sm"
+            >
+              📍 Kunjungi kantor kami di Timika, Papua untuk konsultasi langsung
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-12 mb-8">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="Logo_LRU.png" alt="Logo LRU" class="h-12 w-12" />
+              <div>
+                <h3 class="font-bold text-xl">PT. Lambu Raya Utama</h3>
+                <p class="text-sm text-gray-400">General Contractor Papua</p>
+              </div>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Mitra terpercaya untuk solusi konstruksi di Papua sejak 2010.
+              Komitmen pada kualitas, keselamatan, dan kepuasan klien.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg mb-4">Tautan Cepat</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#why"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >Keunggulan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >Tentang Kami</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >Layanan</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >Proyek</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-accent transition-colors"
+                  >Kontak</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg mb-4">Kontak</h4>
+            <ul class="space-y-3 text-gray-400 text-sm">
+              <li class="flex items-start gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="flex-shrink-0 mt-0.5"
+                >
+                  <path
+                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                  ></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Timika, Kabupaten Mimika, Papua, Indonesia</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+                <span>+62 812-3456-7890</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>info@lamburayautama.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 mt-8 text-center">
+          <p class="text-gray-400 text-sm">
+            © 2026 PT. Lambu Raya Utama. All rights reserved. | Developed by
+            <span class="text-gray">Bryant Tuakora</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const darkToggle = document.getElementById("darkToggle");
+      const darkToggleMobile = document.getElementById("darkToggleMobile");
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const darkModeText = document.getElementById("darkModeText");
+      const html = document.documentElement;
+
+      function toggleDarkMode() {
+        html.classList.toggle("dark");
+        const isDark = html.classList.contains("dark");
+        localStorage.setItem("darkMode", isDark);
+        if (darkModeToggle) {
+          if (isDark) {
+            darkModeToggle.style.transform = "translateX(28px)";
+            darkModeText.textContent = "Mode Terang";
+          } else {
+            darkModeToggle.style.transform = "translateX(0)";
+            darkModeText.textContent = "Mode Gelap";
+          }
+        }
+      }
+
+      if (localStorage.getItem("darkMode") === "true") {
+        html.classList.add("dark");
+        if (darkModeToggle) {
+          darkModeToggle.style.transform = "translateX(28px)";
+          darkModeText.textContent = "Mode Terang";
+        }
+      }
+
+      darkToggle?.addEventListener("click", toggleDarkMode);
+      darkToggleMobile?.addEventListener("click", toggleDarkMode);
+
+      const burger = document.getElementById("burger");
+      const mobileSidebar = document.getElementById("mobileSidebar");
+      const overlay = document.getElementById("overlay");
+      const mobileLinks = mobileSidebar.querySelectorAll("a");
+
+      function openMenu() {
+        mobileSidebar.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+        burger.classList.add("active");
+        setTimeout(() => overlay.classList.remove("opacity-0"), 10);
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeMenu() {
+        mobileSidebar.classList.add("-translate-x-full");
+        overlay.classList.add("opacity-0");
+        burger.classList.remove("active");
+        setTimeout(() => {
+          overlay.classList.add("hidden");
+          document.body.style.overflow = "";
+        }, 300);
+      }
+
+      burger?.addEventListener("click", () => {
+        if (mobileSidebar.classList.contains("-translate-x-full")) {
+          openMenu();
+        } else {
+          closeMenu();
+        }
+      });
+
+      overlay?.addEventListener("click", closeMenu);
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMenu();
+        });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          !mobileSidebar.classList.contains("-translate-x-full")
+        ) {
+          closeMenu();
+        }
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.style.background = "rgba(0, 20, 50, 0.95)";
+        } else {
+          navbar.style.background = "rgba(0, 20, 50, 0.78)";
+        }
+      });
+
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDesc = document.getElementById("modalDesc");
+      const modalClose = document.getElementById("modalClose");
+      const modalPrev = document.getElementById("modalPrev");
+      const modalNext = document.getElementById("modalNext");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      let currentImageIndex = 0;
+      const images = [];
+
+      projectCards.forEach((card, index) => {
+        const img = card.querySelector("img");
+        const title = card.querySelector("h3").textContent;
+        const desc = card.querySelector("p").textContent;
+        images.push({ src: img.src, title, desc });
+        card.addEventListener("click", () => {
+          currentImageIndex = index;
+          showModal();
+        });
+      });
+
+      function showModal() {
+        const img = images[currentImageIndex];
+        modalImage.src = img.src;
+        modalTitle.textContent = img.title;
+        modalDesc.textContent = img.desc;
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function showPrevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + images.length) % images.length;
+        showModal();
+      }
+
+      function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        showModal();
+      }
+
+      modalClose?.addEventListener("click", closeModal);
+      modalPrev?.addEventListener("click", showPrevImage);
+      modalNext?.addEventListener("click", showNextImage);
+      modal?.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("active")) return;
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowLeft") showPrevImage();
+        if (e.key === "ArrowRight") showNextImage();
+      });
+
+      const contactForm = document.querySelector("#contact form");
+      contactForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert(
+          "Terima kasih! Pesan Anda telah diterima. Kami akan segera menghubungi Anda."
+        );
+        contactForm.reset();
+      });
+
+      if ("IntersectionObserver" in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.src;
+              imageObserver.unobserve(img);
+            }
+          });
+        });
+        document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+          imageObserver.observe(img);
+        });
+      }
+    </script>
+  </body>
+</html>
