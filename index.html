@@ -520,4 +520,127 @@
         <img id="modalImage" class="modal-image" src="" alt="Project preview" /> 
         <div class="text-center mt-6 text-white"> 
           <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3> 
-          <p id="modalDesc" class="text-lg opacity-8
+          <p id="modalDesc" class="text-lg opacity-8<div class="text-center mt-6 text-white"> 
+          <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3> 
+          <p id="modalDesc" class="text-lg opacity-80"></p> 
+        </div> 
+      </div> 
+    </div> 
+
+    <script>
+      // 1. Dark Mode Logic
+      const darkToggle = document.getElementById('darkToggle');
+      const darkToggleMobile = document.getElementById('darkToggleMobile');
+      const darkModeToggleCircle = document.getElementById('darkModeToggle');
+      const darkModeText = document.getElementById('darkModeText');
+      const html = document.documentElement;
+
+      function updateDarkModeUI(isDark) {
+        if (isDark) {
+          html.classList.add('dark');
+          if (darkModeToggleCircle) darkModeToggleCircle.style.transform = 'translateX(28px)';
+          if (darkModeText) darkModeText.innerText = 'Mode Terang';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          html.classList.remove('dark');
+          if (darkModeToggleCircle) darkModeToggleCircle.style.transform = 'translateX(0px)';
+          if (darkModeText) darkModeText.innerText = 'Mode Gelap';
+          localStorage.setItem('theme', 'light');
+        }
+      }
+
+      // Init Theme
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        updateDarkModeUI(true);
+      }
+
+      [darkToggle, darkToggleMobile].forEach(btn => {
+        btn?.addEventListener('click', () => {
+          updateDarkModeUI(!html.classList.contains('dark'));
+        });
+      });
+
+      // 2. Mobile Menu (Burger) Logic
+      const burger = document.getElementById('burger');
+      const mobileSidebar = document.getElementById('mobileSidebar');
+      const overlay = document.getElementById('overlay');
+      const mobileLinks = mobileSidebar.querySelectorAll('a');
+
+      function toggleMenu() {
+        burger.classList.toggle('active');
+        mobileSidebar.classList.toggle('-translate-x-full');
+        overlay.classList.toggle('hidden');
+        setTimeout(() => overlay.classList.toggle('opacity-0'), 10);
+        document.body.classList.toggle('overflow-hidden');
+      }
+
+      burger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+      mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+      // 3. Image Gallery / Modal Logic
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalClose = document.getElementById('modalClose');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      let currentIdx = 0;
+      const projectData = Array.from(projectCards).map(card => ({
+        src: card.querySelector('img').src,
+        title: card.querySelector('h3')?.innerText || "Proyek PT. LRU",
+        desc: card.querySelector('p')?.innerText || "Dokumentasi pengerjaan proyek konstruksi."
+      }));
+
+      function openModal(index) {
+        currentIdx = index;
+        const data = projectData[currentIdx];
+        modalImg.src = data.src;
+        modalTitle.innerText = data.title;
+        modalDesc.innerText = data.desc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      projectCards.forEach((card, index) => {
+        card.addEventListener('click', () => openModal(index));
+      });
+
+      modalClose.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+
+      document.getElementById('modalNext').addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIdx = (currentIdx + 1) % projectData.length;
+        openModal(currentIdx);
+      });
+
+      document.getElementById('modalPrev').addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIdx = (currentIdx - 1 + projectData.length) % projectData.length;
+        openModal(currentIdx);
+      });
+
+      // Close modal on escape key
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.remove('active');
+      });
+
+      // 4. Navbar Scroll Effect
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          nav.style.padding = '5px 0';
+          nav.style.background = 'rgba(0, 20, 50, 0.95)';
+        } else {
+          nav.style.padding = '0';
+          nav.style.background = 'rgba(0, 20, 50, 0.78)';
+        }
+      });
+    </script> 
+  </body> 
+  </html>
+
