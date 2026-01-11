@@ -155,6 +155,7 @@
         } 
       } 
  
+      /* Modal Styles */ 
       .modal { 
         display: none; 
         position: fixed; 
@@ -277,6 +278,7 @@
         filter: brightness(0.7); 
       } 
  
+      /* Lazy Load Placeholder */ 
       img[loading="lazy"] { 
         background: linear-gradient( 
           90deg, 
@@ -296,6 +298,7 @@
         } 
       } 
  
+      /* Burger to X Animation */ 
       #burger.active .burger-line-1 { 
         transform: translateY(8px) rotate(45deg); 
       } 
@@ -312,6 +315,7 @@
   <body 
     class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 overflow-x-hidden" 
   > 
+    <!-- Floating Particles --> 
     <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden"> 
       <div 
         class="particle w-2 h-2" 
@@ -387,6 +391,7 @@
       </div> 
     </nav> 
  
+   <!-- Overlay & Mobile Sidebar --> 
     <div 
       id="overlay" 
       class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300 ease-in-out" 
@@ -401,6 +406,7 @@
       aria-label="Mobile navigation" 
     > 
       <div class="p-6 pt-24 pb-8 space-y-6"> 
+        <!-- Logo Section --> 
         <div class="text-center mb-6 pb-6 border-b border-white/20"> 
           <img 
             src="Logo_LRU.png" 
@@ -413,6 +419,7 @@
           <p class="text-xs text-white/70 mt-1">General Contractor Papua</p> 
         </div> 
  
+        <!-- Navigation Links - Thumb-Friendly Design --> 
         <div class="space-y-2"> 
           <a 
             href="#home" 
@@ -451,6 +458,7 @@
           </a> 
         </div> 
  
+        <!-- Dark Mode Toggle - Enhanced --> 
         <div class="pt-6 border-t border-white/20"> 
           <button 
             id="darkToggleMobile" 
@@ -476,6 +484,7 @@
           </button> 
         </div> 
  
+        <!-- Contact Button - Prominent CTA --> 
         <a 
           href="#contact" 
           class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl text-center shadow-lg hover:shadow-accent/40 active:scale-95 transition-all duration-200 mt-6" 
@@ -484,6 +493,7 @@
           <span>Hubungi Kami</span> 
         </a> 
  
+        <!-- Footer Credit --> 
         <div class="text-center pt-6 mt-4 border-t border-white/20"> 
           <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p> 
           <p class="text-xs text-white/40 mt-1">All Rights Reserved</p> 
@@ -491,6 +501,7 @@
       </div> 
     </nav> 
  
+    <!-- Image Modal --> 
     <div id="imageModal" class="modal"> 
       <div class="modal-content"> 
         <button class="modal-close" id="modalClose" aria-label="Close modal"> 
@@ -509,21 +520,4 @@
         <img id="modalImage" class="modal-image" src="" alt="Project preview" /> 
         <div class="text-center mt-6 text-white"> 
           <h3 id="modalTitle" class="text-2xl font-bold mb-2"></h3> 
-          <p id="modalDesc" class="text-lg opacity-80"></p> 
-        </div> 
-      </div> 
-    </div> 
- 
-    <main> 
-      <!-- HERO --> 
-      <header 
-        id="home" 
-        class="relative hero-bg min-h-screen flex items-center justify-center text-center text-white overflow-hidden" 
-      > 
-        <picture> 
-          <source 
-            media="(max-width: 768px)" 
-            srcset="vladimir-patkachakov.jpg" 
-          /> 
-          <img 
-       
+          <p id="modalDesc" class="text-lg opacity-8
