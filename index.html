@@ -779,213 +779,119 @@
       <!-- ================= TENTANG KAMI + VISI & MISI ================= -->
 <section
 id="about"
-role="region"
-aria-label="Tentang Kami, Visi dan Misi PT Lambu Raya Utama"
-class="py-20 bg-gray-100 dark:bg-gray-950 overflow-hidden"
+aria-labelledby="about-title"
+class="py-20 lg:py-28 bg-gray-100 dark:bg-gray-950"
 >
-<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-7xl mx-auto px-5 sm:px-6">
 
-  <!-- JUDUL -->
-  <header class="mb-6">
-    <h2 class="text-4xl md:text-5xl font-bold">
+  <!-- JUDUL UTAMA -->
+  <header class="max-w-3xl mb-16">
+    <h2
+      id="about-title"
+      class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
+    >
       <span class="text-gradient">Tentang Kami</span>
     </h2>
-
-    <!-- IKON GESER -->
-    <div class="flex items-center gap-3 mt-3 text-gray-500 dark:text-gray-400 select-none">
-      <span class="text-sm">Geser</span>
-      <svg
-        class="w-6 h-6 swipe-icon"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M4 12h16M14 6l6 6-6 6" />
-      </svg>
-      <span class="text-sm">ke kanan</span>
-    </div>
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+      PT. Lambu Raya Utama adalah perusahaan general contractor terpercaya di Papua
+      yang berkomitmen menghadirkan solusi konstruksi berkualitas, aman,
+      dan berkelanjutan.
+    </p>
   </header>
 
-  <!-- SLIDER WRAPPER -->
-  <div class="relative">
+  <!-- GRID KONTEN -->
+  <div class="grid lg:grid-cols-2 gap-14 items-center">
 
-    <!-- PANAH KIRI -->
-    <button
-      onclick="prevSlide()"
-      aria-label="Slide sebelumnya"
-      class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2
-             bg-white/80 dark:bg-gray-900/80 backdrop-blur
-             p-3 rounded-full shadow-lg
-             hover:bg-accent hover:text-white
-             transition hidden md:flex z-10"
-    >
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-           stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
+    <!-- KONTEN TEKS -->
+    <div>
+      <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        Sejak berdiri pada tahun <strong>2010</strong>, kami telah menyelesaikan
+        berbagai proyek konstruksi skala kecil hingga besar dengan standar
+        profesionalisme tinggi. Didukung pengalaman lebih dari
+        <strong>15 tahun</strong>, kami memahami tantangan geografis dan teknis
+        pembangunan di Papua.
+      </p>
 
-    <!-- PANAH KANAN -->
-    <button
-      onclick="nextSlideManual()"
-      aria-label="Slide selanjutnya"
-      class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2
-             bg-white/80 dark:bg-gray-900/80 backdrop-blur
-             p-3 rounded-full shadow-lg
-             hover:bg-accent hover:text-white
-             transition hidden md:flex z-10"
-    >
-      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-           stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round"
-              d="M9 5l7 7-7 7" />
-      </svg>
-    </button>
+      <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-10">
+        Dengan tim profesional yang kompeten dan berintegritas, PT. Lambu Raya Utama
+        siap menjadi mitra strategis dalam mewujudkan proyek konstruksi
+        yang tepat mutu, tepat waktu, dan tepat biaya.
+      </p>
 
-    <!-- SLIDER -->
-    <div
-      id="aboutSlider"
-      class="flex transition-transform duration-700 ease-in-out"
-    >
-
-      <!-- SLIDE 1 -->
-      <article class="min-w-full grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="text-lg text-gray-700 dark:text-gray-300 mb-5 leading-relaxed">
-            <strong>PT. Lambu Raya Utama</strong> adalah perusahaan general
-            contractor terpercaya di Papua sejak tahun 2010, menangani proyek
-            konstruksi skala kecil hingga besar.
-          </p>
-          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            Dengan pengalaman lebih dari <strong>15 tahun</strong>, kami
-            memahami tantangan pembangunan di Papua dan menghadirkan solusi
-            konstruksi berkualitas dan berkelanjutan.
-          </p>
-        </div>
-
-        <img
-          src="vladimir-patkachakov.jpg"
-          alt="Proyek konstruksi PT Lambu Raya Utama sebagai general contractor di Papua"
-          class="rounded-2xl shadow-xl w-full aspect-[4/3] object-cover"
-          loading="lazy"
-        />
-      </article>
-
-      <!-- SLIDE 2 -->
-      <article class="min-w-full flex items-center">
-        <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl shadow-xl w-full">
-          <h3 class="text-3xl font-bold mb-5 text-accent">Visi</h3>
-          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            Menjadi perusahaan general contractor terdepan di Papua yang
-            profesional, berintegritas, dan berdaya saing tinggi dalam
-            pembangunan berkelanjutan.
-          </p>
-        </div>
-      </article>
-
-      <!-- SLIDE 3 -->
-      <article class="min-w-full flex items-center">
-        <div class="bg-white dark:bg-gray-900 p-10 rounded-2xl shadow-xl w-full">
-          <h3 class="text-3xl font-bold mb-5 text-accent">Misi</h3>
-          <ul class="space-y-4 text-lg text-gray-700 dark:text-gray-300">
-            <li>✔ Memberikan hasil konstruksi berkualitas tinggi</li>
-            <li>✔ Mengutamakan keselamatan dan ketepatan waktu</li>
-            <li>✔ Mengembangkan SDM profesional</li>
-            <li>✔ Mendukung pembangunan Papua berkelanjutan</li>
-          </ul>
-        </div>
-      </article>
-
+      <!-- STATISTIK -->
+      <ul class="grid grid-cols-2 gap-5" role="list">
+        <li class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md">
+          <p class="text-3xl font-bold text-accent">200+</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Proyek Selesai</p>
+        </li>
+        <li class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md">
+          <p class="text-3xl font-bold text-accent">15+</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Tahun Pengalaman</p>
+        </li>
+        <li class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md">
+          <p class="text-3xl font-bold text-accent">50+</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Tim Profesional</p>
+        </li>
+        <li class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md">
+          <p class="text-3xl font-bold text-accent">100%</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Kepuasan Klien</p>
+        </li>
+      </ul>
     </div>
 
-    <!-- DOT -->
-    <div class="flex justify-center gap-3 mt-8">
-      <button aria-label="Slide Tentang Kami" onclick="slideTo(0)" class="dot w-3 h-3 rounded-full bg-accent"></button>
-      <button aria-label="Slide Visi" onclick="slideTo(1)" class="dot w-3 h-3 rounded-full bg-gray-400"></button>
-      <button aria-label="Slide Misi" onclick="slideTo(2)" class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+    <!-- GAMBAR -->
+    <figure class="relative">
+      <img
+        src="vladimir-patkachakov.jpg"
+        alt="Proyek konstruksi PT. Lambu Raya Utama di Papua"
+        class="rounded-2xl shadow-2xl w-full h-auto object-cover"
+        loading="lazy"
+        decoding="async"
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        style="aspect-ratio: 4 / 3"
+      />
+      <span
+        aria-hidden="true"
+        class="absolute -bottom-6 -left-6 w-40 h-40 bg-accent/20 rounded-full blur-3xl"
+      ></span>
+      <span
+        aria-hidden="true"
+        class="absolute -top-6 -right-6 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"
+      ></span>
+    </figure>
+
+  </div>
+
+  <!-- VISI & MISI -->
+  <div class="mt-24 grid md:grid-cols-2 gap-12">
+
+    <!-- VISI -->
+    <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
+      <h3 class="text-2xl font-bold mb-4 text-accent">Visi</h3>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        Menjadi perusahaan konstruksi terdepan dan terpercaya di Papua yang
+        unggul dalam kualitas, keselamatan kerja, serta berkontribusi
+        terhadap pembangunan berkelanjutan.
+      </p>
+    </div>
+
+    <!-- MISI -->
+    <div class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
+      <h3 class="text-2xl font-bold mb-4 text-accent">Misi</h3>
+      <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+        <li>Menyediakan layanan konstruksi berkualitas tinggi dan tepat waktu.</li>
+        <li>Mengutamakan keselamatan kerja dan standar profesionalisme.</li>
+        <li>Mengembangkan SDM yang kompeten dan berintegritas.</li>
+        <li>Membangun hubungan jangka panjang dengan klien dan mitra.</li>
+        <li>Mendukung pembangunan berkelanjutan di Papua.</li>
+      </ul>
     </div>
 
   </div>
+
 </div>
-
-<!-- STYLE -->
-<style>
-  @keyframes swipeHint {
-    0% { transform: translateX(0); opacity: .4; }
-    50% { transform: translateX(10px); opacity: 1; }
-    100% { transform: translateX(0); opacity: .4; }
-  }
-  .swipe-icon { animation: swipeHint 1.6s ease-in-out infinite; }
-</style>
-
-<!-- JAVASCRIPT -->
-<script>
-  const slider = document.getElementById("aboutSlider");
-  const dots = document.querySelectorAll(".dot");
-  const swipeIcon = document.querySelector(".swipe-icon");
-
-  let currentSlide = 0;
-  const maxSlide = 2;
-  const intervalTime = 5000;
-  let autoSlide;
-
-  function updateDots() {
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("bg-accent", i === currentSlide);
-      dot.classList.toggle("bg-gray-400", i !== currentSlide);
-    });
-  }
-
-  function slideTo(index) {
-    currentSlide = index;
-    slider.style.transform = `translateX(-${index * 100}%)`;
-    updateDots();
-    resetAutoSlide();
-    if (swipeIcon) swipeIcon.style.opacity = 0;
-  }
-
-  function nextSlide() {
-    slideTo(currentSlide === maxSlide ? 0 : currentSlide + 1);
-  }
-
-  function prevSlide() {
-    slideTo(currentSlide === 0 ? maxSlide : currentSlide - 1);
-  }
-
-  function nextSlideManual() {
-    nextSlide();
-  }
-
-  function startAutoSlide() {
-    autoSlide = setInterval(nextSlide, intervalTime);
-  }
-
-  function resetAutoSlide() {
-    clearInterval(autoSlide);
-    startAutoSlide();
-  }
-
-  // SWIPE
-  let startX = 0;
-  slider.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-  slider.addEventListener("touchend", e => {
-    const endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) nextSlide();
-    if (endX - startX > 50) prevSlide();
-  });
-
-  // PAUSE WHEN TAB HIDDEN (PageSpeed)
-  document.addEventListener("visibilitychange", () => {
-    document.hidden ? clearInterval(autoSlide) : startAutoSlide();
-  });
-
-  startAutoSlide();
-</script>
 </section>
-<!-- ================= END ================= -->
+
 
       <!-- LAYANAN KAMI -->
       <section id="services" class="py-24 bg-white dark:bg-gray-900">
@@ -1469,82 +1375,37 @@ class="py-20 bg-gray-100 dark:bg-gray-950 overflow-hidden"
                     Jam Operasional
                   </h3>
                   <p class="text-gray-600 dark:text-gray-400">
-                    Senin - Jumat: 07:00 - 16:00<br />Sabtu - Minggu: Off/ Libur
+                    Senin - Jumat: 07:00 - 16:00<br />Sabtu - Minggu: Tutup
                   </p>
                 </div>
               </div>
             </div>
             
              <!-- Contact Form -->
-             <form
-             id="contactForm"
-             class="space-y-6 bg-white/10 backdrop-blur-lg p-10 rounded-3xl"
-             data-aos="fade-left"
-           >
-             <h3 class="text-3xl font-bold mb-6">Kirim Pesan</h3>
-             <div>
-               <label for="name" class="block text-sm font-medium mb-2"
-                 >Nama Lengkap *</label
-               >
-               <input
-                 type="text"
-                 id="name"
-                 name="name"
-                 required
-                 class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition"
-                 placeholder="Masukkan nama Anda"
-               />
-             </div>
-             <div>
-               <label for="email" class="block text-sm font-medium mb-2"
-                 >Email *</label
-               >
-               <input
-                 type="email"
-                 id="email"
-                 name="email"
-                 required
-                 class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition"
-                 placeholder="nama@email.com"
-               />
-             </div>
-             <div>
-               <label for="phone" class="block text-sm font-medium mb-2"
-                 >No. Telepon *</label
-               >
-               <input
-                 type="tel"
-                 id="phone"
-                 name="phone"
-                 required
-                 class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition"
-                 placeholder="08XX-XXXX-XXXX"
-               />
-             </div>
-             <div>
-               <label for="message" class="block text-sm font-medium mb-2"
-                 >Pesan Anda *</label
-               >
-               <textarea
-                 id="message"
-                 name="message"
-                 rows="4"
-                 required
-                 class="w-full px-6 py-4 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:border-accent focus:outline-none transition resize-none"
-                 placeholder="Ceritakan kebutuhan anda..."
-               ></textarea>
-             </div>
-             <button
-               type="submit"
-               class="w-full px-8 py-4 bg-gradient-to-r from-accent to-blue-700 rounded-xl text-xl font-bold hover:shadow-lg hover:shadow-accent/50 transform hover:scale-105 transition-all duration-300"
-             >
-               Kirim Pesan
-             </button>
-             <p class="text-sm opacity-70 text-center">
-               Kami akan merespon dalam 1x24 Jam, terima kasih.
-             </p>
-           </form>
-         </div>
+             <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
+              <form class="space-y-6">
+                <div>
+                  <label for="name" class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white">Nama Lengkap</label>
+                  <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-gray-900 dark:text-white" placeholder="Masukkan nama Anda" />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white">Email</label>
+                  <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-gray-900 dark:text-white" placeholder="email@nama.com" />
+                </div>
+                <div>
+                  <label for="phone" class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white">Nomor Telepon</label>
+                  <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all text-gray-900 dark:text-white" placeholder="+62 812-3456-7890" />
+                </div>
+                <div>
+                  <label for="message" class="block text-sm font-semibold mb-2 text-gray-900 dark:text-white">Pesan</label>
+                  <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none text-gray-900 dark:text-white" placeholder="Tulis pesan Anda di sini..."></textarea>
+                </div>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-accent to-blue-600 text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-accent/50 hover:scale-105 transition-all duration-300">
+                  Kirim Pesan
+                </button>
+              </form>
+            </div>
+          </div>
          
          <!-- Map -->
           <div class="mt-16">
@@ -1557,7 +1418,7 @@ class="py-20 bg-gray-100 dark:bg-gray-950 overflow-hidden"
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000!5m2!1sid!2sid"
                 width="100%"
-                height="450"
+                height="350"
                 style="border: 0"
                 allowfullscreen=""
                 loading="lazy"
