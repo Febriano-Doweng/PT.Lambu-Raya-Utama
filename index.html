@@ -1755,14 +1755,48 @@
         if (e.key === "ArrowRight") showNextImage();
       });
 
-      const contactForm = document.querySelector("#contact form");
-      contactForm?.addEventListener("submit", (e) => {
+     // Contact Form Handler - Email
+      const contactForm = document.getElementById("contactForm");
+      contactForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        alert(
-          "Terima kasih! Pesan Anda telah diterima. Kami akan segera menghubungi Anda."
+
+        const formData = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          message: document.getElementById("message").value,
+        };
+
+        // Create email subject and body
+        const subject = encodeURIComponent(
+          "Permintaan Konsultasi - " + formData.name
         );
-        contactForm.reset();
+        const body = encodeURIComponent(
+          "Nama: " +
+            formData.name +
+            "\n" +
+            "Email: " +
+            formData.email +
+            "\n" +
+            "Telepon: " +
+            formData.phone +
+            "\n\n" +
+            "Pesan:\n" +
+            formData.message
+        );
+
+        // Open default email client
+        window.location.href = `mailto:lambu.utama@yahoo.co.id?subject=${subject}&body=${body}`;
+
+        // Show success message
+        setTimeout(() => {
+          alert(
+            "Terima kasih telah menghubungi kami PT. Lambu Raya Utama. Pesan anda telah kami terima dan sedang kami tinjau Hormat Kami PT. Lambu Raya Utama"
+          );
+          contactForm.reset();
+        }, 500);
       });
+
 
       if ("IntersectionObserver" in window) {
         const imageObserver = new IntersectionObserver((entries) => {
@@ -1781,3 +1815,4 @@
     </script>
   </body>
 </html>
+
