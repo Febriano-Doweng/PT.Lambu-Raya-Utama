@@ -12,6 +12,14 @@
 
     <link rel="preload" as="image" href="Logo_LRU.png" />
     <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
 
     <meta
       property="og:title"
@@ -299,6 +307,36 @@
       #burger.active .burger-line-3 {
         transform: translateY(-8px) rotate(-45deg);
       }
+
+      .hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-dot.active {
+  background: #00d4ff;
+  transform: scale(1.4);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.9);
+}
+
     </style>
   </head>
 
@@ -329,6 +367,27 @@
     </div>
 
     <nav id="navbar" class="fixed top-0 w-full z-50 text-white">
+
+      <!-- JAM OPERASIONAL (NAVBAR INFO) -->
+      <div
+      id="operationalStatus"
+      class="hidden md:flex items-center gap-3 text-sm font-medium"
+      >
+      <i class="fa-solid fa-clock text-accent"></i>
+      
+      <span id="operationalText" class="text-gray-600 dark:text-gray-300">
+        Memuat status...
+      </span>
+      
+      <!-- BADGE -->
+      <span
+        id="operationalBadge"
+        class="px-3 py-1 rounded-full text-xs font-bold tracking-wide"
+      >
+        --
+      </span>
+      </div>
+
       <div
         class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center"
       >
@@ -414,7 +473,7 @@
           <p class="text-sm font-medium text-white tracking-wide">
             PT. Lambu Raya Utama
           </p>
-          <p class="text-xs text-white/70 mt-1">General Contractor</p>
+          <p class="text-xs text-white/70 mt-1">Mimika Papua</p>
         </div>
         <div class="space-y-2">
           <a
@@ -480,7 +539,7 @@
               <line x1="12" y1="16" x2="12" y2="12"></line>
               <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
-            <span>Tentang Kami</span>
+            <span>Tentang kami</span>
           </a>
           <a
             href="#services"
@@ -585,7 +644,7 @@
             ></path>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
-          <span>Hubungi Kami</span>
+          <span>Hubungi kami</span>
         </a>
         <div class="text-center pt-6 mt-4 border-t border-white/20">
           <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p>
@@ -617,23 +676,25 @@
       </div>
     </div>
 
+    <!-- HERO SECTION -->
     <main>
       <header
         id="home"
         class="relative hero-bg min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
       >
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcset="vladimir-patkachakov.jpg"
-          />
-          <img
-            src="vladimir-patkachakov.jpg"
-            alt="Hero Image Construction"
-            class="absolute inset-0 w-full h-full object-cover object-center opacity-50 animate-fadeIn"
-            style="object-position: center 40%"
-          />
-        </picture>
+    <!-- HERO BACKGROUND SLIDER -->
+    <div id="heroSlider" class="absolute inset-0 w-full h-full overflow-hidden">
+      <img src="vladimir-patkachakov.jpg" class="hero-slide active" alt="Hero 1" />
+      <img src="dok. sm.jpg" class="hero-slide" alt="Hero 2" />
+      <img src="inspkesi with msd.jpg" class="hero-slide" alt="Hero 3" />
+    </div>
+
+    <!-- DOT INDICATOR -->
+    <div
+    id="heroDots"
+    class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20"
+  ></div>
+
         <div
           class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
         ></div>
@@ -660,13 +721,13 @@
               href="#services"
               class="px-8 py-4 bg-gradient-to-r from-accent to-blue-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-accent/50 hover:scale-105 transition-all duration-300"
             >
-              Lihat Layanan
+              Lihat layanan
             </a>
             <a
               href="#contact"
               class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold text-lg rounded-full border-2 border-white/30 hover:bg-white/20 hover:scale-105 transition-all duration-300"
             >
-              Hubungi Kami
+              Hubungi kami
             </a>
           </div>
         </div>
@@ -675,7 +736,7 @@
       <section id="why" class="py-24 bg-white dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-6">
           <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
-            <span class="text-gradient">Mengapa Memilih Kami?</span>
+            <span class="text-gradient">Mengapa memilih kami?</span>
           </h2>
           <p
             class="text-center text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-3xl mx-auto"
@@ -790,7 +851,7 @@
             id="about-title"
             class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5"
           >
-            <span class="text-gradient">Tentang Kami</span>
+            <span class="text-gradient">Tentang kami</span>
           </h2>
           <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
             PT. Lambu Raya Utama adalah perusahaan general contractor terpercaya di Papua
@@ -897,7 +958,7 @@
       <section id="services" class="py-24 bg-white dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-6">
           <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
-            <span class="text-gradient">Layanan Kami</span>
+            <span class="text-gradient">Layanan kami</span>
           </h2>
           <p
             class="text-center text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-3xl mx-auto"
@@ -1242,290 +1303,123 @@
         </div>
       </section>
 
-      <!-- HUBUNGI KAMI -->
-      <section id="contact" class="py-24 bg-white dark:bg-gray-900">
+      <footer class="bg-gray-900 dark:bg-black text-white py-16">
         <div class="max-w-7xl mx-auto px-6">
-          <h2 class="text-4xl md:text-5xl font-bold text-center mb-4">
-            <span class="text-gradient">Hubungi Kami</span>
-          </h2>
-          <p
-            class="text-center text-gray-600 dark:text-gray-400 text-lg mb-16 max-w-3xl mx-auto"
-          >
-            Siap membantu mewujudkan proyek konstruksi Anda. Hubungi kami untuk
-            konsultasi dan penawaran terbaik
-          </p>
-            <div class="space-y-8">
-              <div class="flex items-start gap-6">
-                <div
-                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-                    ></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
+      
+          <div class="grid gap-12 md:grid-cols-4">
+      
+            <!-- BRAND -->
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <img src="Logo_LRU.png" alt="Logo PT. Lambu Raya Utama" class="h-12 w-12">
                 <div>
-                  <h3
-                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
-                  >
-                    Alamat Kantor
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-400">
-                    Jl. Nenas SP. II Timika Jaya,<br />Kec. Mimika Baru, Kabupaten Mimika, Papua Tengah.
-                   
-                  </p>
-                </div>
-                      
-              </div>
-              <div class="flex items-start gap-6">
-                <div
-                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                    ></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3
-                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
-                  >
-                    Telepon
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-400">
-                    0901-3267914<br />0821-9916-8755
+                  <h3 class="font-bold text-xl">PT. Lambu Raya Utama</h3>
+                  <p class="text-sm text-gray-400">
+                    General Contractor • Leveransir • Support Service
                   </p>
                 </div>
               </div>
-              <div class="flex items-start gap-6">
-                <div
-                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                    ></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <h3
-                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
-                  >
-                    Email
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-400">
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Mitra terpercaya untuk solusi konstruksi di Papua sejak 2010.
+              </p>
+            </div>
+      
+            <!-- KONTAK -->
+            <div>
+              <h4 class="font-bold text-lg mb-4">Infromasi kontak</h4>
+              <ul class="space-y-3 text-gray-400 text-sm">
+      
+                <li class="flex gap-3">
+                  <i class="fa-solid fa-location-dot text-accent mt-1"></i>
+                  <span>
+                    Jl. Nenas SP. II Timika Jaya,<br>
+                    Kec. Mimika Baru, Kabupaten Mimika,<br>
+                    Papua Tengah
+                  </span>
+                </li>
+      
+                <li class="flex gap-3 items-center">
+                  <i class="fa-solid fa-phone text-accent"></i>
+                  <span>0901-3267914</span>
+                </li>
+      
+                <li class="flex gap-3 items-center">
+                  <i class="fa-brands fa-whatsapp text-accent"></i>
+                  <span>0821-9916-8755</span>
+                </li>
+      
+                <li class="flex gap-3 items-center">
+                  <i class="fa-solid fa-envelope text-accent"></i>
+                  <a href="mailto:lambu.utama@yahoo.co.id" class="hover:text-accent">
                     lambu.utama@yahoo.co.id
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start gap-6">
-                <div
-                  class="w-14 h-14 bg-gradient-to-br from-accent to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"
+                  </a>
+                </li>
+      
+              </ul>
+            </div>
+
+            <!-- SOCIAL -->
+            <div>
+              <h4 class="font-bold text-lg mb-4">Media sosial</h4>
+              <div class="flex gap-4">
+      
+                <a
+                  href="https://www.instagram.com/_lamburayautama/"
+                  target="_blank"
+                  aria-label="Instagram"
+                  class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center hover:scale-110 transition"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                  </svg>
-                </div>
-                <div>
-                  <h3
-                    class="text-xl font-bold mb-2 text-gray-900 dark:text-white"
-                  >
-                    Jam Operasional
-                  </h3>
-                  <p class="text-gray-600 dark:text-gray-400">
-                    Senin - Jumat: 07:00 - 16:00<br />Sabtu - Minggu: Tutup
-                  </p>
-                </div>
+                  <i class="fa-brands fa-instagram text-white text-lg"></i>
+                </a>
+      
+                <a
+                  href="https://www.linkedin.com/in/lamburaya-utama-614491273/"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                  class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center hover:scale-110 transition"
+                >
+                  <i class="fa-brands fa-linkedin-in text-white text-lg"></i>
+                </a>
+      
               </div>
             </div>
             
-         <!-- WhatsApp -->
-         <a
-         href="https://wa.me/6282199168755"
-         target="_blank"
-         aria-label="Chat WhatsApp"
-         class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-xl hover:scale-110 transition-all"
-       >
-         <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="28" height="28">
-           <path d="M20.52 3.48A11.82 11.82 0 0 0 12 0a11.94 11.94 0 0 0-10 18.39L0 24l5.76-1.86A11.93 11.93 0 0 0 12 24a12 12 0 0 0 8.52-20.52zM12 22a9.94 9.94 0 0 1-5.08-1.4l-.36-.21-3.42 1.11 1.12-3.33-.24-.34A10 10 0 1 1 12 22zm5.3-7.4c-.29-.15-1.7-.84-1.97-.94s-.47-.15-.67.15-.77.94-.95 1.14-.35.22-.65.07a8.06 8.06 0 0 1-2.36-1.45 8.87 8.87 0 0 1-1.64-2.03c-.17-.3 0-.46.13-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5s.05-.38-.02-.53c-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57a1.1 1.1 0 0 0-.8.38 3.34 3.34 0 0 0-1.04 2.48 5.8 5.8 0 0 0 1.21 3.08 13.24 13.24 0 0 0 5.07 4.46c.7.3 1.25.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.7-.7 1.94-1.38.24-.68.24-1.26.17-1.38-.06-.12-.27-.19-.56-.34z"/>
-         </svg>
-       </a>
+            <!-- whatsapp -->
+            <a
+            href="https://wa.me/6282199168755"
+            target="_blank"
+            aria-label="Chat WhatsApp"
+            class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition"
+          >
+            <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+          </a>
 
-       
-       
-         <!-- Map -->
-          <div class="mt-16">
-            <h3 class="text-3xl font-bold text-center mb-8">
-              <span class="text-gradient">Lokasi Kami</span>
-            </h3>
-            <div
-              class="rounded-2xl overflow-hidden shadow-2xl border-4 border-accent/20"
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000!5m2!1sid!2sid"
-                width="100%"
-                height="350"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Lokasi PT. Lambu Raya Utama di Google Maps"
-                class="w-full"
-              ></iframe>
+            <!-- MAPS -->
+            <div>
+              <h4 class="font-bold text-lg mb-4">Lokasi</h4>
+              <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000"
+                  class="w-full h-48"
+                  loading="lazy"
+                  style="border:0"
+                  title="Lokasi PT. Lambu Raya Utama"
+                ></iframe>
+              </div>
             </div>
+      
           </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-<footer class="bg-gray-900 dark:bg-black text-white py-12">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- GRID -->
-    <div class="grid md:grid-cols-3 gap-12 mb-8">
-
-      <!-- BRAND -->
-      <div>
-        <div class="flex items-center gap-3 mb-4">
-          <img src="Logo_LRU.png" alt="Logo LRU" class="h-12 w-12" />
-          <div>
-            <h3 class="font-bold text-xl">PT. Lambu Raya Utama</h3>
-            <p class="text-sm text-gray-400">
-              General Contractor • Leveransir • Support Service
+      
+          <!-- COPYRIGHT -->
+          <div class="border-t border-gray-800 mt-12 pt-6 text-center">
+            <p class="text-gray-400 text-sm">
+              © 2026 PT. Lambu Raya Utama – All rights reserved.
             </p>
           </div>
+      
         </div>
-        <p class="text-gray-400 text-sm leading-relaxed">
-          Mitra terpercaya untuk solusi konstruksi di Papua sejak 2010.
-          Komitmen pada kualitas, keselamatan, dan kepuasan klien.
-        </p>
-      </div>
-
-      <!-- QUICK LINKS -->
-      <div>
-        <h4 class="font-bold text-lg mb-4">Tautan Cepat</h4>
-        <ul class="space-y-2">
-          <li>
-            <a href="#home" class="text-gray-400 hover:text-accent transition-colors">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#why" class="text-gray-400 hover:text-accent transition-colors">
-              Keunggulan
-            </a>
-          </li>
-          <li>
-            <a href="#about" class="text-gray-400 hover:text-accent transition-colors">
-              Tentang Kami
-            </a>
-          </li>
-          <li>
-            <a href="#services" class="text-gray-400 hover:text-accent transition-colors">
-              Layanan
-            </a>
-          </li>
-          <li>
-            <a href="#projects" class="text-gray-400 hover:text-accent transition-colors">
-              Proyek
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- SOCIAL -->
-      <div>
-        <h4 class="font-bold text-lg mb-4">Ikuti Kami</h4>
-        <div class="flex gap-3">
-          <!-- Instagram -->
-          <a
-            href="https://www.instagram.com/_lamburayautama/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            class="w-10 h-10 bg-gradient-to-br from-accent to-blue-600 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-accent/50 transition-all duration-300"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
-
-          <!-- LinkedIn -->
-          <a
-            href="https://www.linkedin.com/in/lamburaya-utama-614491273/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            class="w-10 h-10 bg-gradient-to-br from-accent to-blue-600 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-accent/50 transition-all duration-300"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- COPYRIGHT -->
-    <div class="border-t border-gray-800 pt-8 mt-8 text-center">
-      <p class="text-gray-400 text-sm">
-        © 2026 PT. Lambu Raya Utama - All rights reserved.
-      </p>
-    </div>
-
-  </div>
-</footer>
-
+      </footer>
+      
 
 
     <script>
@@ -1705,5 +1599,53 @@
         });
       }
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slides = document.querySelectorAll(".hero-slide");
+        const dotsContainer = document.getElementById("heroDots");
+    
+        if (!slides.length || !dotsContainer) return;
+    
+        let currentIndex = 0;
+        let sliderInterval;
+    
+        slides.forEach((_, index) => {
+          const dot = document.createElement("div");
+          dot.className = "hero-dot";
+          if (index === 0) dot.classList.add("active");
+    
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+            restartAutoSlide();
+          });
+    
+          dotsContainer.appendChild(dot);
+        });
+    
+        const dots = document.querySelectorAll(".hero-dot");
+    
+        function goToSlide(index) {
+          slides[currentIndex].classList.remove("active");
+          dots[currentIndex].classList.remove("active");
+    
+          currentIndex = index;
+    
+          slides[currentIndex].classList.add("active");
+          dots[currentIndex].classList.add("active");
+        }
+    
+        function nextSlide() {
+          goToSlide((currentIndex + 1) % slides.length);
+        }
+    
+        function restartAutoSlide() {
+          clearInterval(sliderInterval);
+          sliderInterval = setInterval(nextSlide, 5000);
+        }
+    
+        sliderInterval = setInterval(nextSlide, 5000);
+      });
+    </script>
+    <script src="operational-hours.js"></script>
   </body>
 </html>
