@@ -261,17 +261,7 @@
         position: relative;
         overflow: hidden;
       }
-      .project-card::before {
-        content: "🔍";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        font-size: 48px;
-        z-index: 10;
-        transition: all 0.3s ease;
-        opacity: 0;
-      }
+
       .project-card:hover::before {
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
@@ -368,26 +358,6 @@
 
     <nav id="navbar" class="fixed top-0 w-full z-50 text-white">
 
-      <!-- JAM OPERASIONAL (NAVBAR INFO) -->
-      <div
-      id="operationalStatus"
-      class="hidden md:flex items-center gap-3 text-sm font-medium"
-      >
-      <i class="fa-solid fa-clock text-accent"></i>
-      
-      <span id="operationalText" class="text-gray-600 dark:text-gray-300">
-        Memuat status...
-      </span>
-      
-      <!-- BADGE -->
-      <span
-        id="operationalBadge"
-        class="px-3 py-1 rounded-full text-xs font-bold tracking-wide"
-      >
-        --
-      </span>
-      </div>
-
       <div
         class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center"
       >
@@ -404,7 +374,6 @@
           <li><a href="#about" class="nav-link">Tentang</a></li>
           <li><a href="#services" class="nav-link">Layanan</a></li>
           <li><a href="#projects" class="nav-link">Proyek</a></li>
-          <li><a href="#contact" class="nav-link">Kontak</a></li>
         </ul>
         <div class="flex items-center gap-4">
           <button
@@ -624,28 +593,7 @@
             </div>
           </button>
         </div>
-        <a
-          href="#contact"
-          class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl text-center shadow-lg hover:shadow-accent/40 active:scale-95 transition-all duration-200 mt-6"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-            ></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-          <span>Hubungi kami</span>
-        </a>
+      
         <div class="text-center pt-6 mt-4 border-t border-white/20">
           <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p>
           <p class="text-xs text-white/40 mt-1">All Rights Reserved</p>
@@ -684,8 +632,8 @@
       >
     <!-- HERO BACKGROUND SLIDER -->
     <div id="heroSlider" class="absolute inset-0 w-full h-full overflow-hidden">
-      <img src="vladimir-patkachakov.jpg" class="hero-slide active" alt="Hero 1" />
-      <img src="dok. sm.jpg" class="hero-slide" alt="Hero 2" />
+      <img src="Kantor LRU.png" class="hero-slide active" alt="Hero 1" />
+      <img src="vladimir-patkachakov.jpg" class="hero-slide" alt="Hero 2" />
       <img src="inspkesi with msd.jpg" class="hero-slide" alt="Hero 3" />
     </div>
 
@@ -706,7 +654,7 @@
             <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
           </h1>
           <p
-            class="mt-8 text-xl md:text-3xl font-light opacity-90"
+            class="mt-8 text-xl md:text-2xl font-light opacity-90"
             data-aos="fade-up"
             data-aos-delay="300"
           >
@@ -717,18 +665,7 @@
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <a
-              href="#services"
-              class="px-8 py-4 bg-gradient-to-r from-accent to-blue-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-accent/50 hover:scale-105 transition-all duration-300"
-            >
-              Lihat layanan
-            </a>
-            <a
-              href="#contact"
-              class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold text-lg rounded-full border-2 border-white/30 hover:bg-white/20 hover:scale-105 transition-all duration-300"
-            >
-              Hubungi kami
-            </a>
+
           </div>
         </div>
       </header>
@@ -903,7 +840,7 @@
           <!-- GAMBAR -->
           <figure class="relative">
             <img
-              src="dok. sm.jpg"
+              src="Kantor LRU.png"
               alt="Proyek konstruksi PT. Lambu Raya Utama di Papua"
               class="rounded-2xl shadow-2xl w-full h-auto object-cover"
               loading="lazy"
@@ -1354,7 +1291,6 @@
                 <ul class="space-y-3 text-gray-400 text-sm">
         
                   <li class="flex gap-3">
-                    <i class="fa-solid fa-location-dot text-accent mt-1"></i>
                     <span>
                       Jl. Nenas SP. II Timika Jaya,<br>
                       Kec. Mimika Baru, Kabupaten Mimika,<br>
@@ -1382,7 +1318,7 @@
 
             <!-- SOCIAL -->
             <div>
-              <h4 class="font-bold text-lg mb-4">Media sosial</h4>
+              <h4 class="font-bold text-lg mb-4">Media Sosial</h4>
               <div class="flex gap-4">
       
                 <a
@@ -1418,7 +1354,7 @@
 
             <!-- MAPS -->
             <div>
-              <h4 class="font-bold text-lg mb-4">Lokasi</h4>
+              <h4 class="font-bold text-lg mb-4">Google Maps</h4>
               <div class="rounded-xl overflow-hidden border border-white/10 shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.64114682733974!2d136.85140715926622!3d-4.512904849663498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x682377481f94df87%3A0xd8d1e5ab5a790ab7!2sPT.%20LAMBU%20RAYA%20UTAMA!5e0!3m2!1sid!2sid!4v1733017600000"
@@ -1666,8 +1602,6 @@
         sliderInterval = setInterval(nextSlide, 5000);
       });
     </script>
-    <script src="operational-hours.js"></script>
   </body>
 </html>
-
 
