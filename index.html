@@ -297,7 +297,6 @@
       #burger.active .burger-line-3 {
         transform: translateY(-8px) rotate(-45deg);
       }
-
       .hero-slide {
   position: absolute;
   inset: 0;
@@ -374,6 +373,7 @@
           <li><a href="#about" class="nav-link">Tentang</a></li>
           <li><a href="#services" class="nav-link">Layanan</a></li>
           <li><a href="#projects" class="nav-link">Proyek</a></li>
+          <li><a href="#contact" class="nav-link">Kontak</a></li>
         </ul>
         <div class="flex items-center gap-4">
           <button
@@ -419,6 +419,7 @@
       </div>
     </nav>
 
+    <!-- OVERLAY DAN MOBILE SIDEBAR-->
     <div
       id="overlay"
       class="fixed inset-0 bg-black/80 z-40 hidden opacity-0 transition-opacity duration-300 ease-in-out"
@@ -634,7 +635,7 @@
     <div id="heroSlider" class="absolute inset-0 w-full h-full overflow-hidden">
       <img src="Kantor LRU.png" class="hero-slide active" alt="Hero 1" />
       <img src="vladimir-patkachakov.jpg" class="hero-slide" alt="Hero 2" />
-      <img src="inspkesi with msd.jpg" class="hero-slide" alt="Hero 3" />
+      <img src="dok. sm.jpg" class="hero-slide" alt="Hero 3" />
     </div>
 
     <!-- DOT INDICATOR -->
@@ -1242,6 +1243,11 @@
 
       
        <!-- FOOTER -->
+       <footer
+       id="contact"
+       class="bg-gray-900 dark:bg-black text-white py-16"
+     >
+
       <footer class="bg-gray-900 dark:bg-black text-white py-16">
         <div class="max-w-7xl mx-auto px-6">
       
@@ -1259,6 +1265,7 @@
                 </div>
               </div>
             </div>
+            
       
             <!-- KONTAK -->
             <div>
@@ -1342,15 +1349,29 @@
               </div>
             </div>
             
-            <!-- whatsapp -->
+            <!-- Floating WhatsApp Button -->
             <a
-            href="https://wa.me/6282199168755"
+            id="waButton"
+            href="https://wa.me/6282199168755?text=Halo%20saya%20ingin%20konsultasi"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="Chat WhatsApp"
-            class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition"
-          >
+            class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full
+                   flex items-center justify-center shadow-2xl
+                   transition-all duration-500 ease-out
+                   opacity-0 scale-75 pointer-events-none"
+            >
             <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
-          </a>
+            
+            <!-- Tooltip -->
+            <span
+              class="absolute right-16 opacity-0 group-hover:opacity-100
+                     bg-gray-900 text-white text-sm px-3 py-1 rounded-lg
+                     whitespace-nowrap transition-opacity duration-300"
+            >
+              Chat via WhatsApp
+            </span>
+            </a>
 
             <!-- MAPS -->
             <div>
@@ -1369,14 +1390,21 @@
           </div>
       
           <!-- COPYRIGHT -->
-          <div class="border-t border-gray-800 mt-12 pt-6 text-center">
-            <p class="text-gray-400 text-sm">
-              © 2026 PT. Lambu Raya Utama – All rights reserved.
-            </p>
+          <div
+          class="border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-400"
+          >
+          <p>
+            © <span id="year"></span>
+            <span class="font-semibold text-white">PT. Lambu Raya Utama</span>.
+            All rights reserved.
+          </p>
           </div>
-      
-        </div>
-      </footer>
+          
+          <script>
+          document.getElementById("year").textContent = new Date().getFullYear();
+          </script>
+          
+          
 
     <script>
       const darkToggle = document.getElementById("darkToggle");
@@ -1602,6 +1630,36 @@
         sliderInterval = setInterval(nextSlide, 5000);
       });
     </script>
+    <script>
+        const waButton = document.getElementById("waButton");
+      
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 200) {
+            waButton.classList.remove(
+              "opacity-0",
+              "scale-75",
+              "pointer-events-none"
+            );
+            waButton.classList.add(
+              "opacity-100",
+              "scale-100",
+              "pointer-events-auto"
+            );
+          } else {
+            waButton.classList.add(
+              "opacity-0",
+              "scale-75",
+              "pointer-events-none"
+            );
+            waButton.classList.remove(
+              "opacity-100",
+              "scale-100",
+              "pointer-events-auto"
+            );
+          }
+        });
+
+      </script>   
   </body>
 </html>
 
