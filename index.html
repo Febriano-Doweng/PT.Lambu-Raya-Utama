@@ -31,11 +31,11 @@
     />
     <meta
       property="og:image"
-      content="https://pt-lambu-raya-utama-h34m.vercel.app/Logo_LRU.png"
+      content="https://lamburayautama.vercel.app/Logo_LRU.png"
     />
     <meta
       property="og:url"
-      content="https://pt-lambu-raya-utama-h34m.vercel.app/"
+      content="https://lamburayautama.vercel.app/"
     />
     <meta property="og:type" content="website" />
 
@@ -92,11 +92,17 @@
         background-clip: text;
       }
       #navbar {
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        background: rgba(0, 20, 50, 0.78);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      }
+        backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: transparent; /* atau rgba(0, 20, 50, 0) */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tambahkan efek saat scroll */
+#navbar.scrolled {
+  background: rgba(0, 20, 50, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
       .nav-link {
         position: relative;
         padding: 10px 0;
@@ -326,6 +332,10 @@
   box-shadow: 0 0 12px rgba(0, 212, 255, 0.9);
 }
 
+  section {
+    scroll-margin-top: 90px; /* tinggi navbar */
+  }
+    
     </style>
   </head>
 
@@ -355,6 +365,7 @@
       ></div>
     </div>
 
+    <!-- NAVBAR -->
     <nav id="navbar" class="fixed top-0 w-full z-50 text-white">
 
       <div
@@ -366,6 +377,14 @@
             alt="Logo LRU"
             class="h-14 w-14 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-12"
           />
+          <div class="block">
+            <h1 class="text-sm sm:text-l md:text-1xl font-bold text-white leading-tight group-hover:text-accent transition-colors duration-300">
+              PT. LAMBU RAYA UTAMA
+            </h1>
+            <p class="text-[10px] sm:text-s md:text-s text-white/80 font-medium">
+              General Contractor Timika Papua
+            </p>
+          </div>
         </a>
         <ul class="hidden md:flex gap-10 font-bold text-lg">
           <li><a href="#home" class="nav-link">Home</a></li>
@@ -418,6 +437,7 @@
         </div>
       </div>
     </nav>
+    
 
     <!-- OVERLAY DAN MOBILE SIDEBAR-->
     <div
@@ -436,122 +456,44 @@
       <div class="p-6 pt-24 pb-8 space-y-6">
         <div class="text-center mb-6 pb-6 border-b border-white/20">
           <img
-            src="Logo_LRU.png"
+            src="Kantor LRU.png"
             alt="Logo PT. Lambu Raya Utama"
             class="h-20 mx-auto mb-4 drop-shadow-lg"
           />
           <p class="text-sm font-medium text-white tracking-wide">
             PT. Lambu Raya Utama
           </p>
-          <p class="text-xs text-white/70 mt-1">Mimika Papua</p>
+          <p class="text-xs text-white/70 mt-1">General Contractor Timika Papua</p>
         </div>
         <div class="space-y-2">
           <a
             href="#home"
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-accent group-hover:scale-110 transition-transform"
-            >
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
             <span>Home</span>
           </a>
           <a
             href="#why"
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-accent group-hover:scale-110 transition-transform"
-            >
-              <polygon
-                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-              ></polygon>
-            </svg>
             <span>Keunggulan</span>
           </a>
           <a
             href="#about"
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-accent group-hover:scale-110 transition-transform"
-            >
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
             <span>Tentang kami</span>
           </a>
           <a
             href="#services"
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-accent group-hover:scale-110 transition-transform"
-            >
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
             <span>Layanan</span>
           </a>
           <a
             href="#projects"
             class="flex items-center gap-4 px-5 py-4 rounded-xl text-white font-semibold text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="text-accent group-hover:scale-110 transition-transform"
-            >
-              <path
-                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
-              ></path>
-            </svg>
             <span>Proyek</span>
           </a>
         </div>
@@ -564,7 +506,7 @@
             <span
               class="flex items-center gap-3 text-white font-semibold text-base"
             >
-              <svg
+                <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
@@ -594,6 +536,18 @@
             </div>
           </button>
         </div>
+
+        <a
+        href="#footer"
+        class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6
+               bg-gradient-to-r from-accent to-blue-600 text-white
+               rounded-xl shadow-lg
+               hover:shadow-accent/40 hover:scale-105
+               active:scale-95 transition-all duration-200 mt-6"
+      >
+        <i class="fa-solid fa-phone"></i>
+        <span>Informasi Kontak</span>
+      </a>
       
         <div class="text-center pt-6 mt-4 border-t border-white/20">
           <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p>
@@ -643,24 +597,7 @@
     id="heroDots"
     class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-20"
   ></div>
-
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70"
-        ></div>
-        <div class="relative z-10 px-6 py-20 max-w-5xl mx-auto">
-          <h1
-            class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight animate-float"
-            data-aos="zoom-in"
-          >
-            <span class="text-gradient">PT. LAMBU RAYA UTAMA</span>
-          </h1>
-          <p
-            class="mt-8 text-xl md:text-2xl font-light opacity-90"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            General Contractor • Leveransir • Support Service
-          </p>
+            
           <div
             class="mt-12 flex flex-wrap gap-6 justify-center"
             data-aos="fade-up"
@@ -1247,6 +1184,11 @@
        id="contact"
        class="bg-gray-900 dark:bg-black text-white py-16"
      >
+     <footer
+     id="footer"
+     class="bg-slate-900 text-white pt-24 pb-10 transition-all duration-500"
+   >
+     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
 
       <footer class="bg-gray-900 dark:bg-black text-white py-16">
         <div class="max-w-7xl mx-auto px-6">
@@ -1395,7 +1337,7 @@
           >
           <p>
             © <span id="year"></span>
-            <span class="font-semibold text-white">PT. Lambu Raya Utama</span>.
+            <span class="font-semibold text-white">PT Lambu Raya Utama</span>
             All rights reserved.
           </p>
           </div>
@@ -1499,10 +1441,10 @@
       const navbar = document.getElementById("navbar");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
-          navbar.style.background = "rgba(0, 20, 50, 0.95)";
-        } else {
-          navbar.style.background = "rgba(0, 20, 50, 0.78)";
-        }
+            navbar.classList.add("scrolled");
+         } else {
+            navbar.classList.remove("scrolled");
+          }
       });
 
       const modal = document.getElementById("imageModal");
@@ -1659,7 +1601,8 @@
           }
         });
 
-      </script>   
+    </script>
+        
   </body>
 </html>
 
