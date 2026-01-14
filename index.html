@@ -300,8 +300,7 @@
       }
       #burger.active .burger-line-3 {
         transform: translateY(-8px) rotate(-45deg);
-      }
-      .hero-slide {
+      }   .hero-slide {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -316,23 +315,33 @@
 }
 
 .hero-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(240, 238, 238, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .hero-dot.active {
-  background: #feffff;
-  transform: scale(1.4);
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.9);
+  background: #ffffff;
+  transform: scale(1.2);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+}
+/* LINGKARAN (RING) DOT AKTIF */
+.hero-dot.active::after {
+  content: "";
+  position: absolute;
+  inset: -6px;               /* ukuran ring */
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  animation: pulseRing 1.8s infinite ease-out;
 }
 
   section {
     scroll-margin-top: 90px;
   }
+      
     </style>
   </head>
 
@@ -1581,4 +1590,5 @@
         
   </body>
 </html>
+
 
