@@ -370,7 +370,7 @@
       ></div>
     </div>
 
-      <!-- NAVBAR -->
+    <!-- NAVBAR -->
     <nav id="navbar" class="fixed top-0 w-full z-50 text-white">
 
       <div
@@ -390,24 +390,15 @@
               General Contractor Timika Papua
             </p>
           </div>
-          <ul class="hidden md:flex gap-10 font-bold text-lg items-center">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#why" class="nav-link">Keunggulan</a></li>
-            <li><a href="#about" class="nav-link">Tentang</a></li>
-            <li><a href="#services" class="nav-link">Layanan</a></li>
-            <li><a href="#projects" class="nav-link">Proyek</a></li>
-          
-            <li>
-              <button
-                type="button"
-                onclick="openContactModal()"
-                class="nav-link"
-              >
-                Kontak
-              </button>
-            </li>
-          </ul>
-          
+        </a>
+        <ul class="hidden md:flex gap-10 font-bold text-lg">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#why" class="nav-link">Keunggulan</a></li>
+          <li><a href="#about" class="nav-link">Tentang</a></li>
+          <li><a href="#services" class="nav-link">Layanan</a></li>
+          <li><a href="#projects" class="nav-link">Proyek</a></li>
+          <li><a href="#contact" class="nav-link">Kontak</a></li>
+        </ul>
         <div class="flex items-center gap-4">
           <button
             id="darkToggle"
@@ -551,19 +542,17 @@
           </button>
         </div>
 
-        <button
-        type="button"
-        onclick="openContactModal()"
+        <a
+        href="#contact"
         class="flex items-center justify-center gap-3 text-base font-bold py-4 px-6
                bg-gradient-to-r from-accent to-blue-600 text-white
                rounded-xl shadow-lg
                hover:shadow-accent/40 hover:scale-105
-               active:scale-95 transition-all duration-200 mt-6 w-full"
+               active:scale-95 transition-all duration-200 mt-6"
       >
         <i class="fa-solid fa-phone"></i>
         <span>Informasi Kontak</span>
-      </button>
-      
+      </a>
       
         <div class="text-center pt-6 mt-4 border-t border-white/20">
           <p class="text-xs text-white/60">© 2026 Bryant Tuakora</p>
@@ -1271,117 +1260,29 @@
         </div>
       </footer>
 
-                <!-- CONTACT MODAL -->
-<div
-id="contactModal"
-class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/70 backdrop-blur-sm"
->
-
-<!-- MODAL BOX -->
-<div
-  class="relative max-w-5xl w-full mx-4 bg-gradient-to-br from-blue-900 to-black text-white rounded-3xl p-10 overflow-y-auto max-h-[90vh]"
->
-
-  <!-- CLOSE BUTTON -->
-  <button
-    onclick="closeContactModal()"
-    class="absolute top-6 right-6 text-white/70 hover:text-accent text-3xl"
-    aria-label="Tutup"
-  >
-    &times;
-  </button>
-
-  <h2 class="text-4xl md:text-5xl font-bold text-center mb-14 text-gradient">
-    Hubungi Kami
-  </h2>
-
-  <div class="grid md:grid-cols-2 gap-14">
-
-    <!-- INFO KONTAK -->
-    <div class="space-y-6 text-lg">
-      <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
-
-      <p class="flex items-center gap-4">
-        <i data-feather="mail" class="w-6 h-6 text-accent"></i>
-        <a href="mailto:lambu.utama@yahoo.co.id" class="hover:text-accent">
-          lambu.utama@yahoo.co.id
-        </a>
-      </p>
-
-      <p class="flex items-center gap-4">
-        <i data-feather="phone" class="w-6 h-6 text-accent"></i>
-        <a href="tel:09013267914" class="hover:text-accent">
-          0901-3267914
-        </a>
-      </p>
-
-      <p class="flex items-center gap-4">
-        <i data-feather="smartphone" class="w-6 h-6 text-accent"></i>
-        <a href="tel:+6282199168755" class="hover:text-accent">
-          0821-9916-8755
-        </a>
-      </p>
-
-      <p class="flex items-start gap-4">
-        <i data-feather="map-pin" class="w-6 h-6 text-accent mt-1"></i>
-        <span>
-          Jl. Nenas SP. II Timika Jaya,<br />
-          Mimika – Papua Tengah
+      <!-- Floating WhatsApp Button -->
+      <a
+        id="waButton"
+        href="https://wa.me/6282199168755?text=Halo%20saya%20ingin%20konsultasi"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat WhatsApp"
+        class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full
+               flex items-center justify-center shadow-2xl
+               transition-all duration-500 ease-out
+               opacity-0 scale-75 pointer-events-none group"
+      >
+        <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+        
+        <!-- Tooltip -->
+        <span
+          class="absolute right-16 opacity-0 group-hover:opacity-100
+                 bg-gray-900 text-white text-sm px-3 py-1 rounded-lg
+                 whitespace-nowrap transition-opacity duration-300"
+        >
+          Chat via WhatsApp
         </span>
-      </p>
-    </div>
-
-    <!-- FORM -->
-    <form
-id="contactForm"
-class="space-y-5 bg-white/10 backdrop-blur-lg p-8 rounded-2xl"
->
-<h3 class="text-2xl font-bold mb-4">Kirim Pesan</h3>
-
-<input
-  type="text"
-  name="name"
-  required
-  placeholder="Nama Lengkap"
-  class="w-full px-5 py-3 rounded-xl bg-white/20 text-white placeholder-white/60 border border-white/30 focus:border-accent outline-none"
-/>
-
-<input
-  type="email"
-  name="email"
-  required
-  placeholder="Email"
-  class="w-full px-5 py-3 rounded-xl bg-white/20 text-white placeholder-white/60 border border-white/30 focus:border-accent outline-none"
-/>
-
-<input
-  type="tel"
-  name="phone"
-  required
-  placeholder="No. Telepon"
-  class="w-full px-5 py-3 rounded-xl bg-white/20 text-white placeholder-white/60 border border-white/30 focus:border-accent outline-none"
-/>
-
-<textarea
-  name="message"
-  rows="4"
-  required
-  placeholder="Pesan Anda"
-  class="w-full px-5 py-3 rounded-xl bg-white/20 text-white placeholder-white/60 border border-white/30 focus:border-accent outline-none resize-none"
-></textarea>
-
-<button
-  type="submit"
-  class="w-full py-4 bg-gradient-to-r from-accent to-blue-700 rounded-xl font-bold hover:scale-105 transition"
->
-  Kirim Email
-</button>
-
-<p class="text-sm text-center opacity-70">
-  Pesan akan dikirim langsung ke email admin
-</p>
-</form>
-
+      </a>
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
@@ -1918,54 +1819,7 @@ class="space-y-5 bg-white/10 backdrop-blur-lg p-8 rounded-2xl"
       e.stopPropagation();
     });
     </script>
-      <script>
-        function openContactModal() {
-          document.getElementById("contactModal").classList.remove("hidden");
-          document.getElementById("contactModal").classList.add("flex");
-        }
-      
-        function closeContactModal() {
-          document.getElementById("contactModal").classList.add("hidden");
-          document.getElementById("contactModal").classList.remove("flex");
-        }
-      
-        // Tutup modal saat klik area gelap
-        document.getElementById("contactModal").addEventListener("click", function (e) {
-          if (e.target === this) closeContactModal();
-        });
-      </script>
-      <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  
-      <script>
-        (function () {
-          emailjs.init("EygwYhsVToJxhwh4f");
-        })();
-      </script>
-      <script>
-        document
-          .getElementById("contactForm")
-          .addEventListener("submit", function (e) {
-            e.preventDefault();
-      
-            emailjs
-              .sendForm(
-                "EygwYhsVToJxhwh4f",
-                "template_yjz08oa",
-                this
-              )
-              .then(
-                function () {
-                  alert("Pesan berhasil dikirim. Terima kasih!");
-                  document.getElementById("contactForm").reset();
-                  closeContactModal();
-                },
-                function (error) {
-                  alert("Gagal mengirim pesan. Silakan coba lagi.");
-                  console.error(error);
-                }
-              );
-          });
-      </script>
+
   </body>
 </html>
 
