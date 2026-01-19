@@ -1575,6 +1575,7 @@
   </div>
 
   <script>
+    
     // Data proyek
     const projectData = {
       konstruksi: {
@@ -1773,10 +1774,10 @@
         <!-- Galeri Dokumentasi -->
         <div>
           <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DOKUMENTASI PROYEK</h4>
-          <div class="gallery-grid">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             ${project.gallery.map(img => `
               <div class="gallery-img rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition" onclick="openLightbox('${img}')">
-                <img src="${img}" alt="Dokumentasi proyek" class="w-full h-48 object-cover">
+                <img src="${img}" alt="Dokumentasi proyek" class="w-full h-64 object-cover">
               </div>
             `).join('')}
           </div>
