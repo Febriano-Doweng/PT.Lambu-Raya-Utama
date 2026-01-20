@@ -1,3 +1,4 @@
+//Tailwind CSS
 tailwind.config = {
   darkMode: "class",
   theme: {
@@ -63,7 +64,7 @@ tailwind.config = {
     },
   },
 };
-
+//JAVA SCRIPT
 document.getElementById("year").textContent = new Date().getFullYear();
 const darkToggle = document.getElementById("darkToggle");
 const darkToggleMobile = document.getElementById("darkToggleMobile");
