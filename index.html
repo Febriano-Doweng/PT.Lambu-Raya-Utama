@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html class="scroll-smooth" lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +6,7 @@
     <title>PT. Lambu Raya Utama - General Contractor Timika Papua</title>
     <meta
       name="description"
-      content="Kontraktor profesional Papua: konstruksi jalan, camp, gudang, mining support & pengadaan. Sejak 2010."
+      content="Kontraktor profesional Papua: konstruksi jalan, camp, gudang, mining support &amp; pengadaan. Sejak 2010."
     />
 
     <!-- Preload Critical Assets -->
@@ -28,7 +27,7 @@
     />
     <meta
       property="og:description"
-      content="Kontraktor profesional: jalan hauling, camp, gudang, mining support & pengadaan. Sejak 2010."
+      content="Kontraktor profesional: jalan hauling, camp, gudang, mining support &amp; pengadaan. Sejak 2010."
     />
     <meta
       property="og:image"
@@ -57,25 +56,49 @@
             },
             keyframes: {
               float: {
-                "0%, 100%": { transform: "translateY(0)" },
-                "50%": { transform: "translateY(-25px)" },
+                "0%, 100%": {
+                  transform: "translateY(0)",
+                },
+                "50%": {
+                  transform: "translateY(-25px)",
+                },
               },
               glow: {
-                "0%": { boxShadow: "0 0 20px rgba(0,212,255,0.5)" },
-                "100%": { boxShadow: "0 0 50px rgba(0,212,255,0.9)" },
+                "0%": {
+                  boxShadow: "0 0 20px rgba(0,212,255,0.5)",
+                },
+                "100%": {
+                  boxShadow: "0 0 50px rgba(0,212,255,0.9)",
+                },
               },
               gradientShift: {
-                "0%": { backgroundPosition: "0% 50%" },
-                "50%": { backgroundPosition: "100% 50%" },
-                "100%": { backgroundPosition: "0% 50%" },
+                "0%": {
+                  backgroundPosition: "0% 50%",
+                },
+                "50%": {
+                  backgroundPosition: "100% 50%",
+                },
+                "100%": {
+                  backgroundPosition: "0% 50%",
+                },
               },
               fadeIn: {
-                "0%": { opacity: "0" },
-                "100%": { opacity: "1" },
+                "0%": {
+                  opacity: "0",
+                },
+                "100%": {
+                  opacity: "1",
+                },
               },
               scaleIn: {
-                "0%": { transform: "scale(0.9)", opacity: "0" },
-                "100%": { transform: "scale(1)", opacity: "1" },
+                "0%": {
+                  transform: "scale(0.9)",
+                  opacity: "0",
+                },
+                "100%": {
+                  transform: "scale(1)",
+                  opacity: "1",
+                },
               },
             },
           },
@@ -84,40 +107,29 @@
     </script>
 
     <style>
-      /* ========================================
-       GLOBAL STYLES
-    ======================================== */
       section {
         scroll-margin-top: 100px;
       }
-
       .text-gradient {
         background: linear-gradient(90deg, #00d4ff, #0099ff, #003c8f);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-
-      /* ========================================
-       NAVBAR STYLES
-    ======================================== */
       #navbar {
         background: transparent;
         box-shadow: none;
         transition: background 0.4s ease, box-shadow 0.4s ease;
       }
-
       #navbar.scrolled {
         background: #111827; /* dark slate */
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
       }
-
       .nav-link {
         position: relative;
         padding: 10px 0;
         transition: color 0.4s ease, transform 0.4s ease;
       }
-
       .nav-link::after {
         content: "";
         position: absolute;
@@ -129,110 +141,30 @@
         transition: width 0.5s ease;
         transform: translateX(-50%);
       }
-
       .nav-link:hover::after {
         width: 100%;
       }
-
       .nav-link:hover {
         color: #00d4ff !important;
         text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
         transform: translateY(-3px);
       }
-
-      /* ========================================
-       BURGER MENU ANIMATION
-    ======================================== */
-      #burger.active .burger-line-1 {
-        transform: translateY(8px) rotate(45deg);
-      }
-
-      #burger.active .burger-line-2 {
-        opacity: 0;
-        transform: scaleX(0);
-      }
-
-      #burger.active .burger-line-3 {
-        transform: translateY(-8px) rotate(-45deg);
-      }
-
-      /* ========================================
-       CARD STYLES
-    ======================================== */
       .card-premium {
         transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275),
           box-shadow 0.7s ease;
         border: 1px solid rgba(0, 212, 255, 0.15);
         will-change: transform, box-shadow;
       }
-
       .card-premium:hover {
         transform: translateY(-25px) scale(1.05);
         box-shadow: 0 40px 80px rgba(0, 60, 150, 0.5);
         border-color: #00d4ff;
       }
-
-      /* ========================================
-       HERO SECTION STYLES
-    ======================================== */
       .hero-bg {
         background: linear-gradient(-45deg, #001122, #002b55, #003c8f, #0050cc);
         background-size: 400% 400%;
         animation: gradientShift 12s ease infinite;
       }
-
-      .hero-slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0;
-        transition: opacity 1.2s ease-in-out;
-      }
-
-      .hero-slide.active {
-        opacity: 1;
-      }
-
-      .hero-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 9999px;
-        background: rgba(240, 238, 238, 0.4);
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.3s ease;
-      }
-
-      .hero-dot.active {
-        background: #ffffff;
-        transform: scale(1.2);
-        box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
-      }
-
-      .hero-dot.active::after {
-        content: "";
-        position: absolute;
-        inset: -6px;
-        border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.9);
-        animation: pulseRing 1.8s infinite ease-out;
-      }
-
-      @keyframes pulseRing {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(1.5);
-          opacity: 0;
-        }
-      }
-
-      /* ========================================
-       PARTICLE ANIMATION
-    ======================================== */
       .particle {
         position: absolute;
         background: rgba(0, 212, 255, 0.25);
@@ -241,7 +173,6 @@
         animation: floatParticle 8s linear infinite;
         will-change: transform, opacity;
       }
-
       @keyframes floatParticle {
         0% {
           transform: translateY(100vh) scale(0);
@@ -259,9 +190,7 @@
         }
       }
 
-      /* ========================================
-       MODAL STYLES
-    ======================================== */
+      /* Modal Styles */
       .modal {
         display: none;
         position: fixed;
@@ -274,14 +203,12 @@
         backdrop-filter: blur(10px);
         contain: layout style paint;
       }
-
       .modal.active {
         display: flex;
         align-items: center;
         justify-content: center;
         animation: fadeIn 0.3s ease-in-out;
       }
-
       .modal-content {
         position: relative;
         max-width: 90vw;
@@ -289,7 +216,6 @@
         animation: scaleIn 0.3s ease-out;
         will-change: transform;
       }
-
       .modal-image {
         max-width: 100%;
         max-height: 90vh;
@@ -297,7 +223,6 @@
         border-radius: 12px;
         box-shadow: 0 25px 50px rgba(0, 212, 255, 0.3);
       }
-
       .modal-close {
         position: absolute;
         top: -50px;
@@ -316,12 +241,10 @@
         font-size: 24px;
         font-weight: bold;
       }
-
       .modal-close:hover {
         background: rgba(255, 255, 255, 0.2);
         transform: rotate(90deg) scale(1.1);
       }
-
       .modal-nav {
         position: absolute;
         top: 50%;
@@ -339,18 +262,28 @@
         transition: background 0.3s ease, transform 0.3s ease;
         font-size: 24px;
       }
-
       .modal-nav:hover {
         background: rgba(0, 212, 255, 0.3);
         transform: translateY(-50%) scale(1.1);
       }
-
       .modal-nav.prev {
         left: 20px;
       }
-
       .modal-nav.next {
         right: 20px;
+      }
+      .project-card {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        will-change: auto;
+      }
+      .project-card:hover::before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      .project-card:hover img {
+        filter: brightness(0.7);
       }
 
       /* ========================================
@@ -371,7 +304,6 @@
       .project-card:hover img {
         filter: brightness(0.7);
       }
-
       /* ========================================
        LAZY LOAD STYLES
     ======================================== */
@@ -394,7 +326,6 @@
           background-position: -200% 0;
         }
       }
-
       /* ========================================
        SCROLL ANIMATION STYLES
     ======================================== */
@@ -403,210 +334,89 @@
         transform: translateY(50px);
         transition: opacity 0.8s ease, transform 0.8s ease;
       }
-
       .scroll-animate.animate-in {
         opacity: 1;
         transform: translateY(0);
       }
-
       .scroll-animate-left {
         opacity: 0;
         transform: translateX(-50px);
         transition: opacity 0.8s ease, transform 0.8s ease;
       }
-
       .scroll-animate-left.animate-in {
         opacity: 1;
         transform: translateX(0);
       }
-
       .scroll-animate-right {
         opacity: 0;
         transform: translateX(50px);
         transition: opacity 0.8s ease, transform 0.8s ease;
       }
-
       .scroll-animate-right.animate-in {
         opacity: 1;
         transform: translateX(0);
       }
-
       .scroll-animate-scale {
         opacity: 0;
         transform: scale(0.9);
         transition: opacity 0.8s ease, transform 0.8s ease;
       }
-
       .scroll-animate-scale.animate-in {
         opacity: 1;
         transform: scale(1);
       }
-
-      /* ========================================
-       RESPONSIVE STYLES
-    ======================================== */
-      @media (max-width: 768px) {
-        #navbar {
-          padding: 10px 15px;
-        }
-
-        .nav-link {
-          padding: 8px 0;
-          font-size: 14px;
-        }
-
-        .card-premium:hover {
-          transform: translateY(-10px) scale(1.02);
-          box-shadow: 0 20px 40px rgba(0, 60, 150, 0.3);
-        }
-
-        .particle {
-          display: none;
-        }
-
-        .modal-content {
-          padding: 10px;
-          max-height: 80vh;
-        }
-
-        .modal-nav {
-          width: 40px;
-          height: 40px;
-          font-size: 20px;
-        }
-
-        .modal-nav.prev {
-          left: 10px;
-        }
-
-        .modal-nav.next {
-          right: 10px;
-        }
-
-        .modal-close {
-          top: -40px;
-          width: 36px;
-          height: 36px;
-          font-size: 20px;
-        }
-
-        .project-card:hover::before {
-          transform: translate(-50%, -50%) scale(0.8);
-        }
-
-        .hero-bg {
-          min-height: 80vh;
-        }
-
-        .hero-dot {
-          width: 10px;
-          height: 10px;
-        }
-
-        section {
-          padding: 3rem 1rem;
-        }
-
-        .grid {
-          gap: 1rem;
-        }
+      /* Burger to X Animation */
+      #burger.active .burger-line-1 {
+        transform: translateY(8px) rotate(45deg);
       }
-
-      @media (max-width: 480px) {
-        #navbar {
-          padding: 8px 10px;
-        }
-
-        .nav-link {
-          font-size: 12px;
-          padding: 6px 0;
-        }
-
-        .card-premium:hover {
-          transform: translateY(-5px) scale(1.01);
-        }
-
-        .modal-nav {
-          width: 35px;
-          height: 35px;
-          font-size: 18px;
-        }
-
-        .modal-nav.prev {
-          left: 5px;
-        }
-
-        .modal-nav.next {
-          right: 5px;
-        }
-
-        .modal-close {
-          top: -35px;
-          width: 32px;
-          height: 32px;
-          font-size: 18px;
-        }
-
-        .project-card:hover::before {
-          display: none;
-        }
-
-        .project-card:hover img {
-          filter: none;
-        }
-
-        .hero-bg {
-          min-height: 70vh;
-        }
-
-        .hero-dot {
-          width: 12px;
-          height: 12px;
-        }
-
-        section {
-          padding: 2rem 1rem;
-        }
-
-        .grid {
-          gap: 0.75rem;
-        }
-
-        .text-gradient {
-          font-size: 1.5rem;
-        }
+      #burger.active .burger-line-2 {
+        opacity: 0;
+        transform: scaleX(0);
       }
-
-      /* ========================================
-       ACCESSIBILITY
-    ======================================== */
-      @media (prefers-reduced-motion: reduce) {
-        .particle,
-        .hero-bg,
-        .card-premium,
-        .nav-link,
-        .modal-content,
-        .hero-slide,
-        .hero-dot.active::after,
-        .scroll-animate,
-        .scroll-animate-left,
-        .scroll-animate-right,
-        .scroll-animate-scale {
-          animation: none;
-          transition: none;
-        }
+      #burger.active .burger-line-3 {
+        transform: translateY(-8px) rotate(-45deg);
       }
-
-      @media (hover: none) and (pointer: coarse) {
-        .nav-link:hover,
-        .card-premium:hover,
-        .modal-nav:hover,
-        .modal-close:hover {
-          transform: none;
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+      }
+      .hero-slide.active {
+        opacity: 1;
+      }
+      .hero-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 9999px;
+        background: rgba(240, 238, 238, 0.4);
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+      .hero-dot.active {
+        background: #ffffff;
+        transform: scale(1.2);
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+      }
+      .hero-dot.active::after {
+        content: "";
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        animation: pulseRing 1.8s infinite ease-out;
+      }
+      @keyframes pulseRing {
+        0% {
+          transform: scale(1);
+          opacity: 1;
         }
-
-        .project-card:hover img {
-          filter: none;
+        100% {
+          transform: scale(1.5);
+          opacity: 0;
         }
       }
       /* Media Query untuk Tablet dan Mobile (max-width: 768px) */
@@ -745,13 +555,9 @@
       }
     </style>
   </head>
-
   <body
     class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 overflow-x-hidden"
   >
-    <!-- ========================================
-       PARTICLE BACKGROUND
-  ======================================== -->
     <div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
       <div
         class="particle w-2 h-2"
@@ -774,10 +580,7 @@
         style="left: 82%; animation-duration: 19s; animation-delay: 6s"
       ></div>
     </div>
-
-    <!-- ========================================
-       NAVBAR
-  ======================================== -->
+    <!-- NAVBAR -->
     <nav class="fixed top-0 w-full z-50 text-white" id="navbar">
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex justify-between items-center"
@@ -802,18 +605,27 @@
             </p>
           </div>
         </a>
-
         <!-- Desktop Menu -->
         <ul class="hidden md:flex gap-6 lg:gap-10 font-bold text-sm lg:text-lg">
-          <li><a class="nav-link" href="#home">Home</a></li>
-          <li><a class="nav-link" href="#why">Keunggulan</a></li>
-          <li><a class="nav-link" href="#about">Tentang</a></li>
-          <li><a class="nav-link" href="#services">Layanan</a></li>
-          <li><a class="nav-link" href="#projects">Proyek</a></li>
-          <li><a class="nav-link" href="#contact">Kontak</a></li>
+          <li>
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#why">Keunggulan</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#about">Tentang</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#services">Layanan</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#projects">Proyek</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#contact">Kontak</a>
+          </li>
         </ul>
-
-        <!-- Dark Mode & Burger Menu -->
         <div class="flex items-center gap-2 md:gap-4">
           <button
             id="darkToggle"
@@ -834,7 +646,6 @@
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
-
           <button
             id="burger"
             aria-label="Toggle menu"
@@ -858,10 +669,7 @@
         </div>
       </div>
     </nav>
-
-    <!-- ========================================
-       MOBILE SIDEBAR & OVERLAY
-  ======================================== -->
+    <!-- OVERLAY DAN MOBILE SIDEBAR-->
     <div
       id="overlay"
       aria-label="Close menu"
@@ -869,7 +677,6 @@
       role="button"
       tabindex="-1"
     ></div>
-
     <nav
       id="mobileSidebar"
       aria-label="Mobile navigation"
@@ -879,7 +686,6 @@
       <div
         class="p-4 md:p-6 pt-20 md:pt-24 pb-6 md:pb-8 space-y-4 md:space-y-6"
       >
-        <!-- Sidebar Header -->
         <div
           class="text-center mb-4 md:mb-6 pb-4 md:pb-6 border-b border-white/20"
         >
@@ -895,8 +701,6 @@
             General Contractor • Leveransir • Support Service
           </p>
         </div>
-
-        <!-- Menu Links -->
         <div class="space-y-1 md:space-y-2">
           <a
             class="flex items-center gap-3 md:gap-4 px-4 md:px-5 py-3 md:py-4 rounded-xl text-white font-semibold text-sm md:text-base hover:bg-accent/20 active:bg-accent/30 transition-all duration-200 group"
@@ -924,8 +728,6 @@
             ><span>Proyek</span></a
           >
         </div>
-
-        <!-- Dark Mode Toggle (Mobile) -->
         <div class="pt-4 md:pt-6 border-t border-white/20">
           <button
             id="darkToggleMobile"
@@ -965,16 +767,11 @@
             </div>
           </button>
         </div>
-
-        <!-- Contact Button -->
         <a
           class="flex items-center justify-center gap-2 md:gap-3 text-sm md:text-base font-bold py-3 md:py-4 px-4 md:px-6 bg-gradient-to-r from-accent to-blue-600 text-white rounded-xl shadow-lg hover:shadow-accent/40 hover:scale-105 active:scale-95 transition-all duration-200 mt-4 md:mt-6"
           href="#contact"
+          ><i class="fa-solid fa-phone"></i> <span>Informasi Kontak</span></a
         >
-          <i class="fa-solid fa-phone"></i> <span>Informasi Kontak</span>
-        </a>
-
-        <!-- Footer -->
         <div
           class="text-center pt-4 md:pt-6 mt-2 md:mt-4 border-t border-white/20"
         >
@@ -987,10 +784,6 @@
         </div>
       </div>
     </nav>
-
-    <!-- ========================================
-       IMAGE MODAL
-  ======================================== -->
     <div class="modal" id="imageModal">
       <div class="modal-content">
         <button id="modalClose" aria-label="Close modal" class="modal-close">
@@ -1013,16 +806,13 @@
         </div>
       </div>
     </div>
-
-    <!-- ========================================
-       MAIN CONTENT
-  ======================================== -->
+    <!-- HERO SECTION -->
     <main>
-      <!-- HERO SECTION -->
       <header
         id="home"
         class="relative hero-bg min-h-screen md:min-h-screen flex items-center justify-center text-center text-white overflow-hidden"
       >
+        <!-- HERO BACKGROUND SLIDER -->
         <div
           id="heroSlider"
           class="absolute inset-0 w-full h-full overflow-hidden"
@@ -1031,12 +821,17 @@
           <img src="vladimir-patkachakov.jpg" alt="Hero 2" class="hero-slide" />
           <img src="Gedung%20MSC.jpeg" alt="Hero 3" class="hero-slide" />
         </div>
+        <!-- DOT INDICATOR -->
         <div
           id="heroDots"
           class="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20"
         ></div>
+        <div
+          class="mt-8 md:mt-12 flex flex-wrap gap-4 md:gap-6 justify-center"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        ></div>
       </header>
-
       <!-- KEUNGGULAN SECTION -->
       <section id="why" class="py-12 md:py-24 bg-white dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -1069,7 +864,7 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  viewBox="0 0 24 24"
+                  viewbox="0 0 24 24"
                   width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -1105,7 +900,7 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  viewBox="0 0 24 24"
+                  viewbox="0 0 24 24"
                   width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -1139,7 +934,7 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  viewBox="0 0 24 24"
+                  viewbox="0 0 24 24"
                   width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -1162,14 +957,14 @@
           </div>
         </div>
       </section>
-
-      <!-- TENTANG KAMI SECTION -->
+      <!-- TENTANG KAMI + VISI & MISI -->
       <section
         id="about"
         aria-labelledby="about-title"
         class="py-12 md:py-20 lg:py-28 bg-gray-100 dark:bg-gray-950"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <!-- JUDUL -->
           <header class="max-w-3xl mb-12 md:mb-16">
             <h2
               id="about-title"
@@ -1188,7 +983,7 @@
               dan regulasi yang berlaku.
             </p>
           </header>
-
+          <!-- GRID UTAMA -->
           <div class="grid lg:grid-cols-2 gap-10 md:gap-14 items-center">
             <div class="scroll-animate-left">
               <p
@@ -1207,6 +1002,7 @@
                 dipimpin oleh Yunus Ubruangge selaku Direktur Utama, putra asli
                 Papua dari Suku Nduga.
               </p>
+              <!-- NILAI PERUSAHAAN -->
               <div class="mt-6 md:mt-10">
                 <div
                   class="border-l-4 border-accent bg-white dark:bg-gray-900 rounded-xl p-6 md:p-8 shadow-md"
@@ -1220,7 +1016,7 @@
                 </div>
               </div>
             </div>
-
+            <!-- GAMBAR -->
             <figure class="scroll-animate-right relative">
               <img
                 alt="Kantor PT Lambu Raya Utama di Papua"
@@ -1241,9 +1037,9 @@
               ></span>
             </figure>
           </div>
-
           <!-- VISI & MISI -->
           <div class="mt-16 md:mt-24 grid md:grid-cols-2 gap-8 md:gap-12">
+            <!-- VISI -->
             <div
               class="scroll-animate-left bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg"
               style="transition-delay: 0.1s"
@@ -1262,6 +1058,7 @@
                 barang dan jasa.
               </p>
             </div>
+            <!-- MISI -->
             <div
               class="scroll-animate-right bg-white dark:bg-gray-900 p-6 md:p-8 rounded-2xl shadow-lg"
               style="transition-delay: 0.2s"
@@ -1283,8 +1080,7 @@
           </div>
         </div>
       </section>
-
-      <!-- LAYANAN SECTION -->
+      <!-- LAYANAN KAMI -->
       <section class="py-12 md:py-24 bg-white dark:bg-gray-900" id="services">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
           <h2
@@ -1441,13 +1237,10 @@
           </div>
         </div>
       </section>
-
-      <!-- PROYEK SECTION -->
-      <section
-        class="py-12 md:py-24 bg-gray-100 dark:bg-gray-950"
-        id="projects"
-      >
+      <!-- PROYEK KAMI -->
+      <section class="py-12 md:py-24" id="projects">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <!-- HEADING -->
           <header class="text-center mb-12 md:mb-16">
             <h2
               class="scroll-animate text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
@@ -1461,11 +1254,10 @@
               tinggi dan komitmen profesional.
             </p>
           </header>
-
           <div
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
           >
-            <!-- Project Card 1 -->
+            <!-- Project Card 1 KONSTRUKSI -->
             <article
               class="scroll-animate-scale group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
               style="transition-delay: 0.1s"
@@ -1509,8 +1301,7 @@
                 </button>
               </div>
             </article>
-
-            <!-- Project Card 2 -->
+            <!-- Project Card 2 INFRASTRUKTUR -->
             <article
               class="scroll-animate-scale group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
               style="transition-delay: 0.2s"
@@ -1554,8 +1345,7 @@
                 </button>
               </div>
             </article>
-
-            <!-- Project Card 3 -->
+            <!-- Project Card 3 LANDSCAPING -->
             <article
               class="scroll-animate-scale group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
               style="transition-delay: 0.3s"
@@ -1600,8 +1390,7 @@
                 </button>
               </div>
             </article>
-
-            <!-- Project Card 4 -->
+            <!-- Project Card 4 MANPOWER -->
             <article
               class="scroll-animate-scale group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
               style="transition-delay: 0.4s"
@@ -1649,7 +1438,6 @@
         </div>
       </section>
     </main>
-
     <!-- FOOTER -->
     <footer class="bg-gray-900 dark:bg-black text-white py-16" id="contact">
       <div class="max-w-7xl mx-auto px-6">
@@ -1660,11 +1448,11 @@
               <img
                 src="Logo_LRU.png"
                 alt="Logo LRU"
-                class="h-8 w-8 md:h-10 md:w-10 object-contain"
+                class="h-8 w-8 md:h-10 md:w-10 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-7"
               />
               <div class="block">
                 <h1
-                  class="text-xs sm:text-sm md:text-lg font-bold text-white leading-tight"
+                  class="text-xs sm:text-sm md:text-lg font-bold text-white leading-tight group-hover:text-accent transition-colors duration-300"
                 >
                   PT LAMBU RAYA UTAMA
                 </h1>
@@ -1676,7 +1464,6 @@
               </div>
             </div>
           </div>
-
           <!-- KONTAK -->
           <div>
             <h4 class="font-bold text-lg mb-4">Informasi kontak</h4>
@@ -1699,25 +1486,25 @@
               </li>
             </ul>
           </div>
-
           <!-- ALAMAT -->
           <div>
             <h4 class="font-bold text-lg mb-4">Alamat</h4>
             <ul class="space-y-3 text-gray-400 text-sm">
               <li class="flex gap-3">
                 <span
-                  >Jl. Nenas SP. II Timika Jaya,<br />Kec. Mimika Baru,
-                  Kabupaten Mimika,<br />Papua Tengah</span
+                  >Jl. Nenas SP. II Timika Jaya,<br />
+                  Kec. Mimika Baru, Kabupaten Mimika,<br />
+                  Papua Tengah</span
                 >
               </li>
             </ul>
           </div>
-
           <!-- JAM OPERASIONAL & SOCIAL MEDIA -->
           <div>
             <h4 class="font-bold text-lg mb-4">Jam Operasional</h4>
             <p class="text-gray-400 text-sm mb-6">
-              Senin - Jumat: 07:00 - 16:00<br />Sabtu - Minggu: Tutup
+              Senin - Jumat: 07:00 - 16:00<br />
+              Sabtu - Minggu: Tutup
             </p>
             <h4 class="font-bold text-lg mb-4 mt-6">Media Sosial</h4>
             <div class="flex gap-4">
@@ -1726,20 +1513,17 @@
                 class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center hover:scale-110 transition"
                 href="https://www.instagram.com/_lamburayautama/"
                 target="_blank"
-              >
-                <i class="fa-brands fa-instagram text-white text-lg"></i>
-              </a>
+                ><i class="fa-brands fa-instagram text-white text-lg"></i
+              ></a>
               <a
                 aria-label="LinkedIn"
                 class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-blue-600 flex items-center justify-center hover:scale-110 transition"
                 href="https://www.linkedin.com/in/lamburaya-utama-614491273/"
                 target="_blank"
-              >
-                <i class="fa-brands fa-linkedin-in text-white text-lg"></i>
-              </a>
+                ><i class="fa-brands fa-linkedin-in text-white text-lg"></i
+              ></a>
             </div>
           </div>
-
           <!-- MAPS -->
           <div class="md:col-span-2 lg:col-span-4">
             <h4 class="font-bold text-lg mb-4">Lokasi Kami</h4>
@@ -1756,7 +1540,6 @@
             </div>
           </div>
         </div>
-
         <!-- COPYRIGHT -->
         <div
           class="border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-400"
@@ -1769,7 +1552,6 @@
         </div>
       </div>
     </footer>
-
     <!-- BACK TO TOP BUTTON -->
     <button
       id="backToTop"
@@ -1778,10 +1560,9 @@
     >
       <i class="fa-solid fa-arrow-up"></i>
     </button>
-
     <!-- ========================================
-       PROJECT DETAIL MODAL
-  ======================================== -->
+     PROJECT DETAIL MODAL
+======================================== -->
     <div
       class="hidden fixed inset-0 z-50 modal-backdrop bg-black/70 flex items-center justify-center p-4"
       id="projectModal"
@@ -1818,7 +1599,6 @@
         <div class="p-6" id="projectModalContent"></div>
       </div>
     </div>
-
     <!-- LIGHTBOX -->
     <div
       class="hidden fixed inset-0 z-[60] lightbox bg-black/95 flex items-center justify-center p-4"
@@ -1849,10 +1629,9 @@
         src=""
       />
     </div>
-
     <!-- ========================================
-       JAVASCRIPT
-  ======================================== -->
+     JAVASCRIPT
+======================================== -->
     <script>
       // ========================================
       // UTILITIES
@@ -2195,92 +1974,92 @@
 
         modalTitle.textContent = project.title;
         modalContent.innerHTML = `
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">INFORMASI PROYEK</h4>
-            <div class="space-y-2">
-              <div class="flex justify-between">
-                <span class="text-gray-600 dark:text-gray-400">Tahun</span>
-                <span class="font-semibold text-gray-900 dark:text-white">${
-                  project.year
-                }</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-600 dark:text-gray-400">Lokasi</span>
-                <span class="font-semibold text-gray-900 dark:text-white">${
-                  project.location
-                }</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-600 dark:text-gray-400">Klien</span>
-                <span class="font-semibold text-gray-900 dark:text-white">${
-                  project.client
-                }</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-600 dark:text-gray-400">Durasi</span>
-                <span class="font-semibold text-gray-900 dark:text-white">${
-                  project.duration
-                }</span>
-              </div>
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div>
+          <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">INFORMASI PROYEK</h4>
+          <div class="space-y-2">
+            <div class="flex justify-between">
+              <span class="text-gray-600 dark:text-gray-400">Tahun</span>
+              <span class="font-semibold text-gray-900 dark:text-white">${
+                project.year
+              }</span>
             </div>
-          </div>
-          <div>
-            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">SPESIFIKASI</h4>
-            <div class="space-y-2">
-              ${project.specs
-                .map(
-                  (spec) => `
-                <div class="flex items-start">
-                  <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-700 dark:text-gray-300">${spec}</span>
-                </div>
-              `
-                )
-                .join("")}
+            <div class="flex justify-between">
+              <span class="text-gray-600 dark:text-gray-400">Lokasi</span>
+              <span class="font-semibold text-gray-900 dark:text-white">${
+                project.location
+              }</span>
             </div>
-          </div>
-        </div>
-        <div class="mb-8">
-          <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DESKRIPSI PROYEK</h4>
-          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">${
-            project.description
-          }</p>
-        </div>
-        <div class="mb-8">
-          <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">LINGKUP PEKERJAAN</h4>
-          <div class="grid md:grid-cols-2 gap-3">
-            ${project.scope
-              .map(
-                (item) => `
-              <div class="flex items-start bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg border-l-4 border-accent">
-                <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span class="text-gray-700 dark:text-gray-300 text-sm">${item}</span>
-              </div>
-            `
-              )
-              .join("")}
+            <div class="flex justify-between">
+              <span class="text-gray-600 dark:text-gray-400">Klien</span>
+              <span class="font-semibold text-gray-900 dark:text-white">${
+                project.client
+              }</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600 dark:text-gray-400">Durasi</span>
+              <span class="font-semibold text-gray-900 dark:text-white">${
+                project.duration
+              }</span>
+            </div>
           </div>
         </div>
         <div>
-          <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DOKUMENTASI PROYEK</h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            ${project.gallery
+          <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">SPESIFIKASI</h4>
+          <div class="space-y-2">
+            ${project.specs
               .map(
-                (img) => `
-              <div class="gallery-img rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer" onclick="openLightbox('${img}')">
-                <img src="${img}" alt="Dokumentasi proyek" class="w-full h-48 object-cover hover:scale-110 transition duration-500">
+                (spec) => `
+              <div class="flex items-start">
+                <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">${spec}</span>
               </div>
             `
               )
               .join("")}
           </div>
         </div>
-      `;
+      </div>
+      <div class="mb-8">
+        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DESKRIPSI PROYEK</h4>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">${
+          project.description
+        }</p>
+      </div>
+      <div class="mb-8">
+        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">LINGKUP PEKERJAAN</h4>
+        <div class="grid md:grid-cols-2 gap-3">
+          ${project.scope
+            .map(
+              (item) => `
+            <div class="flex items-start bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg border-l-4 border-accent">
+              <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span class="text-gray-700 dark:text-gray-300 text-sm">${item}</span>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DOKUMENTASI PROYEK</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          ${project.gallery
+            .map(
+              (img) => `
+            <div class="gallery-img rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition cursor-pointer" onclick="openLightbox('${img}')">
+              <img src="${img}" alt="Dokumentasi proyek" class="w-full h-48 object-cover hover:scale-110 transition duration-500">
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
 
         modal.classList.remove("hidden");
         document.body.style.overflow = "hidden";
