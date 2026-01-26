@@ -106,7 +106,7 @@
         box-shadow: none;
         transition: background 0.4s ease, box-shadow 0.4s ease;
       }
-      
+
       #navbar.scrolled {
         background: #111827; /* dark slate */
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
@@ -605,6 +605,140 @@
           transform: none;
         }
 
+        .project-card:hover img {
+          filter: none;
+        }
+      }
+      /* Media Query untuk Tablet dan Mobile (max-width: 768px) */
+      @media (max-width: 768px) {
+        #navbar {
+          padding: 10px 15px;
+        }
+        .nav-link {
+          padding: 8px 0;
+          font-size: 14px;
+        }
+        .card-premium:hover {
+          transform: translateY(-10px) scale(1.02);
+          box-shadow: 0 20px 40px rgba(0, 60, 150, 0.3);
+        }
+        .particle {
+          display: none;
+        }
+        .modal-content {
+          padding: 10px;
+          max-height: 80vh;
+        }
+        .modal-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
+        .modal-nav.prev {
+          left: 10px;
+        }
+        .modal-nav.next {
+          right: 10px;
+        }
+        .modal-close {
+          top: -40px;
+          width: 36px;
+          height: 36px;
+          font-size: 20px;
+        }
+        .project-card:hover::before {
+          transform: translate(-50%, -50%) scale(0.8);
+        }
+        .hero-bg {
+          min-height: 80vh;
+        }
+        .hero-dot {
+          width: 10px;
+          height: 10px;
+        }
+        #burger {
+          display: block;
+        }
+        section {
+          padding: 3rem 1rem;
+        }
+        .grid {
+          gap: 1rem;
+        }
+      }
+      /* Media Query untuk Small Mobile (max-width: 480px) */
+      @media (max-width: 480px) {
+        #navbar {
+          padding: 8px 10px;
+        }
+        .nav-link {
+          font-size: 12px;
+          padding: 6px 0;
+        }
+        .card-premium:hover {
+          transform: translateY(-5px) scale(1.01);
+        }
+        .modal-nav {
+          width: 35px;
+          height: 35px;
+          font-size: 18px;
+        }
+        .modal-nav.prev {
+          left: 5px;
+        }
+        .modal-nav.next {
+          right: 5px;
+        }
+        .modal-close {
+          top: -35px;
+          width: 32px;
+          height: 32px;
+          font-size: 18px;
+        }
+        .project-card:hover::before {
+          display: none;
+        }
+        .project-card:hover img {
+          filter: none;
+        }
+        .hero-bg {
+          min-height: 70vh;
+        }
+        .hero-dot {
+          width: 12px;
+          height: 12px;
+        }
+        section {
+          padding: 2rem 1rem;
+        }
+        .grid {
+          gap: 0.75rem;
+        }
+        .text-gradient {
+          font-size: 1.5rem;
+        }
+      }
+      /* Tambahan: Respect prefers-reduced-motion untuk semua ukuran */
+      @media (prefers-reduced-motion: reduce) {
+        .particle,
+        .hero-bg,
+        .card-premium,
+        .nav-link,
+        .modal-content,
+        .hero-slide,
+        .hero-dot.active::after {
+          animation: none;
+          transition: none;
+        }
+      }
+      /* Touch-friendly untuk mobile */
+      @media (hover: none) and (pointer: coarse) {
+        .nav-link:hover,
+        .card-premium:hover,
+        .modal-nav:hover,
+        .modal-close:hover {
+          transform: none;
+        }
         .project-card:hover img {
           filter: none;
         }
@@ -2181,4 +2315,3 @@
     </script>
   </body>
 </html>
-
