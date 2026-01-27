@@ -1,4 +1,3 @@
-//Tailwind CSS
 tailwind.config = {
   darkMode: "class",
   theme: {
@@ -64,7 +63,7 @@ tailwind.config = {
     },
   },
 };
-//JAVA SCRIPT
+
 document.getElementById("year").textContent = new Date().getFullYear();
 const darkToggle = document.getElementById("darkToggle");
 const darkToggleMobile = document.getElementById("darkToggleMobile");
@@ -381,114 +380,114 @@ function openModal(projectId) {
   const modalContent = document.getElementById("modalContent");
   modalTitle.textContent = project.title;
   modalContent.innerHTML = `
-     <!-- Info Proyek -->
-     <div class="grid md:grid-cols-2 gap-6 mb-8">
-       <div>
-         <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">INFORMASI PROYEK<\/h4>
-         <div class="space-y-2">
-           <div class="flex justify-between">
-             <span class="text-gray-600 dark:text-gray-400">Tahun<\/span>
-             <span class="font-semibold text-gray-900 dark:text-white">${
-               project.year
-             }<\/span>
-           <\/div>
-           <div class="flex justify-between">
-             <span class="text-gray-600 dark:text-gray-400">Lokasi<\/span>
-             <span class="font-semibold text-gray-900 dark:text-white">${
-               project.location
-             }<\/span>
-           <\/div>
-           <div class="flex justify-between">
-             <span class="text-gray-600 dark:text-gray-400">Klien<\/span>
-             <span class="font-semibold text-gray-900 dark:text-white">${
-               project.client
-             }<\/span>
-           <\/div>
-           <div class="flex justify-between">
-             <span class="text-gray-600 dark:text-gray-400">Durasi<\/span>
-             <span class="font-semibold text-gray-900 dark:text-white">${
-               project.duration
-             }<\/span>
-           <\/div>
-         <\/div>
-       <\/div>
-       
-       <div>
-         <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">SPESIFIKASI<\/h4>
-         <div class="space-y-2">
-           ${project.specs
-             .map(
-               (spec) => `
-             <div class="flex items-start">
-               <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="url(#gradient)" viewBox="0 0 20 20">
-                 <defs>
-                   <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                     <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                     <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
-                     <stop offset="100%" style="stop-color:#003c8f;stop-opacity:1" />
-                   <\/linearGradient>
-                 <\/defs>
-                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"><\/path>
-               <\/svg>
-               <span class="text-gray-700 dark:text-gray-300">${spec}<\/span>
-             <\/div>
-           `
-             )
-             .join("")}
-         <\/div>
-       <\/div>
-     <\/div>
-     
-     <!-- Deskripsi -->
-     <div class="mb-8">
-       <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DESKRIPSI PROYEK<\/h4>
-       <p class="text-gray-700 dark:text-gray-300 leading-relaxed">${
-         project.description
-       }<\/p>
-     <\/div>
-     
-     <!-- Lingkup Pekerjaan -->
-     <div class="mb-8">
-       <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">LINGKUP PEKERJAAN<\/h4>
-       <div class="grid md:grid-cols-2 gap-3">
-         ${project.scope
-           .map(
-             (item) => `
-           <div class="flex items-start bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg border-l-4 border-gradient">
-             <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="url(#gradient2)" viewBox="0 0 24 24">
-               <defs>
-                 <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                   <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                   <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
-                   <stop offset="100%" style="stop-color:#003c8f;stop-opacity:1" />
-                 <\/linearGradient>
-               <\/defs>
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"><\/path>
-             <\/svg>
-             <span class="text-gray-700 dark:text-gray-300 text-sm">${item}<\/span>
-           <\/div>
-         `
-           )
-           .join("")}
-       <\/div>
-     <\/div>
-     
-     <!-- Galeri Dokumentasi -->
-     <div>
-       <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DOKUMENTASI PROYEK<\/h4>
-       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-         ${project.gallery
-           .map(
-             (img) => `
-           <div class="gallery-img rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition" onclick="openLightbox('${img}')">
-             <img src="${img}" alt="Dokumentasi proyek" class="w-full h-80 object-cover">
-           <\/div>
-         `
-           )
-           .join("")}
-       <\/div>
-     <\/div>
-     `;
+    <!-- Info Proyek -->
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div>
+        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">INFORMASI PROYEK<\/h4>
+        <div class="space-y-2">
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-400">Tahun<\/span>
+            <span class="font-semibold text-gray-900 dark:text-white">${
+              project.year
+            }<\/span>
+          <\/div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-400">Lokasi<\/span>
+            <span class="font-semibold text-gray-900 dark:text-white">${
+              project.location
+            }<\/span>
+          <\/div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-400">Klien<\/span>
+            <span class="font-semibold text-gray-900 dark:text-white">${
+              project.client
+            }<\/span>
+          <\/div>
+          <div class="flex justify-between">
+            <span class="text-gray-600 dark:text-gray-400">Durasi<\/span>
+            <span class="font-semibold text-gray-900 dark:text-white">${
+              project.duration
+            }<\/span>
+          <\/div>
+        <\/div>
+      <\/div>
+      
+      <div>
+        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">SPESIFIKASI<\/h4>
+        <div class="space-y-2">
+          ${project.specs
+            .map(
+              (spec) => `
+            <div class="flex items-start">
+              <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="url(#gradient)" viewBox="0 0 20 20">
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                    <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#003c8f;stop-opacity:1" />
+                  <\/linearGradient>
+                <\/defs>
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"><\/path>
+              <\/svg>
+              <span class="text-gray-700 dark:text-gray-300">${spec}<\/span>
+            <\/div>
+          `
+            )
+            .join("")}
+        <\/div>
+      <\/div>
+    <\/div>
+    
+    <!-- Deskripsi -->
+    <div class="mb-8">
+      <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DESKRIPSI PROYEK<\/h4>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">${
+        project.description
+      }<\/p>
+    <\/div>
+    
+    <!-- Lingkup Pekerjaan -->
+    <div class="mb-8">
+      <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">LINGKUP PEKERJAAN<\/h4>
+      <div class="grid md:grid-cols-2 gap-3">
+        ${project.scope
+          .map(
+            (item) => `
+          <div class="flex items-start bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg border-l-4 border-gradient">
+            <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="url(#gradient2)" viewBox="0 0 24 24">
+              <defs>
+                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                  <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#003c8f;stop-opacity:1" />
+                <\/linearGradient>
+              <\/defs>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"><\/path>
+            <\/svg>
+            <span class="text-gray-700 dark:text-gray-300 text-sm">${item}<\/span>
+          <\/div>
+        `
+          )
+          .join("")}
+      <\/div>
+    <\/div>
+    
+    <!-- Galeri Dokumentasi -->
+    <div>
+      <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DOKUMENTASI PROYEK<\/h4>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        ${project.gallery
+          .map(
+            (img) => `
+          <div class="gallery-img rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition" onclick="openLightbox('${img}')">
+            <img src="${img}" alt="Dokumentasi proyek" class="w-full h-80 object-cover">
+          <\/div>
+        `
+          )
+          .join("")}
+      <\/div>
+    <\/div>
+    `;
   modal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
 }
@@ -524,3 +523,20 @@ document
   ?.addEventListener("click", function (e) {
     e.stopPropagation();
   });
+
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.remove("hidden");
+  } else {
+    backToTop.classList.add("hidden");
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
