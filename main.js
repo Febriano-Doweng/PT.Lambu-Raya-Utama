@@ -2,541 +2,481 @@ tailwind.config = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', "sans-serif"],
+        body: ['"Inter"', "sans-serif"],
+      },
       colors: {
-        brand: "#003c8f",
-        accent: "#00d4ff",
+        brand: {
+          DEFAULT: "#003c8f", // Deep Blue
+          dark: "#002b55",
+        },
+        accent: {
+          DEFAULT: "#00d4ff", // Cyan
+          glow: "#0099ff",
+        },
       },
       animation: {
+        blob: "blob 7s infinite",
         float: "float 6s ease-in-out infinite",
-        glow: "glow 3s ease-in-out infinite alternate",
-        gradient: "gradientShift 18s ease infinite",
-        fadeIn: "fadeIn 0.5s ease-in-out",
-        scaleIn: "scaleIn 0.3s ease-out",
+        "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+        "spin-slow": "spin 12s linear infinite",
       },
       keyframes: {
+        blob: {
+          "0%": { transform: "translate(0px, 0px) scale(1)" },
+          "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+          "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+          "100%": { transform: "translate(0px, 0px) scale(1)" },
+        },
         float: {
-          "0%, 100%": {
-            transform: "translateY(0)",
-          },
-          "50%": {
-            transform: "translateY(-25px)",
-          },
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
         },
-        glow: {
-          "0%": {
-            boxShadow: "0 0 20px rgba(0,212,255,0.5)",
-          },
-          "100%": {
-            boxShadow: "0 0 50px rgba(0,212,255,0.9)",
-          },
-        },
-        gradientShift: {
-          "0%": {
-            backgroundPosition: "0% 50%",
-          },
-          "50%": {
-            backgroundPosition: "100% 50%",
-          },
-          "100%": {
-            backgroundPosition: "0% 50%",
-          },
-        },
-        fadeIn: {
-          "0%": {
-            opacity: "0",
-          },
-          "100%": {
-            opacity: "1",
-          },
-        },
-        scaleIn: {
-          "0%": {
-            transform: "scale(0.9)",
-            opacity: "0",
-          },
-          "100%": {
-            transform: "scale(1)",
-            opacity: "1",
-          },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
     },
   },
 };
 
-document.getElementById("year").textContent = new Date().getFullYear();
-const darkToggle = document.getElementById("darkToggle");
-const darkToggleMobile = document.getElementById("darkToggleMobile");
-const darkModeToggle = document.getElementById("darkModeToggle");
-const darkModeText = document.getElementById("darkModeText");
-const html = document.documentElement;
+// ===== Next Script Block =====
 
-function toggleDarkMode() {
-  html.classList.toggle("dark");
-  const isDark = html.classList.contains("dark");
-  localStorage.setItem("darkMode", isDark);
-  if (darkModeToggle) {
-    if (isDark) {
-      darkModeToggle.style.transform = "translateX(28px)";
-      darkModeText.textContent = "Mode Terang";
-    } else {
-      darkModeToggle.style.transform = "translateX(0)";
-      darkModeText.textContent = "Mode Gelap";
-    }
-  }
-}
-if (localStorage.getItem("darkMode") === "true") {
-  html.classList.add("dark");
-  if (darkModeToggle) {
-    darkModeToggle.style.transform = "translateX(28px)";
-    darkModeText.textContent = "Mode Terang";
-  }
-}
-darkToggle?.addEventListener("click", toggleDarkMode);
-darkToggleMobile?.addEventListener("click", toggleDarkMode);
-const burger = document.getElementById("burger");
-const mobileSidebar = document.getElementById("mobileSidebar");
-const overlay = document.getElementById("overlay");
-const mobileLinks = mobileSidebar.querySelectorAll("a");
-
-function openMenu() {
-  mobileSidebar.classList.remove("-translate-x-full");
-  overlay.classList.remove("hidden");
-  burger.classList.add("active");
-  setTimeout(() => overlay.classList.remove("opacity-0"), 10);
-  document.body.style.overflow = "hidden";
-}
-
-function closeMenu() {
-  mobileSidebar.classList.add("-translate-x-full");
-  overlay.classList.add("opacity-0");
-  burger.classList.remove("active");
-  setTimeout(() => {
-    overlay.classList.add("hidden");
-    document.body.style.overflow = "";
-  }, 300);
-}
-burger?.addEventListener("click", () => {
-  if (mobileSidebar.classList.contains("-translate-x-full")) {
-    openMenu();
-  } else {
-    closeMenu();
-  }
-});
-overlay?.addEventListener("click", closeMenu);
-mobileLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    closeMenu();
-  });
-});
-document.addEventListener("keydown", (e) => {
-  if (
-    e.key === "Escape" &&
-    !mobileSidebar.classList.contains("-translate-x-full")
-  ) {
-    closeMenu();
-  }
-});
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  });
-});
-const navbar = document.getElementById("navbar");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
-const modal = document.getElementById("imageModal");
-const modalImage = document.getElementById("modalImage");
-const modalTitle = document.getElementById("modalTitle");
-const modalDesc = document.getElementById("modalDesc");
-const modalClose = document.getElementById("modalClose");
-const modalPrev = document.getElementById("modalPrev");
-const modalNext = document.getElementById("modalNext");
-const projectCards = document.querySelectorAll(".project-card");
-let currentImageIndex = 0;
-const images = [];
-projectCards.forEach((card, index) => {
-  const img = card.querySelector("img");
-  const title = card.querySelector("h3").textContent;
-  const desc = card.querySelector("p").textContent;
-  images.push({
-    src: img.src,
-    title,
-    desc,
-  });
-  card.addEventListener("click", () => {
-    currentImageIndex = index;
-    showModal();
-  });
-});
-
-function showModal() {
-  const img = images[currentImageIndex];
-  modalImage.src = img.src;
-  modalTitle.textContent = img.title;
-  modalDesc.textContent = img.desc;
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  modal.classList.remove("active");
-  document.body.style.overflow = "";
-}
-
-function showPrevImage() {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  showModal();
-}
-
-function showNextImage() {
-  currentImageIndex = (currentImageIndex + 1) % images.length;
-  showModal();
-}
-modalClose?.addEventListener("click", closeModal);
-modalPrev?.addEventListener("click", showPrevImage);
-modalNext?.addEventListener("click", showNextImage);
-modal?.addEventListener("click", (e) => {
-  if (e.target === modal) closeModal();
-});
-document.addEventListener("keydown", (e) => {
-  if (!modal.classList.contains("active")) return;
-  if (e.key === "Escape") closeModal();
-  if (e.key === "ArrowLeft") showPrevImage();
-  if (e.key === "ArrowRight") showNextImage();
-});
-if ("IntersectionObserver" in window) {
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.src;
-        imageObserver.unobserve(img);
-      }
-    });
-  });
-  document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
-    imageObserver.observe(img);
-  });
-}
-// Hero Slider
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".hero-slide");
-  const dotsContainer = document.getElementById("heroDots");
-  if (!slides.length || !dotsContainer) return;
-  let currentIndex = 0;
-  let sliderInterval;
-  slides.forEach((_, index) => {
-    const dot = document.createElement("div");
-    dot.className = "hero-dot";
-    if (index === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      goToSlide(index);
-      restartAutoSlide();
-    });
-    dotsContainer.appendChild(dot);
-  });
-  const dots = document.querySelectorAll(".hero-dot");
-
-  function goToSlide(index) {
-    slides[currentIndex].classList.remove("active");
-    dots[currentIndex].classList.remove("active");
-    currentIndex = index;
-    slides[currentIndex].classList.add("active");
-    dots[currentIndex].classList.add("active");
-  }
-
-  function nextSlide() {
-    goToSlide((currentIndex + 1) % slides.length);
-  }
-
-  function restartAutoSlide() {
-    clearInterval(sliderInterval);
-    sliderInterval = setInterval(nextSlide, 5000);
-  }
-  sliderInterval = setInterval(nextSlide, 5000);
-});
-
-// Data proyek
+// Data Dummy untuk Modal Proyek
 const projectData = {
   konstruksi: {
-    title: "Konstruksi Camp Karyawan",
+    title: "Perbaikan Pagar Mess UT Jayapura",
     year: "2024",
-    location: "Timika, Papua",
-    client: "PT Mining Company Indonesia",
+    location: "Timika",
+    client: "PT United Tractors",
     duration: "8 Bulan",
     description:
-      "Proyek pembangunan fasilitas camp untuk menampung ±200 karyawan dengan standar fasilitas lengkap meliputi hunian, mess, kantin, area rekreasi, dan utilitas pendukung lainnya. Proyek ini dilaksanakan dengan memperhatikan aspek keselamatan kerja dan kenyamanan penghuni.",
-    scope: [
-      "Pembangunan bangunan hunian 40 unit",
-      "Fasilitas mess dan kantin",
-      "Area rekreasi dan olahraga",
-      "Sistem utilitas lengkap (listrik, air, drainase)",
-      "Infrastruktur jalan dan parkir",
-      "Sistem keamanan dan pengawasan",
-    ],
-    specs: [
-      "Total Luas Area: 5 hektar",
-      "Kapasitas: 200 orang",
-      "Tipe Bangunan: Semi Permanent",
-      "Standar: K3 & ISO 9001",
-    ],
-    gallery: ["dok. sm.jpg", "exca.jpg", "inspkesi with msd.jpg"],
+      "Pembangunan fasilitas camp karyawan standar internasional dengan kapasitas 500 orang, meliputi unit hunian, kantin, dan fasilitas rekreasi.",
+    image: "United-Tractors-Pekanbaru.jpg",
+    gallery: ["ut-01 jayapura.png", "ut-02 jayapura.png"],
   },
   infrastruktur: {
-    title: "Pembangunan Jembataan",
+    title: "Jembatan Jila",
     year: "2025",
-    location: "Jila, Papua Tengah",
-    client: "Dinas Pekerjaan Umum",
+    location: "Jila",
+    client: "Dinas PU",
     duration: "4 Bulan",
     description:
-      "Proyek pembangunan jalan hauling sepanjang ±5 km yang menghubungkan area pit dengan ROM (Run of Mine) untuk mendukung kelancaran operasional pertambangan. Jalan didesain mampu menahan beban alat berat dengan standar keamanan tinggi.",
-    scope: [
-      "Land clearing dan earthwork",
-      "Pembangunan sub-base dan base course",
-      "Pemasangan geotextile",
-      "Sistem drainase dan gorong-gorong",
-      "Safety signage dan marka jalan",
-      "Quality control dan testing material",
-    ],
-    specs: [
-      "Panjang Jalan: 100 M",
-      "Lebar Jalan: 15 M",
-      "Kapasitas Beban: 100 ton",
-      "Material: Batu, Pasir, dan Semen",
-    ],
-    gallery: ["exca.jpg", "dok. sm.jpg", "inspkesi with msd.jpg"],
+      "Jembatan penghubung vital di pegunungan Papua yang menghubungkan dua desa terpencil, meningkatkan akses logistik dan ekonomi.",
+    image: "jembatan.jpg",
+    gallery: ["jembatan jila.png", "jembatan jila.png", "jembatan jila.png"],
   },
   landscaping: {
-    title: "Landscaping Area Operasional",
+    title: "Landscaping",
     year: "2021",
-    location: "Jl. Charitas SP. 2 Mimika",
-    client: "PT Freeport Indonesia",
+    location: "Timika",
+    client: "PT Freeport",
     duration: "Ongoing",
     description:
-      "Pekerjaan meliputi penanaman dan pemotongan rumput secara berkala, pemeliharaan taman, dan jalan setapak, saluran drainase, serta perawatan kebersihan kawasan di Kompleks Gedung Olahraga Mimika guna menjaga fungsi, estetika, dan kenyamanan area olahraga.",
-    scope: [
-      "Pembersihan dan persiapan area landscaping",
-      "Penanaman Rumput dan Pemotongan Rumput Berkala",
-      "Pemeliharaan Taman",
-      "Instalasi Saluran Drainase",
-      "Pemeliharaan tanaman dan area hijau",
-      "Perawatan Kebersihan di Kompleks Gedung Olahraga Mimika",
-    ],
-    specs: [
-      "Total Luas: ±12,5 Ha",
-      "Jenis Tanaman: Tanaman peneduh, tanaman hias lokal Papua, dan rumput lanskap",
-      "Sistem Irigasi: Saluran drainase",
-      "Maintenance: Ongoing",
-    ],
+      "Pemeliharaan area hijau kompleks olahraga GOR Mimika, termasuk penanaman rumput, perawatan tanaman hias, dan sistem irigasi.",
+    image: "IMG-20240516-WA0063.jpg",
     gallery: [
-      "IMG-20240806-WA0097.jpg",
+      "IMG-20240409-WA0044.jpg",
+      "IMG-20240805-WA0118.jpg",
       "IMG-20240823-WA0002.jpg",
-      "IMG-20240420-WA0047(1).jpg",
     ],
   },
   manpower: {
-    title: "Penyediaan Tenaga Kerja Profesional",
+    title: "MOPH1 Services",
     year: "2023",
-    location: "Mimika, Papua Tengah",
-    client: "PT Freeport Indonesia",
+    location: "Mimika",
+    client: "PT Freeport",
     duration: "Ongoing",
     description:
-      "Layanan penyediaan dan pengelolaan tenaga kerja profesional untuk berbagai kebutuhan proyek konstruksi dan pertambangan. Tim kami terlatih dan bersertifikat sesuai standar industri dengan pengalaman di proyek-proyek skala besar.",
-    scope: [
-      "Tenaga konstruksi (tukang, helper, mandor)",
-      "Operator alat berat bersertifikat",
-      "Mekanik dan teknisi",
-      "Driver dan security",
-      "Tenaga administrasi dan support",
-      "Training dan sertifikasi K3",
-    ],
-    specs: [
-      "Jumlah Pekerja: 150+ personel",
-      "Sertifikasi: K3, Operator, First Aid",
-      "Pengalaman: 3-15 tahun",
-      "Coverage: Papua & Maluku",
-    ],
-    gallery: ["MOPH1.JPG", "manpower 02.JPG"],
+      "Penyediaan tenaga kerja profesional untuk operasional Heavy Equipment dan Maintenance di area MOPH1.",
+    image: "manpower 01.JPG",
+    gallery: ["manpower 02.JPG", "MOPH1.JPG", "inspkesi with msd.jpg"],
   },
 };
 
-function openModal(projectId) {
-  const project = projectData[projectId];
-  const modal = document.getElementById("modal");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalContent = document.getElementById("modalContent");
-  modalTitle.textContent = project.title;
-  modalContent.innerHTML = `
-    <!-- Info Proyek -->
-    <div class="grid md:grid-cols-2 gap-6 mb-8">
-      <div>
-        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">INFORMASI PROYEK<\/h4>
-        <div class="space-y-2">
-          <div class="flex justify-between">
-            <span class="text-gray-600 dark:text-gray-400">Tahun<\/span>
-            <span class="font-semibold text-gray-900 dark:text-white">${
-              project.year
-            }<\/span>
-          <\/div>
-          <div class="flex justify-between">
-            <span class="text-gray-600 dark:text-gray-400">Lokasi<\/span>
-            <span class="font-semibold text-gray-900 dark:text-white">${
-              project.location
-            }<\/span>
-          <\/div>
-          <div class="flex justify-between">
-            <span class="text-gray-600 dark:text-gray-400">Klien<\/span>
-            <span class="font-semibold text-gray-900 dark:text-white">${
-              project.client
-            }<\/span>
-          <\/div>
-          <div class="flex justify-between">
-            <span class="text-gray-600 dark:text-gray-400">Durasi<\/span>
-            <span class="font-semibold text-gray-900 dark:text-white">${
-              project.duration
-            }<\/span>
-          <\/div>
-        <\/div>
-      <\/div>
-      
-      <div>
-        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">SPESIFIKASI<\/h4>
-        <div class="space-y-2">
-          ${project.specs
-            .map(
-              (spec) => `
-            <div class="flex items-start">
-              <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="url(#gradient)" viewBox="0 0 20 20">
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                    <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#003c8f;stop-opacity:1" />
-                  <\/linearGradient>
-                <\/defs>
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"><\/path>
-              <\/svg>
-              <span class="text-gray-700 dark:text-gray-300">${spec}<\/span>
-            <\/div>
-          `
-            )
-            .join("")}
-        <\/div>
-      <\/div>
-    <\/div>
-    
-    <!-- Deskripsi -->
-    <div class="mb-8">
-      <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DESKRIPSI PROYEK<\/h4>
-      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">${
-        project.description
-      }<\/p>
-    <\/div>
-    
-    <!-- Lingkup Pekerjaan -->
-    <div class="mb-8">
-      <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">LINGKUP PEKERJAAN<\/h4>
-      <div class="grid md:grid-cols-2 gap-3">
-        ${project.scope
-          .map(
-            (item) => `
-          <div class="flex items-start bg-gray-50 dark:bg-gray-700/50 p-3 rounded-lg border-l-4 border-gradient">
-            <svg class="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="url(#gradient2)" viewBox="0 0 24 24">
-              <defs>
-                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                  <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#003c8f;stop-opacity:1" />
-                <\/linearGradient>
-              <\/defs>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"><\/path>
-            <\/svg>
-            <span class="text-gray-700 dark:text-gray-300 text-sm">${item}<\/span>
-          <\/div>
-        `
-          )
-          .join("")}
-      <\/div>
-    <\/div>
-    
-    <!-- Galeri Dokumentasi -->
-    <div>
-      <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">DOKUMENTASI PROYEK<\/h4>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        ${project.gallery
-          .map(
-            (img) => `
-          <div class="gallery-img rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition" onclick="openLightbox('${img}')">
-            <img src="${img}" alt="Dokumentasi proyek" class="w-full h-80 object-cover">
-          <\/div>
-        `
-          )
-          .join("")}
-      <\/div>
-    <\/div>
-    `;
-  modal.classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-}
+/* --- GLOBAL UI LOGIC --- */
 
-function closeModal() {
-  const modal = document.getElementById("modal");
-  modal.classList.add("hidden");
-  document.body.style.overflow = "auto";
-}
+// Dark Mode
+const html = document.documentElement;
+const darkButtons = [
+  document.getElementById("darkToggleDesktop"),
+  document.getElementById("darkToggleMobile"),
+];
 
-function openLightbox(imgSrc) {
-  event.stopPropagation();
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-  lightboxImg.src = imgSrc;
-  lightbox.classList.remove("hidden");
-}
-
-function closeLightbox() {
-  const lightbox = document.getElementById("lightbox");
-  lightbox.classList.add("hidden");
-}
-// Close modal on ESC key
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") {
-    closeModal();
-    closeLightbox();
-  }
-});
-// Prevent modal content click from closing modal
-document
-  .querySelector(".modal-content")
-  ?.addEventListener("click", function (e) {
-    e.stopPropagation();
+function updateDarkIcon() {
+  const isDark = html.classList.contains("dark");
+  darkButtons.forEach((btn) => {
+    if (btn)
+      btn.innerHTML = isDark
+        ? '<i class="fa-solid fa-sun text-yellow-400"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
   });
+}
 
-const backToTop = document.getElementById("backToTop");
+function toggleDarkMode() {
+  html.classList.toggle("dark");
+  localStorage.setItem(
+    "theme",
+    html.classList.contains("dark") ? "dark" : "light"
+  );
+  updateDarkIcon();
+}
+
+// Init Theme
+if (
+  localStorage.getItem("theme") === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  html.classList.add("dark");
+}
+updateDarkIcon();
+darkButtons.forEach((btn) => btn?.addEventListener("click", toggleDarkMode));
+
+// OPTIMASI MOBILE MENU & SCROLL
+const navbar = document.getElementById("navbar");
+const burger = document.getElementById("burger");
+const mobileSidebar = document.getElementById("mobileSidebar");
+const sidebarContent = mobileSidebar.querySelector("div.transform");
+const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+function toggleMenu() {
+  const isClosed = mobileSidebar.classList.contains("hidden");
+  if (isClosed) {
+    // Buka Menu
+    mobileSidebar.classList.remove("hidden");
+
+    // Prevent body scroll
+    document.body.classList.add("sidebar-open");
+
+    // OPTIMASI: Paksa navbar menjadi 'scrolled' agar warna konsisten dengan menu sidebar
+    navbar.classList.add("scrolled");
+
+    setTimeout(() => {
+      sidebarBackdrop.classList.remove("opacity-0");
+      sidebarContent.classList.remove("translate-x-full");
+    }, 10);
+    burger.classList.add("active");
+  } else {
+    // Tutup Menu
+    sidebarBackdrop.classList.add("opacity-0");
+    sidebarContent.classList.add("translate-x-full");
+    burger.classList.remove("active");
+
+    // Re-enable body scroll
+    document.body.classList.remove("sidebar-open");
+
+    setTimeout(() => {
+      mobileSidebar.classList.add("hidden");
+
+      // OPTIMASI: Saat menu ditutup, cek posisi scroll
+      if (window.scrollY <= 50) {
+        navbar.classList.remove("scrolled");
+      }
+    }, 300);
+  }
+}
+burger.addEventListener("click", toggleMenu);
+sidebarBackdrop.addEventListener("click", toggleMenu);
+
+// Scroll Effects & Reveal
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+revealElements.forEach((el) => observer.observe(el));
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTop.classList.remove("hidden");
+  // Navbar State Logic
+  if (mobileSidebar.classList.contains("hidden")) {
+    if (window.scrollY > 50) navbar.classList.add("scrolled");
+    else navbar.classList.remove("scrolled");
+  }
+
+  const btt = document.getElementById("backToTop");
+  if (window.scrollY > 500) {
+    btt.classList.remove("translate-y-20", "opacity-0");
   } else {
-    backToTop.classList.add("hidden");
+    btt.classList.add("translate-y-20", "opacity-0");
   }
 });
 
-backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+document
+  .getElementById("backToTop")
+  .addEventListener("click", () =>
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  );
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Hero Slider Logic
+let currentSlide = 0;
+const slides = document.querySelectorAll(".hero-slide");
+const dots = document.querySelectorAll(".hero-dot");
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove("active");
+  dots[currentSlide].classList.remove("active", "bg-accent");
+
+  currentSlide = (n + slides.length) % slides.length;
+
+  slides[currentSlide].classList.add("active");
+  dots[currentSlide].classList.add("active", "bg-accent");
+}
+
+setInterval(() => goToSlide(currentSlide + 1), 6000);
+
+// Particle System
+const particlesContainer = document.getElementById("particles");
+function createParticle() {
+  const p = document.createElement("div");
+  p.classList.add("particle");
+  const size = Math.random() * 20 + 5;
+  p.style.width = `${size}px`;
+  p.style.height = `${size}px`;
+  p.style.left = `${Math.random() * 100}%`;
+  p.style.top = `${Math.random() * 100 + 100}%`; // Start below viewport
+  const duration = Math.random() * 10 + 10;
+  p.style.transition = `top ${duration}s linear, opacity ${duration}s ease-in`;
+  particlesContainer.appendChild(p);
+  setTimeout(() => {
+    p.style.top = "-10%";
+    p.style.opacity = "0";
+  }, 100);
+  setTimeout(() => p.remove(), duration * 1000);
+}
+setInterval(createParticle, 800);
+// Initial batch
+for (let i = 0; i < 10; i++) setTimeout(createParticle, i * 200);
+
+/* --- PROJECT MODAL LOGIC --- */
+const pModal = document.getElementById("projectModal");
+
+window.openProjectModal = function (id) {
+  const data = projectData[id];
+  if (!data) return;
+
+  document.getElementById("modalTitle").textContent = data.title;
+  document.getElementById("modalImage").src = data.image;
+  document.getElementById("modalYear").textContent = data.year;
+  document.getElementById("modalLocation").textContent = data.location;
+  document.getElementById("modalClient").textContent = data.client;
+  document.getElementById("modalDuration").textContent = data.duration;
+  document.getElementById("modalDesc").textContent = data.description;
+
+  // UPDATE BAGIAN INI - Tambahkan onclick untuk setiap gambar
+  document.getElementById("modalGallery").innerHTML = data.gallery
+    .map(
+      (src) =>
+        `<img 
+      src="${src}" 
+      class="rounded-lg w-full h-80 object-cover border border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform cursor-pointer" 
+      onclick="openLightbox('${src}', ${JSON.stringify(data.gallery).replace(
+          /"/g,
+          "&quot;"
+        )})"
+    />`
+    )
+    .join("");
+
+  pModal.classList.remove("modal-hidden");
+  document.body.style.overflow = "hidden";
+};
+
+window.closeProjectModal = function () {
+  pModal.classList.add("modal-hidden");
+  document.body.style.overflow = "auto";
+};
+
+/* --- CONTACT FORM MODAL LOGIC --- */
+const cModal = document.getElementById("contactFormModal");
+const cContent = document.getElementById("contactFormContent");
+
+window.openContactModal = function () {
+  cModal.classList.remove("hidden");
+  // Allow display:flex to apply before transition
+  setTimeout(() => {
+    cModal.classList.remove("opacity-0");
+    cContent.classList.remove("opacity-0", "scale-95");
+  }, 10);
+  document.body.style.overflow = "hidden";
+};
+
+window.closeContactModal = function () {
+  cModal.classList.add("opacity-0");
+  cContent.classList.add("opacity-0", "scale-95");
+  setTimeout(() => {
+    cModal.classList.add("hidden");
+    document.body.style.overflow = "auto";
+  }, 300);
+};
+
+// Form Handling
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const spinner = submitBtn.querySelector(".spinner");
+  const btnText = submitBtn.querySelector(".btn-text");
+
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const setError = (elementId, show) => {
+    const input = document.getElementById(elementId);
+    const errorDiv = document.getElementById(`error-${elementId}`);
+    if (show) {
+      input.classList.add("error");
+      errorDiv.style.display = "flex";
+    } else {
+      input.classList.remove("error");
+      errorDiv.style.display = "none";
+    }
+  };
+
+  // Clear errors on input
+  ["name", "email", "subject", "message"].forEach((id) => {
+    document
+      .getElementById(id)
+      .addEventListener("input", () => setError(id, false));
+  });
+
+  const showToast = (title, message) => {
+    const container = document.getElementById("toastContainer");
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerHTML = `
+            <div class="toast-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+            <div class="toast-content"><h4>${title}</h4><p>${message}</p></div>`;
+    container.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add("show"));
+    setTimeout(() => {
+      toast.classList.remove("show");
+      toast.addEventListener("transitionend", () => toast.remove());
+    }, 4000);
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let isValid = true;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value.trim();
+
+    if (name.length < 3) {
+      setError("name", true);
+      isValid = false;
+    }
+    if (!isValidEmail(email)) {
+      setError("email", true);
+      isValid = false;
+    }
+    if (subject === "") {
+      setError("subject", true);
+      isValid = false;
+    }
+    if (message.length < 10) {
+      setError("message", true);
+      isValid = false;
+    }
+
+    if (!isValid) return;
+
+    // Simulate Network Request
+    submitBtn.disabled = true;
+    btnText.textContent = "Mengirim...";
+    spinner.style.display = "block";
+
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      btnText.textContent = "Kirim Pesan";
+      spinner.style.display = "none";
+      showToast(
+        "Berhasil!",
+        "Pesan Anda telah terkirim. Kami akan segera menghubungi Anda."
+      );
+      form.reset();
+      setTimeout(closeContactModal, 1500); // Auto close after success
+    }, 2000);
   });
 });
+
+// Global Escape Key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeProjectModal();
+    closeContactModal();
+  }
+});
+/* --- LIGHTBOX GALLERY LOGIC --- */
+let currentGallery = [];
+let currentImageIndex = 0;
+
+window.openLightbox = function (imageSrc, gallery) {
+  currentGallery = gallery;
+  currentImageIndex = gallery.indexOf(imageSrc);
+
+  const lightbox = document.getElementById("lightboxModal");
+  const lightboxImage = document.getElementById("lightboxImage");
+
+  lightboxImage.src = imageSrc;
+  updateLightboxCounter();
+
+  lightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+};
+
+window.closeLightbox = function () {
+  const lightbox = document.getElementById("lightboxModal");
+  lightbox.classList.remove("active");
+  document.body.style.overflow = "auto";
+};
+
+window.navigateLightbox = function (direction) {
+  currentImageIndex += direction;
+
+  // Loop ke awal/akhir
+  if (currentImageIndex < 0) {
+    currentImageIndex = currentGallery.length - 1;
+  } else if (currentImageIndex >= currentGallery.length) {
+    currentImageIndex = 0;
+  }
+
+  document.getElementById("lightboxImage").src =
+    currentGallery[currentImageIndex];
+  updateLightboxCounter();
+};
+
+function updateLightboxCounter() {
+  document.getElementById("lightboxCounter").textContent = `${
+    currentImageIndex + 1
+  } / ${currentGallery.length}`;
+}
+
+// Keyboard Navigation untuk Lightbox
+document.addEventListener("keydown", (e) => {
+  const lightbox = document.getElementById("lightboxModal");
+  if (lightbox.classList.contains("active")) {
+    if (e.key === "ArrowLeft") navigateLightbox(-1);
+    if (e.key === "ArrowRight") navigateLightbox(1);
+    if (e.key === "Escape") closeLightbox();
+  }
+});
+
+// Close lightbox saat klik di luar gambar
+document
+  .getElementById("lightboxModal")
+  .addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeLightbox();
+    }
+  });
