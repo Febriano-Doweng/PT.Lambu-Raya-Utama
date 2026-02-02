@@ -1053,7 +1053,7 @@
               class="text-gray-600 dark:text-gray-400 mt-6 text-base md:text-lg"
             >
               Kami mengedepankan profesionalisme, ketepatan waktu, dan standar
-              keselamatan kerja tertinggi dalam setiap lini.
+              keselamatan kerja tertinggi dalam setiap proyek.
             </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1073,9 +1073,10 @@
               <p
                 class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base"
               >
-                Didukung armada dan alat berat modern yang terawat rutin untuk
-                memastikan efisiensi dan hasil terbaik.
-              </p>
+                Kami didukung oleh peralatan kerja yang modern, terawat, dan
+                sesuai standar industri, sehingga mampu menunjang efektivitas,
+                efisiensi, serta kualitas pekerjaan di setiap proyek yang kami
+                tangani.
             </div>
             <div
               class="card-hover bg-gray-50 dark:bg-gray-800 p-6 md:p-8 rounded-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden group reveal"
@@ -1094,8 +1095,9 @@
               <p
                 class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base"
               >
-                Manajemen proyek yang terstruktur menjamin penyelesaian
-                pekerjaan sesuai timeline yang disepakati.
+                Kami berkomitmen menyelesaikan setiap pekerjaan sesuai dengan
+                jadwal yang telah disepakati, dengan perencanaan yang matang dan
+                manajemen proyek yang terstruktur.
               </p>
             </div>
             <div
@@ -1115,8 +1117,10 @@
               <p
                 class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base"
               >
-                Zero accident policy. Kami menerapkan protokol keselamatan kerja
-                yang ketat di setiap lokasi proyek.
+                Kami menerapkan standar Keselamatan dan Kesehatan Kerja (K3)
+                secara konsisten untuk menciptakan lingkungan kerja yang aman,
+                meminimalkan risiko kecelakaan, serta memastikan keberlangsungan
+                operasional proyek.
               </p>
             </div>
           </div>
@@ -1352,7 +1356,7 @@
                 <h3
                   class="text-lg font-bold mb-2 text-gray-900 dark:text-white"
                 >
-                  Perbaikan Atap Workshop UT
+                  Proyek Perbaikan Pagar Mess PT United Tractors Cabang Jayapura
                 </h3>
                 <button
                   onclick="openProjectModal('konstruksi')"
@@ -1929,33 +1933,30 @@
       // =========================================================
       const projectData = {
         konstruksi: {
-          title: "Konstruksi Camp Karyawan",
+          title: "Perbaikan PT United Tractors Cabang Jayapura",
           year: "2024",
           location: "Timika",
-          client: "PT Mining Company",
+          client: "PT United Tractors Cabang Jayapura",
           duration: "8 Bulan",
           description:
-            "Pembangunan fasilitas camp karyawan standar internasional dengan kapasitas 500 orang, meliputi unit hunian, kantin, dan fasilitas rekreasi.",
-          image: "https://picsum.photos/seed/workshop/800/600",
+            "Proyek perbaikan pagar mess dan pembuatan pagar kantor PT United Tractors cabang Jayapura.",
+          image: "United-Tractors-Pekanbaru.jpg",
           gallery: [
-            "https://picsum.photos/seed/d1/600/400",
-            "https://picsum.photos/seed/d2/600/400",
-            "https://picsum.photos/seed/d3/600/400",
+            "ut-02 jayapura.png",
+            "ut-01 jayapura.png",
           ],
         },
         infrastruktur: {
-          title: "Jembatan Jila",
+          title: "Proyek Pembangunan Jembatan Jila Papua Pegunungaan",
           year: "2025",
-          location: "Jila",
+          location: "Jila Papua Pegunungan",
           client: "Dinas PU",
           duration: "4 Bulan",
           description:
             "Jembatan penghubung vital di pegunungan Papua yang menghubungkan dua desa terpencil, meningkatkan akses logistik dan ekonomi.",
-          image: "https://picsum.photos/seed/bridge/800/600",
+          image: "jembatan.jpg",
           gallery: [
-            "https://picsum.photos/seed/i1/600/400",
-            "https://picsum.photos/seed/i2/600/400",
-            "https://picsum.photos/seed/i3/600/400",
+            "jembatan jila.png",
           ],
         },
         landscaping: {
@@ -2337,9 +2338,9 @@
         const message = document.getElementById("message").value.trim();
 
         const subjectMap = {
-          sales: "Pertanyaan Penjualan",
-          support: "Dukungan Teknis",
-          partnership: "Kemitraan",
+          sales: "Dukungan Teknis",
+          support: "Kemitraan",
+          partnership: "Lowongan Pekerjaan",
           other: "Lainnya",
         };
         const subjectText = subjectMap[subject] || subject;
@@ -2371,9 +2372,9 @@
         const message = document.getElementById("message").value.trim();
 
         const subjectMap = {
-          sales: "Pertanyaan Penjualan",
-          support: "Dukungan Teknis",
-          partnership: "Kemitraan",
+          sales: "Dukungan Teknis",
+          support: "Kemitraan",
+          partnership: "Lowongan Pekerjaan",
           other: "Lainnya",
         };
         const subjectText = subjectMap[subject] || subject;
