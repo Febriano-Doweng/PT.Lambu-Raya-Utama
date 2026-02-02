@@ -943,7 +943,7 @@
         class="absolute inset-0 bg-black/95 backdrop-blur-md opacity-0 transition-opacity duration-300"
       ></div>
       <div
-        class="absolute top-0 right-0 h-full w-[65%] max-w-sm bg-gray-900 border-l border-gray-800 transform translate-x-full transition-transform duration-300 ease-out shadow-2xl p-6 flex flex-col"
+        class="absolute top-0 right-0 h-full w-[60%] max-w-sm bg-gray-900 border-l border-gray-800 transform translate-x-full transition-transform duration-300 ease-out shadow-2xl p-6 flex flex-col"
       >
         <div class="mt-16 mb-8">
           <h2 class="text-2xl font-bold text-white mb-2">Menu</h2>
@@ -2047,12 +2047,12 @@
           document.body.classList.add("sidebar-open");
           navbar.classList.add("scrolled");
           setTimeout(() => {
-            sidebarBackdrop.classList.remove("opacity-0");
+            sidebarBackdrop.classList.remove("opacity-100");
             sidebarContent.classList.remove("translate-x-full");
           }, 10);
           burger.classList.add("active");
         } else {
-          sidebarBackdrop.classList.add("opacity-0");
+          sidebarBackdrop.classList.add("opacity-100");
           sidebarContent.classList.add("translate-x-full");
           burger.classList.remove("active");
           document.body.classList.remove("sidebar-open");
@@ -2062,8 +2062,10 @@
           }, 300);
         }
       }
+      
       burger.addEventListener("click", toggleMenu);
       sidebarBackdrop.addEventListener("click", toggleMenu);
+
 
       // =========================================================
       // SCROLL EFFECTS
