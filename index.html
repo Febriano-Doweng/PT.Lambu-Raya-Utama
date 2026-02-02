@@ -42,11 +42,11 @@
             },
             colors: {
               brand: {
-                DEFAULT: "#003c8f", // Deep Blue
+                DEFAULT: "#003c8f",
                 dark: "#002b55",
               },
               accent: {
-                DEFAULT: "#00d4ff", // Cyan
+                DEFAULT: "#00d4ff",
                 glow: "#0099ff",
               },
             },
@@ -96,7 +96,7 @@
           box-shadow 0.3s ease;
       }
       #navbar.scrolled {
-        background: rgba(15, 23, 42, 0.95); /* Slate-900 with opacity */
+        background: rgba(15, 23, 42, 0.95);
         backdrop-filter: blur(12px);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         padding-top: 0.5rem;
@@ -179,66 +179,38 @@
         z-index: 0;
       }
 
-      /* --- BURGER MENU ANIMATION - RESPONSIVE --- */
-      #burger {
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Container untuk garis */
+      /* --- BURGER MENU ANIMATION (SEJAJAR) --- */
       #burger > div {
         position: relative;
         width: 24px;
         height: 18px;
       }
 
-      /* Untuk tablet/landscape - ukuran lebih besar */
-      @media (min-width: 640px) and (max-width: 767px) {
-        #burger > div {
-          width: 28px;
-          height: 20px;
-        }
-      }
-
       #burger span {
         display: block;
-        width: 100%;
-        height: 2px;
-        background-color: white;
-        border-radius: 2px;
-        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         position: absolute;
         left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       }
 
-      #burger span:nth-child(1) {
-        top: 0;
-      }
+      #burger span:nth-child(1) { top: 0; }
+      #burger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+      #burger span:nth-child(3) { bottom: 0; }
 
-      #burger span:nth-child(2) {
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      #burger span:nth-child(3) {
-        bottom: 0;
-      }
-
-      /* State: Active (Open) */
+      /* Active state: X icon */
       #burger.active span:nth-child(1) {
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
         background-color: #00d4ff;
       }
-
       #burger.active span:nth-child(2) {
         opacity: 0;
         transform: translateY(-50%) scaleX(0);
       }
-
       #burger.active span:nth-child(3) {
         bottom: 50%;
         transform: translateY(50%) rotate(-45deg);
@@ -266,7 +238,6 @@
         z-index: 10;
       }
 
-      /* Kolom Kiri - Informasi */
       .contact-modal-wrapper .info-section {
         background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         color: white;
@@ -348,7 +319,7 @@
         margin-top: 2rem;
         width: 100%;
         height: 150px;
-        background-image: url("https://picsum.photos/seed/map/400/200");
+        background-image: url("Kantor\ LRU.png");
         background-size: cover;
         background-position: center;
         border-radius: 8px;
@@ -357,7 +328,6 @@
         z-index: 2;
       }
 
-      /* Kolom Kanan - Formulir */
       .contact-modal-wrapper .form-section {
         width: 60%;
         padding: 40px;
@@ -365,7 +335,6 @@
         position: relative;
       }
 
-      /* Close Button for Modal */
       .modal-close-btn {
         position: absolute;
         top: 15px;
@@ -475,6 +444,19 @@
         transform: none;
       }
 
+      .contact-modal-wrapper .btn-submit.bg-blue-600 {
+        background-color: #2563eb;
+      }
+      .contact-modal-wrapper .btn-submit.bg-blue-600:hover {
+        background-color: #1d4ed8;
+      }
+      .contact-modal-wrapper .btn-submit.bg-green-600 {
+        background-color: #16a34a;
+      }
+      .contact-modal-wrapper .btn-submit.bg-green-600:hover {
+        background-color: #15803d;
+      }
+
       .contact-modal-wrapper .spinner {
         width: 18px;
         height: 18px;
@@ -547,152 +529,299 @@
           padding: 30px;
         }
       }
-      /* Lightbox Modal untuk Galeri */
-      .lightbox-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 80;
-        background: rgba(0, 0, 0, 0.95);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+
+      /* ============================================
+         PROFESSIONAL LIGHTBOX GALLERY STYLES
+         ============================================ */
+
+      /* --- Dokumentasi Grid Thumbnails --- */
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
       }
 
-      .lightbox-modal.active {
+      .doc-thumb {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        aspect-ratio: 4 / 3;
+        cursor: pointer;
+        border: 2px solid #e5e7eb;
+        background: #f3f4f6;
+      }
+
+      .dark .doc-thumb {
+        border-color: #374151;
+        background: #1f2937;
+      }
+
+      .doc-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .doc-thumb:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Overlay on hover */
+      .doc-thumb .thumb-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 60, 143, 0.7) 0%,
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
         display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 12px;
+      }
+
+      .doc-thumb:hover .thumb-overlay {
         opacity: 1;
       }
 
-      .lightbox-content {
+      .thumb-overlay .zoom-icon {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        transition: background 0.3s, transform 0.3s;
+      }
+
+      .doc-thumb:hover .zoom-icon {
+        background: rgba(0, 212, 255, 0.4);
+        transform: scale(1.1);
+      }
+
+      /* --- LIGHTBOX OVERLAY --- */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.0);
+        backdrop-filter: blur(0px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: background 0.4s ease, backdrop-filter 0.4s ease, opacity 0.4s ease;
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(8px);
+      }
+
+      /* --- LIGHTBOX INNER CONTAINER --- */
+      .lightbox-inner {
         position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         max-width: 90vw;
         max-height: 90vh;
-        transform: scale(0.9);
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform: scale(0.88);
+        opacity: 0;
+        transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    opacity 0.35s ease;
       }
 
-      .lightbox-modal.active .lightbox-content {
+      .lightbox.active .lightbox-inner {
         transform: scale(1);
+        opacity: 1;
       }
 
-      .lightbox-image {
+      /* --- LIGHTBOX IMAGE WRAPPER --- */
+      .lightbox-img-wrap {
+        position: relative;
+        max-width: 85vw;
+        max-height: 75vh;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.6);
+      }
+
+      .lightbox-img-wrap img {
+        display: block;
         max-width: 100%;
-        max-height: 90vh;
+        max-height: 75vh;
         object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        border-radius: 12px;
       }
 
+      /* --- CLOSE BUTTON --- */
       .lightbox-close {
         position: absolute;
-        top: -40px;
+        top: -48px;
         right: 0;
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all 0.3s ease;
-        color: #333;
+        font-size: 18px;
+        transition: background 0.3s, transform 0.3s;
+        backdrop-filter: blur(4px);
       }
 
       .lightbox-close:hover {
-        background: white;
+        background: rgba(239, 68, 68, 0.5);
         transform: rotate(90deg);
       }
 
+      /* --- PREV / NEXT NAVIGATION --- */
       .lightbox-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
+        width: 46px;
+        height: 46px;
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all 0.3s ease;
-        color: #333;
-        font-size: 20px;
+        font-size: 18px;
+        transition: background 0.3s, transform 0.25s;
+        backdrop-filter: blur(4px);
+        z-index: 2;
       }
 
       .lightbox-nav:hover {
-        background: white;
-        transform: translateY(-50%) scale(1.1);
+        background: rgba(0, 212, 255, 0.35);
+        border-color: rgba(0, 212, 255, 0.4);
       }
 
       .lightbox-nav.prev {
-        left: -60px;
+        left: -58px;
       }
-
       .lightbox-nav.next {
-        right: -60px;
+        right: -58px;
       }
 
+      /* --- BOTTOM INFO BAR (counter + thumbnails) --- */
+      .lightbox-bottom {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+      }
+
+      /* Counter badge */
       .lightbox-counter {
-        position: absolute;
-        bottom: -40px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.9);
-        padding: 8px 16px;
-        border-radius: 20px;
-        color: #333;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(6px);
+        color: #fff;
+        font-size: 0.82rem;
         font-weight: 600;
-        font-size: 14px;
+        letter-spacing: 0.08em;
+        padding: 6px 16px;
+        border-radius: 20px;
       }
 
-      /* Responsive untuk Mobile */
-      @media (max-width: 768px) {
+      /* Thumbnail strip */
+      .lightbox-thumbs {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .lightbox-thumbs .lt-thumb {
+        width: 58px;
+        height: 42px;
+        border-radius: 7px;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        opacity: 0.55;
+      }
+
+      .lightbox-thumbs .lt-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .lightbox-thumbs .lt-thumb:hover {
+        opacity: 0.85;
+        transform: translateY(-2px);
+      }
+
+      .lightbox-thumbs .lt-thumb.active {
+        border-color: #00d4ff;
+        opacity: 1;
+        box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
+        transform: translateY(-2px);
+      }
+
+      /* --- MOBILE RESPONSIVE --- */
+      @media (max-width: 600px) {
         .lightbox-nav.prev {
-          left: 10px;
+          left: 6px;
         }
         .lightbox-nav.next {
-          right: 10px;
+          right: 6px;
+        }
+        .lightbox-nav {
+          width: 38px;
+          height: 38px;
+          font-size: 15px;
+          background: rgba(0, 0, 0, 0.45);
         }
         .lightbox-close {
-          top: 10px;
-          right: 10px;
+          top: -42px;
+          right: 0;
         }
-        .lightbox-counter {
-          bottom: 10px;
+        .lightbox-img-wrap {
+          max-width: 95vw;
+        }
+        .lightbox-img-wrap img {
+          max-height: 60vh;
+        }
+        .lightbox-thumbs .lt-thumb {
+          width: 46px;
+          height: 34px;
+        }
+        .doc-grid {
+          gap: 6px;
         }
       }
-      /* Prevent body scroll when sidebar is open */
+
+      /* Prevent body scroll */
       body.sidebar-open {
         overflow: hidden;
         position: fixed;
         width: 100%;
-      }
-
-      /* Mobile Sidebar Scroll */
-      #mobileSidebar .sidebar-content {
-        overflow-y: auto;
-        max-height: 100vh;
-      }
-
-      /* Custom Scrollbar untuk Sidebar */
-      #mobileSidebar .sidebar-content::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      #mobileSidebar .sidebar-content::-webkit-scrollbar-track {
-        background: #1f2937;
-      }
-
-      #mobileSidebar .sidebar-content::-webkit-scrollbar-thumb {
-        background: #00d4ff;
-        border-radius: 3px;
       }
     </style>
   </head>
@@ -770,7 +899,6 @@
               >Proyek</a
             >
           </li>
-          <!-- HUBUNGI KAMI: TRANSPARENT BUTTON -->
           <li>
             <button
               class="px-5 py-2 border border-white/30 text-white font-semibold rounded-lg hover:bg-white hover:text-brand transition-all"
@@ -865,7 +993,7 @@
     </div>
 
     <!-- HERO SECTION -->
-    <header
+     <header
       id="home"
       class="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-gray-900"
     >
@@ -1033,7 +1161,6 @@
                 standar keselamatan dan regulasi yang berlaku.
               </p>
 
-              <!-- VISI & MISI -->
               <div class="grid sm:grid-cols-2 gap-6 mb-8">
                 <div>
                   <h3 class="text-xl font-bold mb-2 text-accent">Visi</h3>
@@ -1059,9 +1186,7 @@
                 >
                   Nilai Perusahaan
                 </h4>
-                <!-- NILAI PERUSAHAAN -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <!-- Peduli -->
                   <div class="flex flex-col items-center text-center">
                     <div
                       class="w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center mb-2 text-lg shadow-md shadow-brand/20"
@@ -1073,7 +1198,6 @@
                       >Peduli</span
                     >
                   </div>
-                  <!-- Disiplin -->
                   <div class="flex flex-col items-center text-center">
                     <div
                       class="w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center mb-2 text-lg shadow-md shadow-brand/20"
@@ -1085,7 +1209,6 @@
                       >Disiplin</span
                     >
                   </div>
-                  <!-- Profesional -->
                   <div class="flex flex-col items-center text-center">
                     <div
                       class="w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center mb-2 text-lg shadow-md shadow-brand/20"
@@ -1097,7 +1220,6 @@
                       >Profesional</span
                     >
                   </div>
-                  <!-- Tanggung Jawab -->
                   <div class="flex flex-col items-center text-center">
                     <div
                       class="w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center mb-2 text-lg shadow-md shadow-brand/20"
@@ -1230,7 +1352,7 @@
                 <h3
                   class="text-lg font-bold mb-2 text-gray-900 dark:text-white"
                 >
-                  Perbaikan Mess PT United Tractors Cabang Jayapura
+                  Perbaikan Atap Workshop UT
                 </h3>
                 <button
                   onclick="openProjectModal('konstruksi')"
@@ -1352,8 +1474,8 @@
       </section>
     </main>
 
-    <!-- FOOTER (BLACK BACKGROUND & RESPONSIVE) -->
-    <footer class="bg-black text-white pt-20 pb-10 relative overflow-hidden">
+    <!-- FOOTER -->
+     <footer class="bg-black text-white pt-20 pb-10 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <!-- Grid Top: Logo, Contact, Quick Links, Hours -->
         <div
@@ -1386,7 +1508,7 @@
             </p>
             <div class="flex gap-4">
               <a
-                href="https://r.search.yahoo.com/_ylt=Awr1SfmeAXxpAgIAiObLQwx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1770944159/RO=10/RU=https%3a%2f%2fwww.facebook.com%2fPt-Lambu-Raya-Utama-110402704789355%2f/RK=2/RS=LHeuKkNzMDqiNzXh7j4q3yQCLVY-"
+                href="#"
                 class="w-10 h-10 rounded-full bg-gray-800 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-brand transition-colors"
                 ><i class="fa-brands fa-facebook-f"></i
               ></a>
@@ -1469,7 +1591,6 @@
             </ul>
           </div>
 
-          <!-- JAM OPERASIONAL (DIPINDAH KE SINI) -->
           <div>
             <h4
               class="text-lg font-bold mb-6 border-b border-white/10 pb-2 inline-block"
@@ -1477,7 +1598,7 @@
               Jam Operasional
             </h4>
             <div class="bg-gray-900 border border-white/10 rounded-xl p-5">
-              <ul class="space-y-2">
+              <ul class="space-y-4">
                 <li class="flex justify-between items-center">
                   <span class="text-gray-400 text-sm">Senin - Jumat</span>
                   <span
@@ -1501,7 +1622,6 @@
           </div>
         </div>
 
-        <!-- PETA LOKASI (FULL WIDTH) -->
         <div class="mb-12">
           <h4 class="font-bold text-lg mb-4">Lokasi Kami</h4>
           <div
@@ -1517,7 +1637,6 @@
           </div>
         </div>
 
-        <!-- COPYRIGHT -->
         <div
           class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500"
         >
@@ -1563,7 +1682,6 @@
           </button>
         </div>
         <div class="p-4 md:p-8">
-          <!-- Main Image Placeholder -->
           <div
             class="w-full h-48 md:h-64 bg-gray-200 dark:bg-gray-800 rounded-xl mb-6 overflow-hidden"
           >
@@ -1608,14 +1726,13 @@
               class="text-gray-600 dark:text-gray-300 leading-relaxed"
             ></p>
           </div>
+
+          <!-- UPDATED: Dokumentasi section with new grid -->
           <div class="mb-8">
-            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-3">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
               Dokumentasi
             </h4>
-            <div
-              id="modalGallery"
-              class="grid grid-cols-1 sm:grid-cols-3 gap-4"
-            ></div>
+            <div id="modalGallery" class="doc-grid"></div>
           </div>
         </div>
       </div>
@@ -1626,15 +1743,11 @@
       id="contactFormModal"
       class="fixed inset-0 z-[70] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0"
     >
-      <!-- Close Overlay Area -->
       <div class="absolute inset-0 z-0" onclick="closeContactModal()"></div>
-
-      <!-- Modal Content Wrapper -->
       <div
         class="contact-modal-wrapper relative w-full max-w-5xl max-h-[90vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-300"
         id="contactFormContent"
       >
-        <!-- Close Button (Top Right) -->
         <div
           class="modal-close-btn"
           onclick="closeContactModal()"
@@ -1657,7 +1770,6 @@
         </div>
 
         <div class="container">
-          <!-- Bagian Kiri: Informasi Perusahaan -->
           <section class="info-section">
             <div class="info-content">
               <h2>Hubungi Kami</h2>
@@ -1665,85 +1777,34 @@
                 Punya pertanyaan atau ingin berdiskusi tentang proyek? Tim kami
                 siap membantu Anda.
               </p>
-
               <div class="contact-details">
                 <div class="detail-item">
                   <div class="icon-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-                      ></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                   </div>
                   <div class="detail-text">
                     <span>Alamat Kantor</span>
-                    <strong
-                      >Jl. Nenas SP. II Timika Jaya,<br />Papua Tengah</strong
-                    >
+                    <strong>Jl. Nenas SP. II Timika Jaya,<br />Papua Tengah</strong>
                   </div>
                 </div>
-
                 <div class="detail-item">
                   <div class="icon-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                      <path
-                        d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
-                      ></path>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                   </div>
                   <div class="detail-text">
                     <span>Email</span>
                     <strong>lambu.utama@yahoo.co.id</strong>
                   </div>
                 </div>
-
                 <div class="detail-item">
                   <div class="icon-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                      ></path>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                   </div>
                   <div class="detail-text">
                     <span>Telepon</span>
                     <strong>0901-3267914</strong>
                   </div>
                 </div>
-
-                <!-- JAM OPERASIONAL DI MODAL -->
                 <div class="detail-item">
                   <div class="icon-box">
                     <i class="fa-solid fa-clock"></i>
@@ -1751,159 +1812,71 @@
                   <div class="detail-text">
                     <span>Jam Operasional</span>
                     <strong>Senin - Jumat: 07:00 - 16:00</strong>
-                    <span class="text-red-400 text-xs mt-1 block"
-                      >Sabtu - Minggu: Tutup</span
-                    >
+                    <span class="text-red-400 text-xs mt-1 block">Sabtu - Minggu: Tutup</span>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="map-placeholder" title="Lokasi Kantor"></div>
           </section>
 
-          <!-- Bagian Kanan: Formulir Kontak -->
           <section class="form-section">
             <div class="form-header">
               <h3>Kirim Pesan</h3>
-              <p>
-                Isi formulir di bawah ini dan kami akan membalas dalam 1x24 jam.
-              </p>
+              <p>Isi formulir di bawah ini dan kami akan membalas dalam 1x24 jam.</p>
             </div>
-            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="20586a86-c700-43c5-a771-4bce740d01eb">
-              <input type="hidden" name="subject" value="Pesan Baru dari Website LRU">
-              <input type="hidden" name="redirect" value="https://lamburayautama.vercel.app/thank-you.html">
+
             <form id="contactForm" novalidate>
               <div class="form-group">
                 <label for="name">Nama Lengkap</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="form-control"
-                  placeholder="Masukkan nama Anda"
-                  required
-                  minlength="3"
-                />
+                <input type="text" id="name" name="name" class="form-control" placeholder="Masukkan nama Anda" required minlength="3" />
                 <div class="error-message" id="error-name">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   Nama harus diisi minimal 3 karakter.
                 </div>
               </div>
-
               <div class="form-group">
                 <label for="email">Alamat Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-control"
-                  placeholder="contoh@email.com"
-                  required
-                />
+                <input type="email" id="email" name="email" class="form-control" placeholder="contoh@email.com" required />
                 <div class="error-message" id="error-email">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   Masukkan alamat email yang valid.
                 </div>
               </div>
-
               <div class="form-group">
                 <label for="subject">Subjek</label>
-                <select
-                  id="subject"
-                  name="subject"
-                  class="form-control"
-                  required
-                >
+                <select id="subject" name="subject" class="form-control" required>
                   <option value="" disabled selected>Pilih subjek pesan</option>
                   <option value="sales">Dukungan Teknis (Support)</option>
                   <option value="support">Kemitraan (Partnership)</option>
-                  <option value="partnership">
-                    Konsultasi(Lowongan Pekerjaan)
-                  </option>
+                  <option value="partnership">Konsultasi (Lowongan Pekerjaan)</option>
                   <option value="other">Lainnya</option>
                 </select>
                 <div class="error-message" id="error-subject">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   Silakan pilih salah satu subjek.
                 </div>
               </div>
-
               <div class="form-group">
                 <label for="message">Pesan</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  class="form-control"
-                  placeholder="Tuliskan pesan atau pertanyaan Anda di sini..."
-                  required
-                  minlength="10"
-                ></textarea>
+                <textarea id="message" name="message" class="form-control" placeholder="Tuliskan pesan atau pertanyaan Anda di sini..." required minlength="10"></textarea>
                 <div class="error-message" id="error-message">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   Pesan harus diisi minimal 10 karakter.
                 </div>
               </div>
 
-              <button type="submit" class="btn-submit" id="submitBtn">
-                <span class="spinner"></span>
-                <span class="btn-text">Kirim Pesan</span>
-              </button>
+              <!-- Email & WhatsApp Buttons -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button type="button" onclick="sendViaEmail()" class="btn-submit bg-blue-600 hover:bg-blue-700 flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-envelope"></i>
+                  <span class="btn-text">Via Email</span>
+                </button>
+                <button type="button" onclick="sendViaWhatsApp()" class="btn-submit bg-green-600 hover:bg-green-700 flex items-center justify-center gap-2">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <span class="btn-text">Via WhatsApp</span>
+                </button>
+              </div>
             </form>
           </section>
         </div>
@@ -1912,6 +1885,33 @@
 
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toastContainer"></div>
+
+    <!-- 3. PROFESSIONAL LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+      <div class="lightbox-inner">
+        <!-- Close -->
+        <button class="lightbox-close" onclick="closeLightbox()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Image wrapper + nav arrows -->
+        <div class="lightbox-img-wrap">
+          <img id="lightboxImg" src="" alt="Dokumentasi" />
+          <button class="lightbox-nav prev" onclick="shiftLightbox(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="lightbox-nav next" onclick="shiftLightbox(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- Counter + thumbnail strip -->
+        <div class="lightbox-bottom">
+          <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
+          <div class="lightbox-thumbs" id="lightboxThumbs"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- Back to Top -->
     <button
@@ -1924,18 +1924,24 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-      // Data Dummy untuk Modal Proyek
+      // =========================================================
+      // PROJECT DATA
+      // =========================================================
       const projectData = {
         konstruksi: {
-          title: "Perbaikan Pagar Mess UT Jayapura",
+          title: "Konstruksi Camp Karyawan",
           year: "2024",
           location: "Timika",
-          client: "PT United Tractors",
+          client: "PT Mining Company",
           duration: "8 Bulan",
           description:
             "Pembangunan fasilitas camp karyawan standar internasional dengan kapasitas 500 orang, meliputi unit hunian, kantin, dan fasilitas rekreasi.",
-          image: "United-Tractors-Pekanbaru.jpg",
-          gallery: ["ut-01 jayapura.png", "ut-02 jayapura.png"],
+          image: "https://picsum.photos/seed/workshop/800/600",
+          gallery: [
+            "https://picsum.photos/seed/d1/600/400",
+            "https://picsum.photos/seed/d2/600/400",
+            "https://picsum.photos/seed/d3/600/400",
+          ],
         },
         infrastruktur: {
           title: "Jembatan Jila",
@@ -1945,15 +1951,15 @@
           duration: "4 Bulan",
           description:
             "Jembatan penghubung vital di pegunungan Papua yang menghubungkan dua desa terpencil, meningkatkan akses logistik dan ekonomi.",
-          image: "jembatan.jpg",
+          image: "https://picsum.photos/seed/bridge/800/600",
           gallery: [
-            "jembatan jila.png",
-            "jembatan jila.png",
-            "jembatan jila.png",
+            "https://picsum.photos/seed/i1/600/400",
+            "https://picsum.photos/seed/i2/600/400",
+            "https://picsum.photos/seed/i3/600/400",
           ],
         },
         landscaping: {
-          title: "Landscaping",
+          title: "Landscaping & Cleaning Service",
           year: "2021",
           location: "Timika",
           client: "PT Freeport",
@@ -1972,17 +1978,21 @@
           year: "2023",
           location: "Mimika",
           client: "PT Freeport",
-          duration: "Ongoing",
+          duration: "1 tahun",
           description:
             "Penyediaan tenaga kerja profesional untuk operasional Heavy Equipment dan Maintenance di area MOPH1.",
-          image: "manpower 01.JPG",
-          gallery: ["manpower 02.JPG", "MOPH1.JPG", "inspkesi with msd.jpg"],
+          image: "https://picsum.photos/seed/people/800/600",
+          gallery: [
+            "https://picsum.photos/seed/m1/600/400",
+            "https://picsum.photos/seed/m2/600/400",
+            "https://picsum.photos/seed/m3/600/400",
+          ],
         },
       };
 
-      /* --- GLOBAL UI LOGIC --- */
-
-      // Dark Mode
+      // =========================================================
+      // DARK MODE
+      // =========================================================
       const html = document.documentElement;
       const darkButtons = [
         document.getElementById("darkToggleDesktop"),
@@ -2008,7 +2018,6 @@
         updateDarkIcon();
       }
 
-      // Init Theme
       if (
         localStorage.getItem("theme") === "dark" ||
         (!("theme" in localStorage) &&
@@ -2021,7 +2030,9 @@
         btn?.addEventListener("click", toggleDarkMode)
       );
 
-      // OPTIMASI MOBILE MENU & SCROLL
+      // =========================================================
+      // MOBILE MENU
+      // =========================================================
       const navbar = document.getElementById("navbar");
       const burger = document.getElementById("burger");
       const mobileSidebar = document.getElementById("mobileSidebar");
@@ -2031,51 +2042,36 @@
       function toggleMenu() {
         const isClosed = mobileSidebar.classList.contains("hidden");
         if (isClosed) {
-          // Buka Menu
           mobileSidebar.classList.remove("hidden");
-
-          // Prevent body scroll
           document.body.classList.add("sidebar-open");
-
-          // OPTIMASI: Paksa navbar menjadi 'scrolled' agar warna konsisten dengan menu sidebar
           navbar.classList.add("scrolled");
-
           setTimeout(() => {
             sidebarBackdrop.classList.remove("opacity-0");
             sidebarContent.classList.remove("translate-x-full");
           }, 10);
           burger.classList.add("active");
         } else {
-          // Tutup Menu
           sidebarBackdrop.classList.add("opacity-0");
           sidebarContent.classList.add("translate-x-full");
           burger.classList.remove("active");
-
-          // Re-enable body scroll
           document.body.classList.remove("sidebar-open");
-
           setTimeout(() => {
             mobileSidebar.classList.add("hidden");
-
-            // OPTIMASI: Saat menu ditutup, cek posisi scroll
-            if (window.scrollY <= 50) {
-              navbar.classList.remove("scrolled");
-            }
+            if (window.scrollY <= 50) navbar.classList.remove("scrolled");
           }, 300);
         }
       }
       burger.addEventListener("click", toggleMenu);
       sidebarBackdrop.addEventListener("click", toggleMenu);
 
-      // Scroll Effects & Reveal
+      // =========================================================
+      // SCROLL EFFECTS
+      // =========================================================
       const revealElements = document.querySelectorAll(".reveal");
-
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("active");
-            }
+            if (entry.isIntersecting) entry.target.classList.add("active");
           });
         },
         { threshold: 0.1 }
@@ -2083,12 +2079,10 @@
       revealElements.forEach((el) => observer.observe(el));
 
       window.addEventListener("scroll", () => {
-        // Navbar State Logic
         if (mobileSidebar.classList.contains("hidden")) {
           if (window.scrollY > 50) navbar.classList.add("scrolled");
           else navbar.classList.remove("scrolled");
         }
-
         const btt = document.getElementById("backToTop");
         if (window.scrollY > 500) {
           btt.classList.remove("translate-y-20", "opacity-0");
@@ -2105,7 +2099,9 @@
 
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Hero Slider Logic
+      // =========================================================
+      // HERO SLIDER
+      // =========================================================
       let currentSlide = 0;
       const slides = document.querySelectorAll(".hero-slide");
       const dots = document.querySelectorAll(".hero-dot");
@@ -2113,16 +2109,15 @@
       function goToSlide(n) {
         slides[currentSlide].classList.remove("active");
         dots[currentSlide].classList.remove("active", "bg-accent");
-
         currentSlide = (n + slides.length) % slides.length;
-
         slides[currentSlide].classList.add("active");
         dots[currentSlide].classList.add("active", "bg-accent");
       }
-
       setInterval(() => goToSlide(currentSlide + 1), 6000);
 
-      // Particle System
+      // =========================================================
+      // PARTICLES
+      // =========================================================
       const particlesContainer = document.getElementById("particles");
       function createParticle() {
         const p = document.createElement("div");
@@ -2131,7 +2126,7 @@
         p.style.width = `${size}px`;
         p.style.height = `${size}px`;
         p.style.left = `${Math.random() * 100}%`;
-        p.style.top = `${Math.random() * 100 + 100}%`; // Start below viewport
+        p.style.top = `${Math.random() * 100 + 100}%`;
         const duration = Math.random() * 10 + 10;
         p.style.transition = `top ${duration}s linear, opacity ${duration}s ease-in`;
         particlesContainer.appendChild(p);
@@ -2142,10 +2137,11 @@
         setTimeout(() => p.remove(), duration * 1000);
       }
       setInterval(createParticle, 800);
-      // Initial batch
       for (let i = 0; i < 10; i++) setTimeout(createParticle, i * 200);
 
-      /* --- PROJECT MODAL LOGIC --- */
+      // =========================================================
+      // PROJECT MODAL
+      // =========================================================
       const pModal = document.getElementById("projectModal");
 
       window.openProjectModal = function (id) {
@@ -2160,17 +2156,18 @@
         document.getElementById("modalDuration").textContent = data.duration;
         document.getElementById("modalDesc").textContent = data.description;
 
-        // UPDATE BAGIAN INI - Tambahkan onclick untuk setiap gambar
+        // Build professional thumbnail grid
         document.getElementById("modalGallery").innerHTML = data.gallery
           .map(
-            (src) =>
-              `<img 
-          src="${src}" 
-          class="rounded-lg w-full h-80 object-cover border border-gray-200 dark:border-gray-700 hover:scale-105 transition-transform cursor-pointer" 
-          onclick="openLightbox('${src}', ${JSON.stringify(
-                data.gallery
-              ).replace(/"/g, "&quot;")})"
-        />`
+            (src, idx) =>
+              `<div class="doc-thumb" onclick="openLightbox('${id}', ${idx})">
+                <img src="${src}" alt="Dokumentasi ${idx + 1}" loading="lazy" />
+                <div class="thumb-overlay">
+                  <div class="zoom-icon">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                  </div>
+                </div>
+              </div>`
           )
           .join("");
 
@@ -2183,13 +2180,82 @@
         document.body.style.overflow = "auto";
       };
 
-      /* --- CONTACT FORM MODAL LOGIC --- */
-      const cModal = document.getElementById("contactFormModal");
+      // =========================================================
+      // PROFESSIONAL LIGHTBOX
+      // =========================================================
+      let lbGallery = [];   // current gallery array
+      let lbIndex   = 0;    // current image index
+
+      /**
+       * Open the lightbox.
+       * @param {string} projectId  – key in projectData
+       * @param {number} startIndex – which image to show first
+       */
+      window.openLightbox = function (projectId, startIndex) {
+        const data = projectData[projectId];
+        if (!data) return;
+
+        lbGallery = data.gallery;
+        lbIndex   = startIndex;
+
+        renderLightboxImage();
+        renderLightboxThumbs();
+
+        const lb = document.getElementById("lightbox");
+        lb.classList.add("active");
+        document.body.style.overflow = "hidden";
+      };
+
+      /** Close the lightbox */
+      window.closeLightbox = function () {
+        document.getElementById("lightbox").classList.remove("active");
+        document.body.style.overflow = "auto";
+      };
+
+      /**
+       * Navigate forward (+1) or backward (-1), loops around.
+       */
+      window.shiftLightbox = function (dir) {
+        lbIndex = (lbIndex + dir + lbGallery.length) % lbGallery.length;
+        renderLightboxImage();
+        renderLightboxThumbs();
+      };
+
+      /** Update main image + counter text */
+      function renderLightboxImage() {
+        document.getElementById("lightboxImg").src = lbGallery[lbIndex];
+        document.getElementById("lightboxCounter").textContent =
+          `${lbIndex + 1} / ${lbGallery.length}`;
+      }
+
+      /** Rebuild the thumbnail strip, highlighting the active one */
+      function renderLightboxThumbs() {
+        const wrap = document.getElementById("lightboxThumbs");
+        wrap.innerHTML = lbGallery
+          .map(
+            (src, i) =>
+              `<div class="lt-thumb ${i === lbIndex ? "active" : ""}" onclick="jumpLightbox(${i})">
+                <img src="${src}" alt="" />
+              </div>`
+          )
+          .join("");
+      }
+
+      /** Jump directly to a specific index via thumbnail click */
+      window.jumpLightbox = function (idx) {
+        lbIndex = idx;
+        renderLightboxImage();
+        renderLightboxThumbs();
+      };
+
+      // =========================================================
+      // CONTACT FORM – EMAIL & WHATSAPP
+      // =========================================================
+      const cModal   = document.getElementById("contactFormModal");
       const cContent = document.getElementById("contactFormContent");
 
       window.openContactModal = function () {
         cModal.classList.remove("hidden");
-        // Allow display:flex to apply before transition
         setTimeout(() => {
           cModal.classList.remove("opacity-0");
           cContent.classList.remove("opacity-0", "scale-95");
@@ -2206,13 +2272,24 @@
         }, 300);
       };
 
-      // Form Handling
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("contactForm");
-        const submitBtn = document.getElementById("submitBtn");
-        const spinner = submitBtn.querySelector(".spinner");
-        const btnText = submitBtn.querySelector(".btn-text");
+      // Toast helper
+      function showToast(title, message) {
+        const container = document.getElementById("toastContainer");
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `
+          <div class="toast-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+          <div class="toast-content"><h4>${title}</h4><p>${message}</p></div>`;
+        container.appendChild(toast);
+        requestAnimationFrame(() => toast.classList.add("show"));
+        setTimeout(() => {
+          toast.classList.remove("show");
+          toast.addEventListener("transitionend", () => toast.remove());
+        }, 4000);
+      }
 
+      // Form validation helpers
+      document.addEventListener("DOMContentLoaded", () => {
         const isValidEmail = (email) =>
           /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -2228,162 +2305,118 @@
           }
         };
 
-        // Clear errors on input
         ["name", "email", "subject", "message"].forEach((id) => {
           document
             .getElementById(id)
             .addEventListener("input", () => setError(id, false));
         });
 
-        const showToast = (title, message) => {
-          const container = document.getElementById("toastContainer");
-          const toast = document.createElement("div");
-          toast.className = "toast";
-          toast.innerHTML = `
-                <div class="toast-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-                <div class="toast-content"><h4>${title}</h4><p>${message}</p></div>`;
-          container.appendChild(toast);
-          requestAnimationFrame(() => toast.classList.add("show"));
-          setTimeout(() => {
-            toast.classList.remove("show");
-            toast.addEventListener("transitionend", () => toast.remove());
-          }, 4000);
-        };
-
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          let isValid = true;
-          const name = document.getElementById("name").value.trim();
-          const email = document.getElementById("email").value.trim();
+        // Validate form, returns true if OK
+        window._validateForm = function () {
+          let ok = true;
+          const name    = document.getElementById("name").value.trim();
+          const email   = document.getElementById("email").value.trim();
           const subject = document.getElementById("subject").value;
           const message = document.getElementById("message").value.trim();
 
-          if (name.length < 3) {
-            setError("name", true);
-            isValid = false;
-          }
-          if (!isValidEmail(email)) {
-            setError("email", true);
-            isValid = false;
-          }
-          if (subject === "") {
-            setError("subject", true);
-            isValid = false;
-          }
-          if (message.length < 10) {
-            setError("message", true);
-            isValid = false;
-          }
-
-          if (!isValid) return;
-
-          // Simulate Network Request
-          submitBtn.disabled = true;
-          btnText.textContent = "Mengirim...";
-          spinner.style.display = "block";
-
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            btnText.textContent = "Kirim Pesan";
-            spinner.style.display = "none";
-            showToast(
-              "Berhasil!",
-              "Pesan Anda telah terkirim. Kami akan segera menghubungi Anda."
-            );
-            form.reset();
-            setTimeout(closeContactModal, 1500); // Auto close after success
-          }, 2000);
-        });
+          if (name.length < 3)       { setError("name", true);    ok = false; }
+          if (!isValidEmail(email))  { setError("email", true);   ok = false; }
+          if (subject === "")        { setError("subject", true); ok = false; }
+          if (message.length < 10)   { setError("message", true); ok = false; }
+          return ok;
+        };
       });
 
-      // Global Escape Key
+      // Send via Email
+      window.sendViaEmail = function () {
+        if (!window._validateForm()) return;
+
+        const name    = document.getElementById("name").value.trim();
+        const email   = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value.trim();
+
+        const subjectMap = {
+          sales: "Pertanyaan Penjualan",
+          support: "Dukungan Teknis",
+          partnership: "Kemitraan",
+          other: "Lainnya",
+        };
+        const subjectText = subjectMap[subject] || subject;
+
+        const body =
+          `Halo PT Lambu Raya Utama,%0D%0A%0D%0A` +
+          `Nama: ${encodeURIComponent(name)}%0D%0A` +
+          `Email: ${encodeURIComponent(email)}%0D%0A` +
+          `Subjek: ${encodeURIComponent(subjectText)}%0D%0A%0D%0A` +
+          `Pesan:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A` +
+          `Terima kasih,%0D%0A${encodeURIComponent(name)}`;
+
+        window.location.href = `mailto:lambu.utama@yahoo.co.id?subject=${encodeURIComponent("Pesan Website - " + subjectText)}&body=${body}`;
+
+        showToast("Membuka Email...", "Aplikasi email Anda akan terbuka dengan pesan yang sudah terisi.");
+        setTimeout(() => {
+          document.getElementById("contactForm").reset();
+          closeContactModal();
+        }, 1500);
+      };
+
+      // Send via WhatsApp
+      window.sendViaWhatsApp = function () {
+        if (!window._validateForm()) return;
+
+        const name    = document.getElementById("name").value.trim();
+        const email   = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value.trim();
+
+        const subjectMap = {
+          sales: "Pertanyaan Penjualan",
+          support: "Dukungan Teknis",
+          partnership: "Kemitraan",
+          other: "Lainnya",
+        };
+        const subjectText = subjectMap[subject] || subject;
+
+        const waMessage =
+          `Halo PT Lambu Raya Utama,%0A%0A` +
+          `Nama: ${encodeURIComponent(name)}%0A` +
+          `Email: ${encodeURIComponent(email)}%0A` +
+          `Subjek: ${encodeURIComponent(subjectText)}%0A%0A` +
+          `Pesan:%0A${encodeURIComponent(message)}%0A%0A` +
+          `Terima kasih,%0A${encodeURIComponent(name)}`;
+
+        const waNumber = "6290132679140";
+        window.open(`https://wa.me/${waNumber}?text=${waMessage}`, "_blank");
+
+        showToast("Membuka WhatsApp...", "WhatsApp akan terbuka dengan pesan yang sudah terisi.");
+        setTimeout(() => {
+          document.getElementById("contactForm").reset();
+          closeContactModal();
+        }, 1500);
+      };
+
+      // =========================================================
+      // GLOBAL KEYBOARD
+      // =========================================================
       document.addEventListener("keydown", (e) => {
+        const lb = document.getElementById("lightbox");
+        if (lb.classList.contains("active")) {
+          if (e.key === "ArrowLeft")  shiftLightbox(-1);
+          if (e.key === "ArrowRight") shiftLightbox(1);
+          if (e.key === "Escape")     closeLightbox();
+          return; // don't fall through
+        }
         if (e.key === "Escape") {
           closeProjectModal();
           closeContactModal();
         }
       });
-      /* --- LIGHTBOX GALLERY LOGIC --- */
-      let currentGallery = [];
-      let currentImageIndex = 0;
 
-      window.openLightbox = function (imageSrc, gallery) {
-        currentGallery = gallery;
-        currentImageIndex = gallery.indexOf(imageSrc);
-
-        const lightbox = document.getElementById("lightboxModal");
-        const lightboxImage = document.getElementById("lightboxImage");
-
-        lightboxImage.src = imageSrc;
-        updateLightboxCounter();
-
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden";
-      };
-
-      window.closeLightbox = function () {
-        const lightbox = document.getElementById("lightboxModal");
-        lightbox.classList.remove("active");
-        document.body.style.overflow = "auto";
-      };
-
-      window.navigateLightbox = function (direction) {
-        currentImageIndex += direction;
-
-        // Loop ke awal/akhir
-        if (currentImageIndex < 0) {
-          currentImageIndex = currentGallery.length - 1;
-        } else if (currentImageIndex >= currentGallery.length) {
-          currentImageIndex = 0;
-        }
-
-        document.getElementById("lightboxImage").src =
-          currentGallery[currentImageIndex];
-        updateLightboxCounter();
-      };
-
-      function updateLightboxCounter() {
-        document.getElementById("lightboxCounter").textContent = `${
-          currentImageIndex + 1
-        } / ${currentGallery.length}`;
-      }
-
-      // Keyboard Navigation untuk Lightbox
-      document.addEventListener("keydown", (e) => {
-        const lightbox = document.getElementById("lightboxModal");
-        if (lightbox.classList.contains("active")) {
-          if (e.key === "ArrowLeft") navigateLightbox(-1);
-          if (e.key === "ArrowRight") navigateLightbox(1);
-          if (e.key === "Escape") closeLightbox();
-        }
+      // Close lightbox when clicking the dark backdrop (not inner)
+      document.getElementById("lightbox").addEventListener("click", function (e) {
+        if (e.target === this) closeLightbox();
       });
-
-      // Close lightbox saat klik di luar gambar
-      document
-        .getElementById("lightboxModal")
-        .addEventListener("click", function (e) {
-          if (e.target === this) {
-            closeLightbox();
-          }
-        });
     </script>
-    <!-- Lightbox Modal untuk Galeri -->
-    <div id="lightboxModal" class="lightbox-modal">
-      <div class="lightbox-content">
-        <button class="lightbox-close" onclick="closeLightbox()">
-          <i class="fa-solid fa-xmark text-xl"></i>
-        </button>
-        <button class="lightbox-nav prev" onclick="navigateLightbox(-1)">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <img id="lightboxImage" class="lightbox-image" src="" alt="Galeri" />
-        <button class="lightbox-nav next" onclick="navigateLightbox(1)">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-        <div class="lightbox-counter">
-          <span id="lightboxCounter">1 / 3</span>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
