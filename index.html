@@ -1,3 +1,5 @@
+html
+
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
   <head>
@@ -12,21 +14,35 @@
     
     <link rel="canonical" href="https://lamburayautama.vercel.app/"/>
     
-    <!-- Fonts -->
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="Logo_LRU.png" as="image" />
+    <link rel="preload" href="Kantor LRU.png" as="image" />
+    
+    <!-- Fonts - Optimized with display=swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
-    <!-- Icons (FontAwesome) -->
+    <!-- Icons - Deferred Loading -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+      media="print"
+      onload="this.media='all'"
     />
 
     <!-- Tailwind CSS (CDN) -->
@@ -53,25 +69,12 @@
               },
             },
             animation: {
-              blob: "blob 7s infinite",
               float: "float 6s ease-in-out infinite",
-              "fade-in-up": "fadeInUp 0.8s ease-out forwards",
-              "spin-slow": "spin 12s linear infinite",
             },
             keyframes: {
-              blob: {
-                "0%": { transform: "translate(0px, 0px) scale(1)" },
-                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
-                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
-                "100%": { transform: "translate(0px, 0px) scale(1)" },
-              },
               float: {
                 "0%, 100%": { transform: "translateY(0)" },
                 "50%": { transform: "translateY(-20px)" },
-              },
-              fadeInUp: {
-                "0%": { opacity: "0", transform: "translateY(20px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
               },
             },
           },
@@ -80,7 +83,7 @@
     </script>
 
     <style>
-      /* --- Main Page Styles --- */
+      /* Critical CSS for FCP optimization */
       section {
         scroll-margin-top: 80px;
       }
@@ -92,10 +95,9 @@
         background-clip: text;
       }
 
-      /* Navbar Transitions Optimized */
+      /* Navbar Transitions */
       #navbar {
-        transition: background-color 0.3s ease, padding 0.3s ease,
-          box-shadow 0.3s ease;
+        transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
       }
       #navbar.scrolled {
         background: rgba(15, 23, 42, 0.95);
@@ -114,33 +116,29 @@
         box-shadow: 0 20px 40px -5px rgba(0, 60, 143, 0.3);
       }
 
-      /* Hero Slider Logic */
+      /* Hero Slider - Optimized */
       .hero-slide {
-        transition: opacity 1s ease-in-out, transform 10s ease-out;
-        transform: scale(1);
+        transition: opacity 1s ease-in-out;
+        will-change: opacity;
       }
       .hero-slide.active {
         opacity: 1;
-        transform: scale(1.05);
       }
       .hero-slide:not(.active) {
         opacity: 0;
-        transform: scale(1);
       }
 
       /* Modal Transitions */
+      .modal-hidden {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
       .modal-overlay {
         transition: opacity 0.3s ease;
       }
       .modal-content {
         transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      .modal-hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
-      .modal-hidden .modal-content {
-        transform: scale(0.95) translateY(20px);
       }
 
       /* Scrollbar Styling */
@@ -172,22 +170,7 @@
         transform: translateY(0);
       }
 
-      /* Particle Background */
-      .particle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(0, 212, 255, 0.15);
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      /* --- BURGER MENU ANIMATION (SEJAJAR) --- */
-      #burger > div {
-        position: relative;
-        width: 24px;
-        height: 18px;
-      }
-
+      /* Burger Menu Animation */
       #burger span {
         display: block;
         position: absolute;
@@ -203,7 +186,6 @@
       #burger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
       #burger span:nth-child(3) { bottom: 0; }
 
-      /* Active state: X icon */
       #burger.active span:nth-child(1) {
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
@@ -219,20 +201,13 @@
         background-color: #00d4ff;
       }
 
-      /* --- CONTACT FORM MODAL STYLES --- */
-      .contact-modal-wrapper {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
+      /* Contact Modal */
       .contact-modal-wrapper .container {
         background-color: #ffffff;
         width: 100%;
         max-width: 1000px;
         border-radius: 16px;
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-          0 8px 10px -6px rgb(0 0 0 / 0.1);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         overflow: hidden;
         display: flex;
         flex-direction: row;
@@ -259,16 +234,6 @@
         left: -50px;
         width: 200px;
         height: 200px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 50%;
-      }
-      .contact-modal-wrapper .info-section::after {
-        content: "";
-        position: absolute;
-        bottom: -50px;
-        right: -50px;
-        width: 300px;
-        height: 300px;
         background: rgba(255, 255, 255, 0.05);
         border-radius: 50%;
       }
@@ -440,11 +405,6 @@
       .contact-modal-wrapper .btn-submit:active {
         transform: scale(0.98);
       }
-      .contact-modal-wrapper .btn-submit:disabled {
-        background-color: #94a3b8;
-        cursor: not-allowed;
-        transform: none;
-      }
 
       .contact-modal-wrapper .btn-submit.bg-blue-600 {
         background-color: #2563eb;
@@ -457,21 +417,6 @@
       }
       .contact-modal-wrapper .btn-submit.bg-green-600:hover {
         background-color: #15803d;
-      }
-
-      .contact-modal-wrapper .spinner {
-        width: 18px;
-        height: 18px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: white;
-        animation: spin 0.8s linear infinite;
-        display: none;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
       }
 
       /* Toast Notification */
@@ -514,29 +459,7 @@
         color: #64748b;
       }
 
-      /* Responsive for Contact Modal */
-      @media (max-width: 900px) {
-        .contact-modal-wrapper .container {
-          flex-direction: column;
-          max-width: 90%;
-        }
-        .contact-modal-wrapper .info-section,
-        .contact-modal-wrapper .form-section {
-          width: 100%;
-        }
-        .contact-modal-wrapper .info-section {
-          padding: 30px;
-        }
-        .contact-modal-wrapper .form-section {
-          padding: 30px;
-        }
-      }
-
-      /* ============================================
-         PROFESSIONAL LIGHTBOX GALLERY STYLES
-         ============================================ */
-
-      /* --- Dokumentasi Grid Thumbnails --- */
+      /* Lightbox Gallery */
       .doc-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -569,15 +492,10 @@
         transform: scale(1.1);
       }
 
-      /* Overlay on hover */
       .doc-thumb .thumb-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          to top,
-          rgba(0, 60, 143, 0.7) 0%,
-          transparent 60%
-        );
+        background: linear-gradient(to top, rgba(0, 60, 143, 0.7) 0%, transparent 60%);
         opacity: 0;
         transition: opacity 0.4s ease;
         display: flex;
@@ -610,12 +528,12 @@
         transform: scale(1.1);
       }
 
-      /* --- LIGHTBOX OVERLAY --- */
+      /* Lightbox Overlay */
       .lightbox {
         position: fixed;
         inset: 0;
         z-index: 100;
-        background: rgba(0, 0, 0, 0.0);
+        background: rgba(0, 0, 0, 0);
         backdrop-filter: blur(0px);
         display: flex;
         align-items: center;
@@ -632,7 +550,6 @@
         backdrop-filter: blur(8px);
       }
 
-      /* --- LIGHTBOX INNER CONTAINER --- */
       .lightbox-inner {
         position: relative;
         display: flex;
@@ -642,8 +559,7 @@
         max-height: 90vh;
         transform: scale(0.88);
         opacity: 0;
-        transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-                    opacity 0.35s ease;
+        transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
       }
 
       .lightbox.active .lightbox-inner {
@@ -651,7 +567,6 @@
         opacity: 1;
       }
 
-      /* --- LIGHTBOX IMAGE WRAPPER --- */
       .lightbox-img-wrap {
         position: relative;
         max-width: 85vw;
@@ -669,7 +584,6 @@
         border-radius: 12px;
       }
 
-      /* --- CLOSE BUTTON --- */
       .lightbox-close {
         position: absolute;
         top: -48px;
@@ -694,7 +608,6 @@
         transform: rotate(90deg);
       }
 
-      /* --- PREV / NEXT NAVIGATION --- */
       .lightbox-nav {
         position: absolute;
         top: 50%;
@@ -727,7 +640,6 @@
         right: -58px;
       }
 
-      /* --- BOTTOM INFO BAR (counter + thumbnails) --- */
       .lightbox-bottom {
         margin-top: 20px;
         display: flex;
@@ -737,7 +649,6 @@
         width: 100%;
       }
 
-      /* Counter badge */
       .lightbox-counter {
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.15);
@@ -750,7 +661,6 @@
         border-radius: 20px;
       }
 
-      /* Thumbnail strip */
       .lightbox-thumbs {
         display: flex;
         gap: 10px;
@@ -786,7 +696,24 @@
         transform: translateY(-2px);
       }
 
-      /* --- MOBILE RESPONSIVE --- */
+      /* Responsive */
+      @media (max-width: 900px) {
+        .contact-modal-wrapper .container {
+          flex-direction: column;
+          max-width: 90%;
+        }
+        .contact-modal-wrapper .info-section,
+        .contact-modal-wrapper .form-section {
+          width: 100%;
+        }
+        .contact-modal-wrapper .info-section {
+          padding: 30px;
+        }
+        .contact-modal-wrapper .form-section {
+          padding: 30px;
+        }
+      }
+
       @media (max-width: 600px) {
         .lightbox-nav.prev {
           left: 6px;
@@ -819,11 +746,9 @@
         }
       }
 
-      /* Prevent body scroll */
-      body.sidebar-open {
+      body.sidebar-open,
+      body.modal-open {
         overflow: hidden;
-        position: fixed;
-        width: 100%;
       }
     </style>
   </head>
@@ -831,12 +756,6 @@
   <body
     class="bg-gray-50 dark:bg-gray-950 text-gray-800 dark:text-gray-100 overflow-x-hidden selection:bg-accent selection:text-white font-body"
   >
-    <!-- Particle Background -->
-    <div
-      id="particles"
-      class="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-    ></div>
-
     <!-- NAVBAR -->
     <nav class="fixed top-0 w-full z-50 text-white" id="navbar">
       <div
@@ -847,6 +766,8 @@
             src="Logo_LRU.png"
             alt="Logo LRU"
             class="h-8 w-8 md:h-10 md:w-10 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-7"
+            width="40"
+            height="40"
           />
           <div class="block">
             <h1
@@ -905,6 +826,7 @@
             <button
               class="px-5 py-2 border border-white/30 text-white font-semibold rounded-lg hover:bg-white hover:text-brand transition-all"
               onclick="openContactModal()"
+              aria-label="Hubungi Kami"
             >
               Hubungi Kami
             </button>
@@ -913,25 +835,27 @@
             <button
               id="darkToggleDesktop"
               class="p-2 rounded-full hover:bg-white/10 transition-colors focus:outline-none w-10 h-10 flex items-center justify-center"
+              aria-label="Toggle Dark Mode"
             >
               <i class="fa-solid fa-moon"></i>
             </button>
           </li>
         </ul>
 
-        <!-- Mobile Menu Toggle (Burger) -->
+        <!-- Mobile Menu Toggle -->
         <div class="flex items-center gap-4 md:hidden z-50">
           <button
             id="darkToggleMobile"
             class="p-2 rounded-full hover:bg-white/10 transition-colors"
+            aria-label="Toggle Dark Mode Mobile"
           >
             <i class="fa-solid fa-moon"></i>
           </button>
-          <button id="burger" class="p-2 focus:outline-none">
-            <div class="w-6 h-5 flex flex-col justify-between items-end">
-              <span class="w-full h-0.5 bg-white transition-all"></span>
-              <span class="w-3/4 h-0.5 bg-white transition-all"></span>
-              <span class="w-1/2 h-0.5 bg-white transition-all"></span>
+          <button id="burger" class="p-2 focus:outline-none" aria-label="Menu">
+            <div class="w-6 h-5 relative">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </button>
         </div>
@@ -939,10 +863,11 @@
     </nav>
 
     <!-- MOBILE SIDEBAR -->
-    <div id="mobileSidebar" class="fixed inset-0 z-30 hidden">
+    <div id="mobileSidebar" class="fixed inset-0 z-30 hidden" role="dialog" aria-modal="true" aria-label="Menu Navigasi">
       <div
         id="sidebarBackdrop"
         class="absolute inset-0 bg-black/95 backdrop-blur-md opacity-0 transition-opacity duration-300"
+        aria-hidden="true"
       ></div>
       <div
         class="absolute top-0 right-0 h-full w-[60%] max-w-sm bg-gray-900 border-l border-gray-800 transform translate-x-full transition-transform duration-300 ease-out shadow-2xl p-6 flex flex-col"
@@ -951,7 +876,7 @@
           <h2 class="text-2xl font-bold text-white mb-2">Menu</h2>
           <div class="h-1 w-12 bg-accent rounded-full"></div>
         </div>
-        <div class="space-y-3 flex-1">
+        <nav class="space-y-3 flex-1">
           <a
             class="block text-base md:text-lg text-gray-300 hover:text-accent hover:bg-gray-800 p-3 rounded-lg transition border-l-4 border-transparent hover:border-accent"
             href="#home"
@@ -982,7 +907,7 @@
             onclick="toggleMenu()"
             >Proyek</a
           >
-        </div>
+        </nav>
         <div class="mt-8 pt-6 border-t border-gray-800 text-center">
           <button
             onclick="openContactModal(); toggleMenu()"
@@ -995,39 +920,70 @@
     </div>
 
     <!-- HERO SECTION -->
-     <header
+    <header
       id="home"
       class="relative h-screen min-h-[600px] w-full overflow-hidden flex items-center justify-center bg-gray-900"
     >
-    <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/25 z-10"></div>
-        <div
-          class="hero-slide active absolute inset-0 w-full h-full bg-cover bg-center"
-          style="background-image: url('Kantor\ LRU.png')"
-        ></div>
-        <div
-          class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center"
-          style="background-image: url('vladimir-patkachakov.jpg')"
-        ></div>
-        <div
-          class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center"
-          style="background-image: url('Gedung\ MSC.jpeg')"
-        ></div>
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/25 to-gray-900 z-10"
-        ></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/25 z-10"></div>
+      <div
+        class="hero-slide active absolute inset-0 w-full h-full bg-cover bg-center"
+        style="background-image: url('Kantor\ LRU.png')"
+        role="img"
+        aria-label="Kantor PT Lambu Raya Utama"
+      ></div>
+      <div
+        class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center"
+        style="background-image: url('vladimir-patkachakov.jpg')"
+        role="img"
+        aria-label="Proyek Konstruksi"
+      ></div>
+      <div
+        class="hero-slide absolute inset-0 w-full h-full bg-cover bg-center"
+        style="background-image: url('Gedung\ MSC.jpeg')"
+        role="img"
+        aria-label="Gedung MSC"
+      ></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/25 to-gray-900 z-10"
+      ></div>
+      <div class="relative z-20 text-center px-4 max-w-5xl mx-auto">
+        <h1
+          class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+        >
+          Solusi <span class="text-accent">Konstruksi</span> Terpercaya
+        </h1>
+        <p class="text-lg md:text-2xl text-white/90 mb-8 font-light">
+          General Contractor • Leveransir • Support Service
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="#projects"
+            class="px-8 py-3 bg-brand text-white font-semibold rounded-lg hover:bg-brand-dark transition-all shadow-lg hover:shadow-xl"
+            >Lihat Proyek</a
+          >
+          <button
+            onclick="openContactModal()"
+            class="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand transition-all"
+          >
+            Hubungi Kami
+          </button>
+        </div>
       </div>
       <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
         <button
           class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-accent transition-all active"
           onclick="goToSlide(0)"
+          aria-label="Slide 1"
         ></button>
         <button
           class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-accent transition-all"
           onclick="goToSlide(1)"
+          aria-label="Slide 2"
         ></button>
         <button
           class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-accent transition-all"
           onclick="goToSlide(2)"
+          aria-label="Slide 3"
         ></button>
       </div>
     </header>
@@ -1079,6 +1035,7 @@
                 sesuai standar industri, sehingga mampu menunjang efektivitas,
                 efisiensi, serta kualitas pekerjaan di setiap proyek yang kami
                 tangani.
+              </p>
             </div>
             <div
               class="card-hover bg-gray-50 dark:bg-gray-800 p-6 md:p-8 rounded-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden group reveal"
@@ -1134,9 +1091,6 @@
         id="about"
         class="py-16 md:py-28 bg-gray-50 dark:bg-gray-950 relative overflow-hidden"
       >
-        <div
-          class="absolute top-20 right-0 w-96 h-96 bg-brand/5 rounded-full blur-3xl animate-blob"
-        ></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div class="relative reveal order-2 lg:order-1">
@@ -1147,6 +1101,9 @@
                   src="Kantor LRU.png"
                   alt="Kantor PT Lambu Raya Utama"
                   class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  width="600"
+                  height="400"
                 />
               </div>
             </div>
@@ -1336,7 +1293,7 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Project 1 -->
-            <div
+            <article
               class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 reveal"
             >
               <div class="h-48 overflow-hidden relative">
@@ -1344,6 +1301,9 @@
                   src="dok. sm.jpg"
                   alt="Konstruksi"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  width="400"
+                  height="300"
                 />
                 <div
                   class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
@@ -1367,9 +1327,9 @@
                   Lihat Detail
                 </button>
               </div>
-            </div>
+            </article>
             <!-- Project 2 -->
-            <div
+            <article
               class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 reveal"
               style="transition-delay: 100ms"
             >
@@ -1378,6 +1338,9 @@
                   src="Metso fence2.jpg"
                   alt="Infrastruktur"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  width="400"
+                  height="300"
                 />
                 <div
                   class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
@@ -1403,9 +1366,9 @@
                   Lihat Detail
                 </button>
               </div>
-            </div>
+            </article>
             <!-- Project 3 -->
-            <div
+            <article
               class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 reveal"
               style="transition-delay: 200ms"
             >
@@ -1414,6 +1377,9 @@
                   src="IMG-20240521-WA0034.jpg"
                   alt="Landscaping"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  width="400"
+                  height="300"
                 />
                 <div
                   class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
@@ -1440,9 +1406,9 @@
                   Lihat Detail
                 </button>
               </div>
-            </div>
+            </article>
             <!-- Project 4 -->
-            <div
+            <article
               class="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 reveal"
               style="transition-delay: 300ms"
             >
@@ -1451,6 +1417,9 @@
                   src="manpower 01.JPG"
                   alt="Manpower"
                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  width="400"
+                  height="300"
                 />
                 <div
                   class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
@@ -1474,16 +1443,15 @@
                   Lihat Detail
                 </button>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
     </main>
 
     <!-- FOOTER -->
-     <footer class="bg-black text-white pt-20 pb-10 relative overflow-hidden">
+    <footer class="bg-black text-white pt-20 pb-10 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        <!-- Grid Top: Logo, Contact, Quick Links, Hours -->
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12"
         >
@@ -1493,14 +1461,17 @@
               <img
                 src="Logo_LRU.png"
                 alt="Logo LRU"
-                class="h-8 w-8 md:h-12 md:w-12 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-7"
+                class="h-8 w-8 md:h-12 md:w-12 object-contain"
+                width="48"
+                height="48"
+                loading="lazy"
               />
               <div class="block">
-                <h1
-                  class="text-xs sm:text-sm md:text-lg font-bold text-white leading-tight group-hover:text-accent transition-colors duration-300"
+                <h2
+                  class="text-xs sm:text-sm md:text-lg font-bold text-white leading-tight"
                 >
                   PT LAMBU RAYA UTAMA
-                </h1>
+                </h2>
                 <p
                   class="text-[8px] sm:text-[10px] md:text-sm text-white/80 font-medium"
                 >
@@ -1516,27 +1487,34 @@
               <a
                 href="#"
                 class="w-10 h-10 rounded-full bg-gray-800 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-brand transition-colors"
+                aria-label="Facebook"
                 ><i class="fa-brands fa-facebook-f"></i
               ></a>
               <a
                 href="https://www.instagram.com/_lamburayautama/"
                 class="w-10 h-10 rounded-full bg-gray-800 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-brand transition-colors"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="fa-brands fa-instagram"></i
               ></a>
               <a
                 href="https://www.linkedin.com/in/lamburaya-utama-614491273/"
                 class="w-10 h-10 rounded-full bg-gray-800 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-brand transition-colors"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="fa-brands fa-linkedin-in"></i
               ></a>
             </div>
           </div>
 
           <div>
-            <h4
+            <h3
               class="text-lg font-bold mb-6 border-b border-white/10 pb-2 inline-block"
             >
               Informasi Kontak
-            </h4>
+            </h3>
             <ul class="space-y-4 text-gray-400 text-sm">
               <li class="flex items-start gap-3">
                 <i class="fa-solid fa-phone mt-1 text-accent w-5"></i
@@ -1558,11 +1536,11 @@
           </div>
 
           <div>
-            <h4
+            <h3
               class="text-lg font-bold mb-6 border-b border-white/10 pb-2 inline-block"
             >
               Menu Cepat
-            </h4>
+            </h3>
             <ul class="space-y-3 text-gray-400 text-sm">
               <li>
                 <a
@@ -1598,11 +1576,11 @@
           </div>
 
           <div>
-            <h4
+            <h3
               class="text-lg font-bold mb-6 border-b border-white/10 pb-2 inline-block"
             >
               Jam Operasional
-            </h4>
+            </h3>
             <div class="bg-gray-900 border border-white/10 rounded-xl p-5">
               <ul class="space-y-4">
                 <li class="flex justify-between items-center">
@@ -1629,7 +1607,7 @@
         </div>
 
         <div class="mb-12">
-          <h4 class="font-bold text-lg mb-4">Lokasi Kami</h4>
+          <h3 class="font-bold text-lg mb-4">Lokasi Kami</h3>
           <div
             class="rounded-xl overflow-hidden border border-white/10 shadow-lg h-64"
           >
@@ -1651,8 +1629,7 @@
             reserved.
           </p>
           
-           <!-- Links -->
-           <div class="flex gap-6 mt-4 md:mt-0">
+          <div class="flex gap-6 mt-4 md:mt-0">
             <a href="https://www.termsfeed.com/live/f2a6998d-b81b-4c7f-a8d0-9a112b717cf4" class="hover:text-white transition">
               Privacy Policy
             </a>
@@ -1664,17 +1641,19 @@
       </div>
     </footer>
 
-    <!-- ================= MODALS ================= -->
-
-    <!-- 1. PROJECT DETAIL MODAL -->
+    <!-- PROJECT DETAIL MODAL -->
     <div
       id="projectModal"
       class="fixed inset-0 z-[60] flex items-center justify-center px-4 modal-hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
     >
       <div
         id="modalOverlay"
         class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-overlay"
         onclick="closeProjectModal()"
+        aria-hidden="true"
       ></div>
       <div
         class="bg-white dark:bg-gray-900 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative shadow-2xl modal-content transform transition-all duration-300"
@@ -1689,6 +1668,7 @@
           <button
             onclick="closeProjectModal()"
             class="text-gray-500 hover:text-red-500 transition p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0"
+            aria-label="Tutup modal"
           >
             <i class="fa-solid fa-xmark text-xl"></i>
           </button>
@@ -1697,7 +1677,13 @@
           <div
             class="w-full h-48 md:h-64 bg-gray-200 dark:bg-gray-800 rounded-xl mb-6 overflow-hidden"
           >
-            <img id="modalImage" alt="Project Image" />
+            <img 
+              id="modalImage" 
+              src="" 
+              alt="Project Image" 
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
 
           <div
@@ -1743,19 +1729,19 @@
             <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
               Dokumentasi
             </h4>
-            <div
-              id="modalGallery"
-              class="grid grid-cols-2 md:grid-cols-3 gap-4"
-            ></div>
+            <div id="modalGallery" class="doc-grid"></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 2. CONTACT FORM MODAL -->
+    <!-- CONTACT FORM MODAL -->
     <div
       id="contactFormModal"
       class="fixed inset-0 z-[70] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contactFormTitle"
     >
       <div class="absolute inset-0 z-0" onclick="closeContactModal()"></div>
       <div
@@ -1766,6 +1752,8 @@
           class="modal-close-btn"
           onclick="closeContactModal()"
           title="Tutup"
+          role="button"
+          aria-label="Tutup modal kontak"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -1786,7 +1774,7 @@
         <div class="container">
           <section class="info-section">
             <div class="info-content">
-              <h2>Hubungi Kami</h2>
+              <h2 id="contactFormTitle">Hubungi Kami</h2>
               <p>
                 Punya pertanyaan atau ingin berdiskusi tentang proyek? Tim kami
                 siap membantu Anda.
@@ -1880,15 +1868,14 @@
                 </div>
               </div>
 
-              <!-- Email & WhatsApp Buttons -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button type="button" onclick="sendViaEmail()" class="btn-submit bg-blue-600 hover:bg-blue-700 flex items-center justify-center gap-2">
                   <i class="fa-solid fa-envelope"></i>
-                  <span class="btn-text">Via Email</span>
+                  <span>Via Email</span>
                 </button>
                 <button type="button" onclick="sendViaWhatsApp()" class="btn-submit bg-green-600 hover:bg-green-700 flex items-center justify-center gap-2">
                   <i class="fa-brands fa-whatsapp"></i>
-                  <span class="btn-text">Via WhatsApp</span>
+                  <span>Via WhatsApp</span>
                 </button>
               </div>
             </form>
@@ -1897,32 +1884,29 @@
       </div>
     </div>
 
-    <!-- Toast Notification Container -->
+    <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- 3. PROFESSIONAL LIGHTBOX -->
-    <div id="lightbox" class="lightbox">
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galeri Gambar">
       <div class="lightbox-inner">
-        <!-- Close -->
-        <button class="lightbox-close" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Tutup lightbox">
           <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <!-- Image wrapper + nav arrows -->
         <div class="lightbox-img-wrap">
           <img id="lightboxImg" src="" alt="Dokumentasi" />
-          <button class="lightbox-nav prev" onclick="shiftLightbox(-1)">
+          <button class="lightbox-nav prev" onclick="shiftLightbox(-1)" aria-label="Gambar sebelumnya">
             <i class="fa-solid fa-chevron-left"></i>
           </button>
-          <button class="lightbox-nav next" onclick="shiftLightbox(1)">
+          <button class="lightbox-nav next" onclick="shiftLightbox(1)" aria-label="Gambar berikutnya">
             <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
 
-        <!-- Counter + thumbnail strip -->
         <div class="lightbox-bottom">
-          <div class="lightbox-counter" id="lightboxCounter">1 / 3</div>
-          <div class="lightbox-thumbs" id="lightboxThumbs"></div>
+          <div class="lightbox-counter" id="lightboxCounter" aria-live="polite">1 / 3</div>
+          <div class="lightbox-thumbs" id="lightboxThumbs" role="list"></div>
         </div>
       </div>
     </div>
@@ -1932,15 +1916,14 @@
       id="backToTop"
       class="fixed bottom-8 right-8 bg-brand text-white p-3 rounded-full shadow-lg shadow-brand/30 translate-y-20 opacity-0 transition-all duration-300 hover:scale-110 z-40 hover:bg-brand-dark"
       title="Kembali ke atas"
+      aria-label="Kembali ke atas"
     >
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT -->
     <script>
-      // =========================================================
-      // PROJECT DATA
-      // =========================================================
+      // Project Data
       const projectData = {
         konstruksi: {
           title: "Perbaikan PT United Tractors Cabang Jayapura",
@@ -1948,13 +1931,9 @@
           location: "Timika",
           client: "PT United Tractors Cabang Jayapura",
           duration: "8 Bulan",
-          description:
-            "Proyek perbaikan pagar mess dan pembuatan pagar kantor PT United Tractors cabang Jayapura.",
+          description: "Proyek perbaikan pagar mess dan pembuatan pagar kantor PT United Tractors cabang Jayapura.",
           image: "United-Tractors-Pekanbaru.jpg",
-          gallery: [
-            "ut-02 jayapura.png",
-            "ut-01 jayapura.png",
-          ],
+          gallery: ["ut-02 jayapura.png", "ut-01 jayapura.png"],
         },
         infrastruktur: {
           title: "Proyek Pembangunan Jembatan Jila Papua Pegunungaan",
@@ -1962,12 +1941,9 @@
           location: "Jila Papua Pegunungan",
           client: "Dinas PU",
           duration: "4 Bulan",
-          description:
-            "Jembatan penghubung vital di pegunungan Papua yang menghubungkan dua desa terpencil, meningkatkan akses logistik dan ekonomi.",
+          description: "Jembatan penghubung vital di pegunungan Papua yang menghubungkan dua desa terpencil, meningkatkan akses logistik dan ekonomi.",
           image: "RCBK fence2.jpg",
-          gallery: [
-            "jembatan jila.png",
-          ],
+          gallery: ["jembatan jila.png"],
         },
         landscaping: {
           title: "Landscaping & Cleaning Service",
@@ -1975,14 +1951,9 @@
           location: "Timika",
           client: "PT Freeport",
           duration: "Ongoing",
-          description:
-            "Pemeliharaan area hijau kompleks olahraga GOR Mimika, termasuk penanaman rumput, perawatan tanaman hias, dan sistem irigasi.",
+          description: "Pemeliharaan area hijau kompleks olahraga GOR Mimika, termasuk penanaman rumput, perawatan tanaman hias, dan sistem irigasi.",
           image: "IMG-20240516-WA0063.jpg",
-          gallery: [
-            "IMG-20240409-WA0044.jpg",
-            "IMG-20240805-WA0118.jpg",
-            "IMG-20240823-WA0002.jpg",
-          ],
+          gallery: ["IMG-20240409-WA0044.jpg", "IMG-20240805-WA0118.jpg", "IMG-20240823-WA0002.jpg"],
         },
         manpower: {
           title: "MOPH1 Services",
@@ -1990,14 +1961,9 @@
           location: "Mimika",
           client: "PT Freeport",
           duration: "1 tahun",
-          description:
-            "Penyediaan tenaga kerja profesional untuk operasional Heavy Equipment dan Maintenance di area MOPH1.",
+          description: "Penyediaan tenaga kerja profesional untuk operasional Heavy Equipment dan Maintenance di area MOPH1.",
           image: "https://picsum.photos/seed/people/800/600",
-          gallery: [
-            "https://picsum.photos/seed/m1/600/400",
-            "https://picsum.photos/seed/m2/600/400",
-            "https://picsum.photos/seed/m3/600/400",
-          ],
+          gallery: ["https://picsum.photos/seed/m1/600/400", "https://picsum.photos/seed/m2/600/400", "https://picsum.photos/seed/m3/600/400"],
         },
       };
 
