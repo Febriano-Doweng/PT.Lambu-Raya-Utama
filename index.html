@@ -913,7 +913,7 @@
             <button
               id="darkToggleDesktop"
               class="p-2 rounded-full hover:bg-white/10 transition-colors focus:outline-none w-10 h-10 flex items-center justify-center"
-              title="Mode Gelap/ Terang"
+              title="Mode Gelap"
             >
               <i class="fa-solid fa-moon"></i>
             </button>
@@ -925,7 +925,7 @@
           <button
             id="darkToggleMobile"
             class="p-2 rounded-full hover:bg-white/10 transition-colors"
-            title="Mode Gelap/ Terang"
+            title="Mode Gelap"
           >
             <i class="fa-solid fa-moon"></i>
           </button>
@@ -2013,8 +2013,11 @@
         darkButtons.forEach((btn) => {
           if (btn)
             btn.innerHTML = isDark
-              ? '<i class="fa-solid fa-sun text-yellow-400"></i>'
+              ? '<i class="fa-solid fa-sun"></i>'
               : '<i class="fa-solid fa-moon"></i>';
+
+               // Update tooltip sesuai mode
+            btn.setAttribute('title', isDark ? 'Mode Terang' : 'Mode Gelap');
         });
       }
 
