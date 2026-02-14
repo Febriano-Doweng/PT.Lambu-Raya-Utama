@@ -1,0 +1,42 @@
+# robots.txt untuk PT. Lambu Raya Utama
+# https://lamburayautama.vercel.app
+
+# Mengizinkan semua bot mengakses seluruh situs
+User-agent: *
+Allow: /
+
+# Blokir akses ke file-file sensitif (jika ada)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /contact/
+Disallow: /*.php$
+Disallow: /cgi-bin/
+
+# Aturan khusus untuk bot tertentu
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Blokir bot yang tidak diinginkan (spam/scraper)
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl-delay untuk menghindari overload server
+Crawl-delay: 1
+
+# Sitemap Location
+Sitemap: https://lamburayautama.vercel.app/sitemap.xml
