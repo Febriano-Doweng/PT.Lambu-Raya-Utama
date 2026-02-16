@@ -907,13 +907,32 @@
     ></div>
 
     <!-- NAVBAR -->
+<!-- ═══ 1. UPDATE NAVBAR CONTAINER (Baris ~105-107) ═══ -->
+<nav class="fixed top-0 w-full z-50 text-white" id="navbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-32 md:h-36 flex justify-between items-center">
+    
+    <!-- ═══ 2. UPDATE LOGO (Baris ~111-126) ═══ -->
     <a class="flex items-center group" href="#home" title="PT. Lambu Raya Utama - General Contractor, Leveransir, Support Service">
       <img
         src="LRU.png"
         alt="PT. Lambu Raya Utama - General Contractor, Leveransir, Support Service di Timika"
-        class="h-8 w-8 md:h-10 md:w-10 object-contain transition-all duration-700 group-hover:scale-110 group-hover:rotate-6"
-       />
-     </a>
+        style="width: 110px; height: 104px;"
+        class="object-contain transition-all duration-700 group-hover:scale-110 group-hover:rotate-6"
+      />
+    </a>
+
+    <!-- ═══ 3. Desktop Menu (TIDAK BERUBAH) ═══ -->
+    <ul class="hidden md:flex items-center gap-6 lg:gap-8 font-semibold text-sm lg:text-base">
+      <!-- Menu items tetap sama -->
+    </ul>
+
+    <!-- ═══ 4. Mobile Menu Toggle (TIDAK BERUBAH) ═══ -->
+    <div class="flex items-center gap-4 md:hidden z-50">
+      <!-- Dark mode & burger tetap sama -->
+    </div>
+    
+  </div>
+</nav>
         <!-- Desktop Menu -->
         <ul
           class="hidden md:flex items-center gap-6 lg:gap-8 font-semibold text-sm lg:text-base"
@@ -2692,6 +2711,7 @@
   </script>
   </body>
 </html>
+
 
 
 
