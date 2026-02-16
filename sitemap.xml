@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+
+  <!-- ============================================
+       SITEMAP PT. LAMBU RAYA UTAMA
+       Website: https://lamburayautama.vercel.app
+       Last Updated: 2026-02-16
+       Total URLs: 25+
+       ============================================ -->
+
+  <!-- Homepage / Landing Page -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/Logo_LRU.png</image:loc>
+      <image:title>Logo PT. Lambu Raya Utama</image:title>
+      <image:caption>General Contractor, Leveransir, Support Service di Timika Papua Tengah</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/Kantor%20LRU.png</image:loc>
+      <image:title>Kantor PT. Lambu Raya Utama</image:title>
+    </image:image>
+  </url>
+
+  <!-- Section: Hero / Beranda -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#home</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Section: Keunggulan / Why Us -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#why</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Section: Tentang Kami / About -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#about</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/Kantor%20LRU.png</image:loc>
+      <image:title>Kantor PT. Lambu Raya Utama di Timika</image:title>
+    </image:image>
+  </url>
+
+  <!-- Section: Layanan / Services -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#services</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Sub-Service: General Contractor -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#services-general-contractor</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Sub-Service: Leveransir -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#services-leveransir</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Sub-Service: Support Service -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#services-support</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Section: Proyek / Projects -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#projects</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Project: Konstruksi - PT United Tractors -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#projects-konstruksi</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/dok.%20sm.jpg</image:loc>
+      <image:title>Proyek Perbaikan PT United Tractors Cabang Jayapura</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/ut-02%20jayapura.png</image:loc>
+      <image:title>Dokumentasi Proyek United Tractors</image:title>
+    </image:image>
+  </url>
+
+  <!-- Project: Infrastruktur - Jembatan Jila -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#projects-infrastruktur</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/Metso%20fence2.jpg</image:loc>
+      <image:title>Proyek Pembangunan Jembatan Jila Papua Pegunungan</image:title>
+    </image:image>
+  </url>
+
+  <!-- Project: Landscaping - GOR Mimika -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#projects-landscaping</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/IMG-20240521-WA0034.jpg</image:loc>
+      <image:title>Proyek Landscaping Gedung Olahraga Mimika</image:title>
+    </image:image>
+  </url>
+
+  <!-- Project: Manpower - MOPH1 Services -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#projects-manpower</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://lamburayautama.vercel.app/manpower%2001.JPG</image:loc>
+      <image:title>MOPH1 Project Services</image:title>
+    </image:image>
+  </url>
+
+  <!-- Contact Section -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/#contact</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Additional Resources -->
+  
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://www.termsfeed.com/live/f2a6998d-b81b-4c7f-a8d0-9a112b717cf4</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms and Conditions -->
+  <url>
+    <loc>https://www.termsfeed.com/live/7ce2325f-ff9b-4643-aff2-ca4f9de021d4</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Social Media Profiles -->
+  
+  <!-- Instagram -->
+  <url>
+    <loc>https://www.instagram.com/_lamburayautama/</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- LinkedIn -->
+  <url>
+    <loc>https://www.linkedin.com/in/lamburaya-utama-614491273/</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Image Gallery Resources -->
+  
+  <!-- Hero Images -->
+  <url>
+    <loc>https://lamburayautama.vercel.app/vladimir-patkachakov.jpg</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://lamburayautama.vercel.app/Gedung%20MSC.jpeg</loc>
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>
