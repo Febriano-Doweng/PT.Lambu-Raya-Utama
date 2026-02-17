@@ -250,42 +250,49 @@
         z-index: 0;
       }
 
-      /* --- BURGER MENU ANIMATION (SEJAJAR) --- */
-      #burger > div {
-        position: relative;
-        width: 24px;
-        height: 18px;
-      }
+      /* --- BURGER MENU ANIMATION --- */
+     #burger > div {
+       position: relative;
+       width: 20px;
+       height: 16px;
+     }
 
+      /* Garis burger */
       #burger span {
         display: block;
         position: absolute;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 3px;
         background-color: #ffffff;
-        border-radius: 2px;
-        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        border-radius: 3px; 
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
       }
 
-      #burger span:nth-child(1) { top: 0; }
-      #burger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-      #burger span:nth-child(3) { bottom: 0; }
+   /* Posisi garis */
+   #burger span:nth-child(1) { top: 0; }
 
-      /* Active state: X icon */
-      #burger.active span:nth-child(1) {
-        top: 50%;
-        transform: translateY(-50%) rotate(45deg);
-        background-color: #ffffff;
-      }
-      #burger.active span:nth-child(2) {
-        opacity: 0;
-        transform: translateY(-50%) scaleX(0);
-      }
+   #burger span:nth-child(2) {
+     top: 50%;
+     transform: translateY(-50%);
+   }
+
+    #burger span:nth-child(3) { bottom: 0; }
+
+    /* Active state */
+    #burger.active span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+     #burger.active span:nth-child(2) {
+       opacity: 0;
+       transform: translateY(-50%) scaleX(0);
+     }
+
       #burger.active span:nth-child(3) {
         bottom: 50%;
         transform: translateY(50%) rotate(-45deg);
-        background-color: #ffffff;
       }
 
       /* --- CONTACT FORM MODAL STYLES --- */
@@ -2709,6 +2716,7 @@
   </script>
   </body>
 </html>
+
 
 
 
