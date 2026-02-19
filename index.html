@@ -1590,19 +1590,19 @@
                 href="https://r.search.yahoo.com/_ylt=Awr1SXLha5JpFAIAmBPLQwx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1772413153/RO=10/RU=https%3a%2f%2fwww.facebook.com%2fPt-Lambu-Raya-Utama-110402704789355%2f/RK=2/RS=PIKfepysBuRzbjV58ptCGjGs80o-"
                 class="w-10 h-10 rounded-full bg-gray-800 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-brand transition-colors"
                 title="Facebook"
-                <span class="material-icons">facebook</span>
+                <span class="material-icons"facebook</span>
               ></a>
               <a
                 href="https://www.instagram.com/_lamburayautama/"
                 class="w-10 h-10 rounded-full bg-gray-800 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-brand transition-colors"
                 title="Instagram"
-                <span class="material-icons">photo_camera</span>
+                <span class="material-icons"photo_camera</span>
               ></a>
               <a
                 href="https://www.linkedin.com/in/lamburaya-utama-614491273/"
                 class="w-10 h-10 rounded-full bg-gray-800 border border-white/10 flex items-center justify-center hover:bg-accent hover:text-brand transition-colors"
                 title="Linkedin"
-                <span class="material-icons">business</span>
+                <span class="material-icons"business</span>
               ></a>
             </div>
           </div>
@@ -1615,11 +1615,11 @@
             </h4>
             <ul class="space-y-4 text-gray-400 text-sm">
               <li class="flex items-start gap-3">
-                <span class="material-icons">phone</span>
+                <span class="material-icons"phone</span>
                 ><span>0901-3267914</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="material-icons">email</span>
+                <span class="material-icons"email</span>
                 ><a
                   href="mailto:lambu.utama@yahoo.co.id"
                   class="hover:text-white transition"
@@ -1628,7 +1628,7 @@
                 >
               </li>
               <li class="flex items-start gap-3">
-                <span class="material-icons">location_on</span>
+                <span class="material-icons"location_on</span>
                 ><span>Jl. Nenas SP. II Timika Jaya, Kec. Mimika Baru</span>
               </li>
             </ul>
@@ -2095,28 +2095,7 @@
           iconDesktop.textContent = "dark_mode";
           iconMobile.textContent = "dark_mode";
         }
-      }
-
-      function toggleDarkMode() {
-        html.classList.toggle("dark");
-        localStorage.setItem(
-          "theme",
-          html.classList.contains("dark") ? "dark" : "light"
-        );
-        updateDarkIcon();
-      }
-
-      if (
-        localStorage.getItem("theme") === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        html.classList.add("dark");
-      }
-      updateDarkIcon();
-      darkButtons.forEach((btn) =>
-        btn?.addEventListener("click", toggleDarkMode)
-      );
+      };
 
       // =========================================================
       // MOBILE MENU
@@ -2699,6 +2678,7 @@
   </script>
   </body>
 </html>
+
 
 
 
