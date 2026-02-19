@@ -2076,23 +2076,18 @@
       // =========================================================
       // DARK MODE
       // =========================================================
-      const html = document.documentElement;
-      const darkButtons = [
-        document.getElementById("darkToggleDesktop"),
-        document.getElementById("darkToggleMobile"),
-      ];
-
       function updateDarkIcon() {
-        const isDark = html.classList.contains("dark");
-        darkButtons.forEach((btn) => {
-          if (btn)
-            btn.innerHTML = isDark
-              ? '<i class="fa-solid fa-sun"></i>'
-              : '<i class="fa-solid fa-moon"></i>';
+      const isDark = document.documentElement.classList.contains("dark");
+      const iconDesktop = document.querySelector("#darkToggleDesktop .material-icons");
+      const iconMobile = document.querySelector("#darkToggleMobile .material-icons");
 
-               // Update tooltip sesuai mode
-            btn.setAttribute('title', isDark ? 'Mode Terang' : 'Mode Gelap');
-        });
+        if (isDark) {
+          iconDesktop.textContent = "light_mode";
+          iconMobile.textContent = "light_mode";
+       } else {
+          iconDesktop.textContent = "dark_mode";
+          iconMobile.textContent = "dark_mode";
+        }
       }
 
       function toggleDarkMode() {
@@ -2697,6 +2692,7 @@
   </script>
   </body>
 </html>
+
 
 
 
