@@ -86,8 +86,8 @@
 
     <!-- Icons (FontAwesome) -->
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <!-- Tailwind CSS (CDN) -->
@@ -898,20 +898,6 @@
         position: fixed;
         width: 100%;
       }
-      /* Ukuran */
-      .material-icons {
-       font-size: 20px;  /* Default 24px */
-      }
-
-      /* Warna */
-      .material-icons {
-        color: white;
-      }
-
-      /* Hover */
-      .material-icons:hover {
-       color: #00d4ff;
-      }
     </style>
   </head>
 
@@ -1010,7 +996,7 @@
         <!-- Mobile Menu Toggle (Burger) -->
         <div class="flex items-center gap-4 md:hidden z-50">
           <button id="darkToggleDesktop">
-            <span class="material-icons">dark_mode</span>
+            <i class="fa-solid fa-moon"></i>
           </button>
           <button 
             id="burger" 
@@ -2678,6 +2664,7 @@
   </script>
   </body>
 </html>
+
 
 
 
