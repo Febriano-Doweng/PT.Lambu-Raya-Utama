@@ -2069,19 +2069,42 @@
       // =========================================================
       // DARK MODE
       // =========================================================
-      function updateDarkIcon() {
-      const isDark = document.documentElement.classList.contains("dark");
-      const iconDesktop = document.querySelector("#darkToggleDesktop .material-icons");
-      const iconMobile = document.querySelector("#darkToggleMobile .material-icons");
+      const html = document.documentElement;
+      const darkButtons = [
+        document.getElementById("darkToggleDesktop"),
+        document.getElementById("darkToggleMobile"),
+      ];
 
-        if (isDark) {
-          iconDesktop.textContent = "light_mode";
-          iconMobile.textContent = "light_mode";
-       } else {
-          iconDesktop.textContent = "dark_mode";
-          iconMobile.textContent = "dark_mode";
-        }
-      };
+      function updateDarkIcon() {
+        const isDark = html.classList.contains("dark");
+        darkButtons.forEach((btn) => {
+          if (btn)
+            btn.innerHTML = isDark
+              ? '<i class="fa-solid fa-sun text-yellow-400"></i>'
+              : '<i class="fa-solid fa-moon"></i>';
+        });
+      }
+
+      function toggleDarkMode() {
+        html.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          html.classList.contains("dark") ? "dark" : "light"
+        );
+        updateDarkIcon();
+      }
+
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        html.classList.add("dark");
+      }
+      updateDarkIcon();
+      darkButtons.forEach((btn) =>
+        btn?.addEventListener("click", toggleDarkMode)
+      );
 
       // =========================================================
       // MOBILE MENU
@@ -2664,6 +2687,7 @@
   </script>
   </body>
 </html>
+
 
 
 
