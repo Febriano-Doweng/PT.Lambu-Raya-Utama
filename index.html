@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="Logo_LRU.png" />
     <title>PT. Lambu Raya Utama - Timika Papua Tengah</title>
+    <!-- Meta Google Console -->
     <meta name="google-site-verification" content="T1ZqrMob5nILySrt2Dd-SBlUT7Q2L9ZuELEy2wOO9nk" />
+    <!-- Meta Tags Web Master Tols -->
+    <meta name="msvalidate.01" content="6CC7FDE58A4585A6118178126DE843D2" />
     <meta
       name="description"
       content="General Contractor • Leveransir • Support Service"
     />
     <!-- Meta Keywords -->
-    <meta name="keywords" content="PT. Lambu Raya Utama, general contractor Papua, kontraktor Timika, leveransir Papua, support service Timika, konstruksi Papua Tengah, infrastruktur Mimika, jasa konstruksi Papua, kontraktor terpercaya Timika, pembangunan Papua, manpower Papua, landscaping Timika, kontraktor lokal Papua" />
+    <meta name="keywords" content="PT. Lambu Raya Utama, Lambu Raya Utama, kontraktor Timika, leveransir Papua, support service Timika, konstruksi Papua Tengah, infrastruktur Mimika, jasa konstruksi Papua, kontraktor terpercaya Timika, pembangunan Papua, manpower Papua, landscaping Timika, kontraktor lokal Papua" />
 
     <!-- Author & Copyright -->
     <meta name="author" content="PT. Lambu Raya Utama" />
@@ -141,7 +144,7 @@
     </script>
 
     <style>
-      /* --- Main Page Styles --- */
+      /* Main Page Styles */
       section {
         scroll-margin-top: 80px;
       }
@@ -247,42 +250,49 @@
         z-index: 0;
       }
 
-      /* --- BURGER MENU ANIMATION (SEJAJAR) --- */
-      #burger > div {
-        position: relative;
-        width: 24px;
-        height: 18px;
-      }
+      /* BURGER MENU ANIMATION */
+     #burger > div {
+       position: relative;
+       width: 20px;
+       height: 16px;
+     }
 
+      /* Garis burger */
       #burger span {
         display: block;
         position: absolute;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 3px;
         background-color: #ffffff;
-        border-radius: 2px;
-        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        border-radius: 3px; 
+        transition: all 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
       }
 
-      #burger span:nth-child(1) { top: 0; }
-      #burger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-      #burger span:nth-child(3) { bottom: 0; }
+   /* Posisi garis */
+   #burger span:nth-child(1) { top: 0; }
 
-      /* Active state: X icon */
-      #burger.active span:nth-child(1) {
-        top: 50%;
-        transform: translateY(-50%) rotate(45deg);
-        background-color: #00d4ff;
-      }
-      #burger.active span:nth-child(2) {
-        opacity: 0;
-        transform: translateY(-50%) scaleX(0);
-      }
+   #burger span:nth-child(2) {
+     top: 50%;
+     transform: translateY(-50%);
+   }
+
+    #burger span:nth-child(3) { bottom: 0; }
+
+    /* Active state */
+    #burger.active span:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+     #burger.active span:nth-child(2) {
+       opacity: 0;
+       transform: translateY(-50%) scaleX(0);
+     }
+
       #burger.active span:nth-child(3) {
         bottom: 50%;
         transform: translateY(50%) rotate(-45deg);
-        background-color: #00d4ff;
       }
 
       /* --- CONTACT FORM MODAL STYLES --- */
@@ -904,30 +914,30 @@
     ></div>
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full z-50 text-white" id="navbar">
+      <nav class="fixed top-0 w-full z-50 text-white" id="navbar">
       <div
         class="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex justify-between items-center"
       >
         <a class="flex items-center gap-2 md:gap-4 group" href="#home">
           <img
-            src="img/Logo_LRU.png"
+            src="Logo_LRU.png"
             alt="Logo LRU"
-            class="h-10 w-10 md:h-10 md:w-12 object-contain transition-all duration-700"
-          />
-          <div class="block">
+            class="h-8 w-8 md:h-10 md:w-10 object-contain transition-all duration-700"
+           />
+            <div class="block">
             <h1
-              class="text-xs text-sm md:text-lg font-bold text-white leading-tight"
+              class="text-xs sm:text-sm md:text-lg font-bold text-white leading-tight"
             >
               PT LAMBU RAYA UTAMA
             </h1>
             <p
-              class="text-[10px] sm:text-[10px] md:text-sm text-white/80 font-medium"
+              class="text-[8px] sm:text-[10px] md:text-sm text-white/80 font-medium"
             >
               General Contractor • Leveransir • Support Service
             </p>
-          </div>
-        </a>
-
+           </div>
+          </a>
+        
         <!-- Desktop Menu -->
         <ul
           class="hidden md:flex items-center gap-6 lg:gap-8 font-semibold text-sm lg:text-base"
@@ -1088,20 +1098,6 @@
         <div
           class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/25 to-gray-900 z-10"
         ></div>
-      </div>
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        <button
-          class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-accent transition-all active"
-          onclick="goToSlide(0)"
-        ></button>
-        <button
-          class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-accent transition-all"
-          onclick="goToSlide(1)"
-        ></button>
-        <button
-          class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-accent transition-all"
-          onclick="goToSlide(2)"
-        ></button>
       </div>
     </header>
 
@@ -1559,7 +1555,7 @@
           <div class="md:col-span-2 lg:col-span-1">
             <div class="flex items-center gap-3 mb-4">
               <img
-                src="img/Logo_LRU.png"
+                src="Logo_LRU.png"
                 alt="Logo LRU"
                 class="h-8 w-8 md:h-8 md:w-8 object-contain transition-all duration-700 group-hover:scale-125 group-hover:rotate-7"
               />
@@ -1696,7 +1692,7 @@
               <div
                 class="mt-5 text-xs text-gray-500 text-center border-t border-white/5 pt-3"
               >
-                Silahkan hubungi kami sesuai jam operasional terima kasih.
+                Silahkan hubungi kami sesuai jam operasional, terima kasih.
               </div>
             </div>
           </div>
@@ -1716,26 +1712,24 @@
             ></iframe>
           </div>
         </div>
+        
+        <!-- COPYRIGHT -->
+        <div class="border-t border-white/10 mt-12 pt-8 flex flex-col items-center gap-3 text-gray-500 text-sm">
 
-        <div
-          class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500"
-        >
-          <p>
-            &copy; <span id="year"></span> PT. Lambu Raya Utama. All rights
-            reserved.
+         <p>
+            &copy; <span id="year"></span> PT. Lambu Raya Utama. All rights reserved.
           </p>
-          
-           <!-- Links -->
-           <div class="flex gap-6 mt-4 md:mt-0">
-            <a href="https://www.termsfeed.com/live/f2a6998d-b81b-4c7f-a8d0-9a112b717cf4" class="hover:text-white transition">
-              Privacy Policy
-            </a>
-            <a href="https://www.termsfeed.com/live/7ce2325f-ff9b-4643-aff2-ca4f9de021d4" class="hover:text-white transition">
-              Terms and Conditions
-            </a>
-          </div>
-        </div>
-      </div>
+        <!-- PRIVACY & TERMS -->
+        <div class="flex gap-6">
+         <a href="https://www.termsfeed.com/live/f2a6998d-..." class="hover:text-white transition">
+            Privacy Policy
+          </a>
+          <a href="https://www.termsfeed.com/live/7ce2325f-..." class="hover:text-white transition">
+            Terms and Conditions
+        </a>
+       </div>
+
+     </div>
     </footer>
 
     <!-- ================= MODALS ================= -->
@@ -2198,14 +2192,11 @@
       // =========================================================
       let currentSlide = 0;
       const slides = document.querySelectorAll(".hero-slide");
-      const dots = document.querySelectorAll(".hero-dot");
 
       function goToSlide(n) {
         slides[currentSlide].classList.remove("active");
-        dots[currentSlide].classList.remove("active", "bg-accent");
         currentSlide = (n + slides.length) % slides.length;
         slides[currentSlide].classList.add("active");
-        dots[currentSlide].classList.add("active", "bg-accent");
       }
       setInterval(() => goToSlide(currentSlide + 1), 6000);
 
