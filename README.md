@@ -1,4 +1,3 @@
-```markdown
 # 🏗️ PT. Lambu Raya Utama - Company Profile Website
 
 Website Company Profile resmi untuk **PT. Lambu Raya Utama**, perusahaan yang bergerak di bidang General Contractor, Leveransir, dan Support Service yang berlokasi di Timika, Papua Tengah. Website ini dibangun dengan fokus pada performa, SEO (Search Engine Optimization), dan pengalaman pengguna (UX) modern.
@@ -66,13 +65,13 @@ Struktur proyek ini sederhana dan flat untuk kemudahan deployment:
 
 ```text
 /
-├── README.md               # Dokumentasi proyek (file ini)
 ├── img/                    # Folder aset gambar
 │   ├── Logo_LRU.png        # Logo utama
 │   ├── Kantor LRU.png      # Foto kantor
 │   ├── dok. sm.jpg         # Dokumentasi proyek
 │   ├── Metso fence2.jpg    # Dokumentasi proyek
 │   └── ... (gambar lainnya)
+├── README.md               # Dokumentasi proyek (file ini)
 ├── index.html              # File utama website (HTML + CSS + JS)
 ├── robots.txt              # Konfigurasi crawler mesin pencari
 └── sitemap.xml             # Peta situs untuk SEO
