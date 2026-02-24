@@ -115,7 +115,7 @@ Website ini telah dilengkapi dengan fitur SEO lengkap:
 
 ## 🖼️ Aset Gambar
 
-Pastikan gambar-gambar berikut tersedia di dalam folder `img/` agar website tampil sempurna:
+Gambar-gambar berikut tersedia di dalam folder `img/`:
 
 - `Logo_LRU.png` (Logo utama)
 - `Kantor LRU.png` (Foto kantor utama)
