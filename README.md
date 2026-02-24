@@ -1,4 +1,4 @@
-# 🏗️ PT. Lambu Raya Utama - Company Profile Website
+# PT. LAMBU RAYA UTAMA - COMPANY PROFILE WEBSITE
 
 Website Company Profile resmi untuk **PT. Lambu Raya Utama**, perusahaan yang bergerak di bidang General Contractor, Leveransir, dan Support Service yang berlokasi di Timika, Papua Tengah. Website ini dibangun dengan fokus pada performa, SEO (Search Engine Optimization), dan pengalaman pengguna (UX) modern.
 
@@ -122,6 +122,8 @@ Pastikan gambar-gambar berikut tersedia di dalam folder `img/` agar website tamp
 - `dok. sm.jpg`, `Metso fence2.jpg`, `manpower 01.JPG`, dll (Dokumentasi proyek)
 
 ---
+## Ayoo!! Kunjungi Websitenya
+Link web : https://lamburayautama.vercel.app/
 
 ## 📞 Kontak
 
@@ -130,7 +132,7 @@ Jika ada pertanyaan terkait pengembangan website ini, silakan hubungi:
 - **Bryan Tuakora | Frontend Dev**
 - 📧 Email: bryndtuakora@gmail.com
 - 📞 Telepon: +628 528 3563 074
-- 📍 Lokasi: Timika Papua Tenganh
+- 📍 Lokasi: Kab. Mimika, Papua TengaH, Indonesia
 
 ---
 
