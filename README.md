@@ -123,8 +123,9 @@ Pastikan gambar-gambar berikut tersedia di dalam folder `img/` agar website tamp
 
 ---
 
-## Silhkan kunjungi tautan resmi
+Silahkan kunjungi tautan resmi
 PT. LAMBU RAYA UTAMA : https://lamburayautama.vercel.app/
+
 ---
 
 ## 📞 Kontak
