@@ -1890,7 +1890,7 @@
                   <div class="detail-text">
                     <span>Jam Operasional</span>
                     <strong>Senin - Jumat: 07:00 - 16:00</strong>
-                    <span class="text-red-400 text-xs mt-1 block">Sabtu - Minggu: Tutup</span>
+                    <span class="text-red-400 text-xs tracking-wide">Sabtu - Minggu: Tutup</span>
                   </div>
                 </div>
               </div>
@@ -1915,7 +1915,7 @@
               </div>
               <div class="form-group">
                 <label for="email">Alamat Email</label>
-                <input type="email" id="email" name="email" class="form-control" placeholder="bryant@gmail.com" required />
+                <input type="email" id="email" name="email" class="form-control" placeholder="nama@gmail.com" required />
                 <div class="error-message" id="error-email">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                   Masukkan alamat email yang valid.
@@ -2083,7 +2083,7 @@
               ? '<i class="fa-solid fa-sun"></i>'
               : '<i class="fa-solid fa-moon"></i>';
 
-               // Update tooltip sesuai mode
+               // tooltip sesuai mode
             btn.setAttribute('title', isDark ? 'Mode Terang' : 'Mode Gelap');
         });
       }
@@ -2409,7 +2409,7 @@
         };
       });
 
-      // Send via Email
+      // Kirim via Email
       window.sendViaEmail = function () {
         if (!window._validateForm()) return;
 
@@ -2427,14 +2427,14 @@
         const subjectText = subjectMap[subject] || subject;
 
         const body =
-          `Halo PT Lambu Raya Utama,%0D%0A%0D%0A` +
+          `Halo PT. Lambu Raya Utama,%0D%0A%0D%0A` +
           `Nama: ${encodeURIComponent(name)}%0D%0A` +
           `Email: ${encodeURIComponent(email)}%0D%0A` +
           `Subjek: ${encodeURIComponent(subjectText)}%0D%0A%0D%0A` +
           `Pesan:%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A` +
           `Terima kasih,%0D%0A${encodeURIComponent(name)}`;
 
-        window.location.href = `mailto:lambu.utama@yahoo.co.id?subject=${encodeURIComponent("Pesan Website - " + subjectText)}&body=${body}`;
+        window.location.href = `mailto:lamburaya00@gmail.com?subject=${encodeURIComponent("Pesan Website - " + subjectText)}&body=${body}`;
 
         showToast("Membuka Email...", "Aplikasi email Anda akan terbuka dengan pesan yang sudah terisi.");
         setTimeout(() => {
@@ -2443,7 +2443,7 @@
         }, 1500);
       };
 
-      // Send via WhatsApp
+      // Kirim via WhatsApp
       window.sendViaWhatsApp = function () {
         if (!window._validateForm()) return;
 
@@ -2461,7 +2461,7 @@
         const subjectText = subjectMap[subject] || subject;
 
         const waMessage =
-          `Halo PT Lambu Raya Utama,%0A%0A` +
+          `Halo PT. Lambu Raya Utama,%0A%0A` +
           `Nama: ${encodeURIComponent(name)}%0A` +
           `Email: ${encodeURIComponent(email)}%0A` +
           `Subjek: ${encodeURIComponent(subjectText)}%0A%0A` +
@@ -2487,7 +2487,7 @@
           if (e.key === "ArrowLeft")  shiftLightbox(-1);
           if (e.key === "ArrowRight") shiftLightbox(1);
           if (e.key === "Escape")     closeLightbox();
-          return; // don't fall through
+          return;
         }
         if (e.key === "Escape") {
           closeProjectModal();
@@ -2683,4 +2683,5 @@
   </script>
   </body>
 </html>
+
 
