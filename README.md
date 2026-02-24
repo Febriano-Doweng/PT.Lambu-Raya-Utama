@@ -121,10 +121,10 @@ Pastikan gambar-gambar berikut tersedia di dalam folder `img/` agar website tamp
 - `Gedung MSC.jpeg` (Gambar hero)
 - `dok. sm.jpg`, `Metso fence2.jpg`, `manpower 01.JPG`, dll (Dokumentasi proyek)
 
+---
 
-## Silhkan Kunjungi Websitenya
-tautan resmi PT. LAMBU RAYA UTAMA : https://lamburayautama.vercel.app/
-
+## Silhkan kunjungi tautan resmi
+PT. LAMBU RAYA UTAMA : https://lamburayautama.vercel.app/
 ---
 
 ## 📞 Kontak
