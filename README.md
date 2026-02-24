@@ -121,9 +121,11 @@ Pastikan gambar-gambar berikut tersedia di dalam folder `img/` agar website tamp
 - `Gedung MSC.jpeg` (Gambar hero)
 - `dok. sm.jpg`, `Metso fence2.jpg`, `manpower 01.JPG`, dll (Dokumentasi proyek)
 
+
+## Silhkan Kunjungi Websitenya
+tautan resmi PT. LAMBU RAYA UTAMA : https://lamburayautama.vercel.app/
+
 ---
-## Ayoo!! Kunjungi Websitenya
-Link web : https://lamburayautama.vercel.app/
 
 ## 📞 Kontak
 
@@ -132,7 +134,7 @@ Jika ada pertanyaan terkait pengembangan website ini, silakan hubungi:
 - **Bryan Tuakora | Frontend Dev**
 - 📧 Email: bryndtuakora@gmail.com
 - 📞 Telepon: +628 528 3563 074
-- 📍 Lokasi: Kab. Mimika, Papua TengaH, Indonesia
+- 📍 Lokasi: Kab. Mimika, Papua Tengah.
 
 ---
 
